@@ -1,0 +1,42 @@
+td {
+    empty-cells: hide;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+
+}
+
+td:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+
+table {
+    background-image: url(https://i.imgur.com/yCheMVB.png);
+    border: none;
+    margin: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.space:hover {
+    background: rgba(172, 155, 155, 0.5);
+}
+
+.space {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 36px;
+    width: 40px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+}
+
+p{
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    color: aliceblue;
+}
+
+.flavourtext a {
+    color: rgb(255, 234, 209);
+}

@@ -1,0 +1,73 @@
+plugins {
+    // Tell Gradle that we are building java as a library (non-executable piece of code intended for use by other applications).
+    id 'java'
+    id 'java-library'
+    id 'jacoco'
+    id 'application'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.7'
+}
+
+version = scmVersion.version
+
+repositories {
+    // Specify the repository mirror that we want to download our dependencies from. Maven Central is configured by default when creating a new Gradle project.
+    mavenCentral()
+}
+
+dependencies {
+    // Download JUnit so that we can use it in our tests.
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testRuntimeOnly "org.junit.platform:junit-platform-commons:1.8.2"
+}
+
+test {
+    // For running our tests, use the test runner provided by JUnit.
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+    jacoco {
+        destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
+        classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
+    }
+}
+ jacocoTestReport {
+     dependsOn test // tests are required to run before generating the report
+ }
+ jacoco {
+     toolVersion = "0.8.8"
+     reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+     applyTo run
+ }
+ jacocoTestReport {
+     reports {
+         xml.required = false
+         csv.required = false
+         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+     }
+ }
+ jacocoTestCoverageVerification {
+     violationRules {
+         rule {
+             limit {
+                 minimum = 0.6
+             }
+         }
+
+//         rule {
+//             enabled = false
+//             element = 'CLASS'
+//             includes = ['org.gradle.*']
+//
+//             limit {
+//                 counter = 'LINE'
+//                 value = 'TOTALCOUNT'
+//                 maximum = 0.3
+//             }
+//         }
+     }
+ }
+
+ tasks.register('applicationCodeCoverageReport', JacocoReport) {
+     executionData run
+     sourceSets sourceSets.main
+ }

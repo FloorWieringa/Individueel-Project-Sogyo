@@ -1,0 +1,13 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #944500
+}
+
+@keyframes a {
+  to {background-position:0 -200%}
+}
+
+.main-content {
+    padding: 8px;
+}

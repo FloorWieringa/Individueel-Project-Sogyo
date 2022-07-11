@@ -1,0 +1,53 @@
+image: gradle:latest
+
+stages:
+  - build
+  - test
+  - coverage
+  - checkstyle
+
+build-job:
+  stage: build
+  script:
+    - echo "$CI_MERGE_REQUEST_DIFF_ID"
+    - echo "$CI_SERVER_VERSION"
+    - echo "$CI_COMMIT_BRANCH"
+    - echo "$CI_COMMIT_SHA"
+    - echo "$CI_COMMIT_AUTHOR"
+    - echo "$CI_COMMIT_MESSAGE"
+    - gradle assemble
+
+test-job:
+  stage: test
+  script:
+    - gradle test
+    - gradle jacocoTestReport
+    - gradle JacocoCoverageVerification
+    - cat $CI_PROJECT_DIR/domain/build/jacocoHtml/index.html | grep -o 'Total[^%]*%' | sed 's/<.*>/ /; s/Total/Code Coverage:/'
+  coverage: '/Code Coverage:.*?([0-9]{1,3})%/'
+
+coverage-job:
+  stage: coverage
+  script:
+    - gradle test
+    - gradle jacocoTestReport
+    - cat $CI_PROJECT_DIR/domain/build/jacocoHtml/index.html | grep -o 'Total[^%]*%' | sed 's/<.*>/ /; s/Total/Code Coverage:/'
+    - gradle jacocoTestCoverageVerification
+    - cat $CI_PROJECT_DIR/api/build/jacocoHtml/index.html | grep -o 'Total[^%]*%' | sed 's/<.*>/ /; s/Total/Code Coverage:/'
+    - gradle jacocoTestCoverageVerification
+  coverage: '/Code Coverage:.*?([0-9]{1,3})%/'
+
+
+  artifacts:
+    when: on_failure
+    paths:
+      - $CI_PROJECT_DIR/*/build/reports/*
+
+checkstyle-job:
+  stage: checkstyle
+  script:
+    - gradle check
+  artifacts:
+    when: on_success
+    paths:
+      - $CI_PROJECT_DIR/*
