@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import type { GameState } from "../gameState";
-import { Mancala } from "./Mancala";
 import "./Play.css";
 import { Link } from "react-router-dom";
 
@@ -11,12 +10,11 @@ type PlayProps = {
 
 export function Play({ gameState, setGameState }: PlayProps) {
 
-    gameState.gameStatus.endOfGame
-    const [winnerMessage, setWinnerMessage] = useState("");
+    const [Message, setMessage] = useState("");
 
     async function changeText(id:number){
         try{
-            const response = await fetch('mancala/api/change', {
+            const response = await fetch('escape/api/change', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -34,13 +32,36 @@ export function Play({ gameState, setGameState }: PlayProps) {
         }
     }
 
-    function retrieveWinner() {
-        if (gameState.gameStatus.endOfGame == true) {
-            setWinnerMessage("Player 1 won!");
+    function showHoldItem() {
+        if (gameState.players.items[0].heldStatus == true) {
+            setMessage("Holding book");
             return;
         }
-        setWinnerMessage("");
-        //"There are still moves that can be done."
+        if (gameState.players.items[1].heldStatus == true) {
+            setMessage("Holding wire");
+            return;
+        }
+        if (gameState.players.items[2].heldStatus == true) {
+            setMessage("Holding book on Modulanium");
+            return;
+        }
+        if (gameState.players.items[3].heldStatus == true) {
+            setMessage("Holding wire");
+            return;
+        }
+        if (gameState.players.items[4].heldStatus == true) {
+            setMessage("Holding hair strands");
+            return;
+        }
+        if (gameState.players.items[5].heldStatus == true) {
+            setMessage("Holding robot hand");
+            return;
+        } 
+        if (gameState.players.items[6].heldStatus == true) {
+            setMessage("Holding rope");
+            return;
+        }
+        setMessage("");
     }
 
     return (
@@ -63,47 +84,47 @@ export function Play({ gameState, setGameState }: PlayProps) {
                         <tr>
                             <td className="space"> A1 </td>
                             <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
+                            <td className="space" id="costumerack"> 3 </td>
+                            <td className="space" id="costumerack"> 4 </td>
+                            <td className="space" id="costumerack"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
+                            <td className="space" id="chemtable"> 8</td>
+                            <td className="space" id="chemtable"> 9 </td>
+                            <td className="space" id="chemtable"> 10 </td>
+                            <td className="space" id="chemtable"> 11 </td>
+                            <td className="space" id="chemtable"> 12 </td>
                             <td className="space"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="desk"> 16 </td>
+                            <td className="space" id="pc"> 17 </td>
+                            <td className="space" id="pc"> 18 </td>
                         </tr>                    
                         <tr>
-                            <td className="space"> B1 </td>
+                            <td className="space" id="glasscase"> B1 </td>
                             <td className="space"> 2 </td>
                             <td className="space"> 3 </td>
                             <td className="space"> 4 </td>
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
+                            <td className="space" id="chemtable"> 8 </td>
+                            <td className="space" id="chemtable"> 9 </td>
+                            <td className="space" id="chemtable"> 10 </td>
+                            <td className="space" id="chemtable"> 11 </td>
+                            <td className="space" id="chemtable"> 12 </td>
                             <td className="space"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="desk"> 16 </td>
+                            <td className="space" id="pc"> 17 </td>
+                            <td className="space" id="pc"> 18 </td>
                         </tr>
                         <tr>
-                            <td className="space"> C1 </td>
+                            <td className="space" id="glasscase"> C1 </td>
                             <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
+                            <td className="space" id="robothand"> 3 </td>
                             <td className="space"> 4 </td>
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
@@ -116,9 +137,9 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="desk"> 16 </td>
+                            <td className="space" id="worldmap"> 17 </td>
+                            <td className="space" id="worldmap"> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space"> D1 </td>
@@ -128,17 +149,17 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
+                            <td className="space" id="invisiblebarrier"> 8 </td>
+                            <td className="space" id="invisiblebarrier"> 9 </td>
+                            <td className="space" id="invisiblebarrier"> 10 </td>
+                            <td className="space" id="invisiblebarrier"> 11 </td>
                             <td className="space"> 12 </td>
                             <td className="space"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="desk"> 16 </td>
+                            <td className="space" id="worldmap"> 17 </td>
+                            <td className="space" id="worldmap"> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space"> E1 </td>
@@ -148,10 +169,30 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
+                            <td className="space" id="invisiblebarrier"> 8 </td>
+                            <td className="space" id="chair"> 9 </td>
+                            <td className="space" id="coiledrope"> 10 </td>
+                            <td className="space" id="invisiblebarrier"> 11 </td>
+                            <td className="space"> 12 </td>
+                            <td className="space"> 13 </td>
+                            <td className="space"> 14 </td>
+                            <td className="space"> 15 </td>
+                            <td className="space" id="desk"> 16 </td>
+                            <td className="space" id="worldmap"> 17 </td>
+                            <td className="space" id="worldmap"> 18 </td>
+                        </tr> 
+                        <tr>
+                            <td className="space" id="liftdoor"> F1 </td>
+                            <td className="space"> 2 </td>
+                            <td className="space" id="trapdoor"> 3 </td>
+                            <td className="space" id="trapdoor"> 4 </td>
+                            <td className="space"> 5 </td>
+                            <td className="space"> 6 </td>
+                            <td className="space"> 7 </td>
+                            <td className="space" id="invisiblebarrier"> 8 </td>
+                            <td className="space" id="invisiblebarrier"> 9 </td>
+                            <td className="space" id="invisiblebarrier"> 10 </td>
+                            <td className="space" id="invisiblebarrier"> 11 </td>
                             <td className="space"> 12 </td>
                             <td className="space"> 13 </td>
                             <td className="space"> 14 </td>
@@ -161,10 +202,10 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 18 </td>
                         </tr> 
                         <tr>
-                            <td className="space"> F1 </td>
+                            <td className="space" id="liftdoor"> G1 </td>
                             <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
+                            <td className="space" id="trapdoor"> 3 </td>
+                            <td className="space" id="trapdoor"> 4 </td>
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
@@ -177,28 +218,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space"> G1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="bookcase"> 17 </td>
+                            <td className="space" id="bookcase"> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space"> H1 </td>
@@ -209,16 +230,16 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
                             <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
+                            <td className="space" id="bed"> 9 </td>
+                            <td className="space" id="bed"> 10 </td>
+                            <td className="space" id="bed"> 11 </td>
+                            <td className="space" id="bed"> 12 </td>
+                            <td className="space" id="bed"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="bookcase"> 17 </td>
+                            <td className="space" id="bookcase"> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space"> I1 </td>
@@ -229,42 +250,41 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
                             <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
+                            <td className="space" id="bed"> 9 </td>
+                            <td className="space" id="bed"> 10 </td>
+                            <td className="space" id="bed"> 11 </td>
+                            <td className="space" id="bed"> 12 </td>
+                            <td className="space" id="bed"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="bookcase"> 17 </td>
+                            <td className="space" id="bookcase"> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space"> J1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
+                            <td className="space" id="stalkerpictures"> 2 </td>
+                            <td className="space" id="stalkerpictures"> 3 </td>
+                            <td className="space" id="stalkerpictures"> 4 </td>
+                            <td className="space" id="stalkerpictures"> 5 </td>
+                            <td className="space" id="stalkerpictures"> 6 </td>
                             <td className="space"> 7 </td>
                             <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
+                            <td className="space" id="bed"> 9 </td>
+                            <td className="space" id="bed"> 10 </td>
+                            <td className="space" id="bed"> 11 </td>
+                            <td className="space" id="bed"> 12 </td>
+                            <td className="space" id="bed"> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="bookcase"> 17 </td>
+                            <td className="space" id="bookcase"> 18 </td>
                         </tr> 
                         </tbody> 
                     </table>
                 </div>
-            <p onClick={()=>changeText(gameState.textID)}> {gameState.textID}</p>
-            <p className="winnerMessage">{winnerMessage}</p>
+            <p className="Message">{Message}</p>
         </div>
     )
 }

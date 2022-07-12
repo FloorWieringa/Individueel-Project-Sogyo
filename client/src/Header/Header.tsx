@@ -15,6 +15,10 @@ export function Header() {
         <div className="main-navigation">
             <Link to="/about">Start</Link>
             <Link to="/"></Link>
+            <Link to="/escaped"> Success </Link>
+            <Link to="/failedescape"> Failure </Link>
+            <Link to="/computer"> Computer screen</Link>
+            <Link to="/bookcase"> Bookcase contents</Link>
         </div>
     </header>
 }

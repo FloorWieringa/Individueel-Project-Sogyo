@@ -1,11 +1,11 @@
-package mancala.api;
+package escape.api;
 
 import jakarta.servlet.http.*;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
-import mancala.api.models.*;
-import mancala.domain.Playable;
+import escape.api.models.*;
+import escape.domain.Playable;
 
 @Path("/change")
 public class ChangeText {
@@ -18,18 +18,16 @@ public class ChangeText {
         HttpSession session = request.getSession();
 
         // Retrieve game.
-        Playable Mancala = (Playable)session.getAttribute("mancala");
+        Playable Escape = (Playable)session.getAttribute("escape");
         
         // Change the text.
         
 
         // Play a pit.
-        session.setAttribute("mancala", Mancala);
+        session.setAttribute("escape", Escape);
 
         // Use the game to create a DTO.
-        MancalaDTO output = new MancalaDTO(Mancala);
-        //in startMancala: new MancalaDTO(Playable.mancala);
-        
+        EscapeDTO output = new EscapeDTO(Escape);        
 
         // Send DTO back in response.
         return Response.status(200).entity(output).build();

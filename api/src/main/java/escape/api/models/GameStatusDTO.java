@@ -1,36 +1,24 @@
-package mancala.api.models;
+package escape.api.models;
 
-import mancala.domain.Playable;
+import escape.domain.Playable;
 
 public class GameStatusDTO {
 
     public boolean endOfGame;
-    public String winner;
+    public boolean winner;
 
     public GameStatusDTO(
-            Playable mancala) {
-        this.endOfGame = mancala.isEndOfGame();
-        switch (mancala.getWinner()) {
-            case PLAYER_1:
-                this.winner = mancala.getNameOfPlayerOne();
-                break;
-            case PLAYER_2:
-                this.winner = mancala.getNameOfPlayerTwo();
-                break;
-            case DRAW:
-                this.winner = mancala.getNameOfPlayerOne()
-                        + " and "
-                        + mancala.getNameOfPlayerTwo();
-            default:
-                this.winner = "NO ONE";
+            Playable escape) {
+        this.endOfGame = false;
+        this.winner = false;
         }
-    }
+    
 
     public boolean getEndOfGame() {
         return endOfGame;
     }
 
-    public String getWinner() {
+    public boolean getWinner() {
         return winner;
     }
 }

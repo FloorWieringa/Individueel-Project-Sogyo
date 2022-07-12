@@ -1,4 +1,4 @@
-package mancala;
+package escape;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -31,12 +31,12 @@ public class App {
 
     private static void registerServlets(ServletContextHandler context) {
         // Use the Jersey framework to translate the classes in the
-        // mancala.api package to server endpoints (servlets).
-        // For example, the StartMancala class will become an endpoint at
-        // http://localost:8080/mancala/api/start
-        ServletHolder serverHolder = context.addServlet(ServletContainer.class, "/mancala/api/*");
+        // escape.api package to server endpoints (servlets).
+        // For example, the StartGame class will become an endpoint at
+        // http://localost:8080/escape/api/start
+        ServletHolder serverHolder = context.addServlet(ServletContainer.class, "/escape/api/*");
         serverHolder.setInitOrder(1);
         serverHolder.setInitParameter("jersey.config.server.provider.packages",
-                "mancala.api");
+                "escape.api");
     }
 }

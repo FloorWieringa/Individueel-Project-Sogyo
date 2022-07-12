@@ -13,17 +13,18 @@ export function StartGame({ setGameState }: StartGameProps) {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [playerOne, setPlayerOne] = useState("");
+    
 
     async function tryStartGame(e: React.FormEvent) {
         e.preventDefault(); // Prevent default browser behavior of submitting forms
-        if (!playerOne) {
-            setErrorMessage("A name is required for the player");
-            return;
-        }
+        // if (!playerOne) {
+        //     setErrorMessage("A name is required for the player");
+        //     return;
+        // }
         setErrorMessage("");
 
         try {
-            const response = await fetch('mancala/api/start', {
+            const response = await fetch('escape/api/start', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -38,8 +39,10 @@ export function StartGame({ setGameState }: StartGameProps) {
             } else {
                 console.error(response.statusText);
             }
-        } catch (error) {
-            console.error(error.toString());
+        } 
+        catch (error) {
+            console.error("something went wrong");
+                //(error.toString());
         }
     }
 

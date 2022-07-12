@@ -32,7 +32,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mancala" type="f1a62948:ProjectNode" />
+                <item name="escape" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -70,16 +70,16 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/wieri/Sogyo/java-opdrachten/mancala-java/domain/src/main/Java/mancala/domain&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wieri/Sogyo/java-opdrachten/mancala-java&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/wieri/Sogyo/java-opdrachten/escape-java/domain/src/main/Java/escape/domain&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wieri/Sogyo/java-opdrachten/escape-java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.mancala-java:api [test]">
-    <configuration name="mancala-java [jacocoTestCoverageVerification]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.escape-java:api [test]">
+    <configuration name="escape-java [jacocoTestCoverageVerification]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -100,7 +100,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="mancala-java:api [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="escape-java:api [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/api" />
@@ -121,7 +121,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="mancala-java:api [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="escape-java:api [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/api" />
@@ -142,7 +142,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="mancala-java:domain [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="escape-java:domain [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/domain" />
@@ -163,7 +163,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="mancala-java:domain [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="escape-java:domain [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/domain" />
@@ -186,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.mancala-java:api [test]" />
-        <item itemvalue="Gradle.mancala-java:api [jacocoTestReport]" />
-        <item itemvalue="Gradle.mancala-java:domain [jacocoTestReport]" />
-        <item itemvalue="Gradle.mancala-java:domain [test]" />
-        <item itemvalue="Gradle.mancala-java [jacocoTestCoverageVerification]" />
+        <item itemvalue="Gradle.escape-java:api [test]" />
+        <item itemvalue="Gradle.escape-java:api [jacocoTestReport]" />
+        <item itemvalue="Gradle.escape-java:domain [jacocoTestReport]" />
+        <item itemvalue="Gradle.escape-java:domain [test]" />
+        <item itemvalue="Gradle.escape-java [jacocoTestCoverageVerification]" />
       </list>
     </recent_temporary>
   </component>
@@ -431,6 +431,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="adjusted checkstyle artifact" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mancala$mancala_java_domain__jacocoTestReport_.ic" NAME="mancala-java:domain [jacocoTestReport] Coverage Results" MODIFIED="1656415717336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/escape$escape.ic" NAME="escape-java:domain [jacocoTestReport] Coverage Results" MODIFIED="1656415717336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

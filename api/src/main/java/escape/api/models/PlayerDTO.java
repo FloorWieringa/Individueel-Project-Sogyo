@@ -1,36 +1,29 @@
-package mancala.api.models;
+package escape.api.models;
 
-import mancala.domain.Playable;
+import escape.domain.Playable;
 
 public class PlayerDTO {
 
 	public String name;
-	public String type;
-	public boolean hasTurn;
-	public PitDTO[] pits = new PitDTO[7];
+	public ItemDTO[] items = new ItemDTO[7];
 
 	public PlayerDTO(
-			Playable mancala,
+			Playable escape,
 			String name) {
 		this.name = name;
-		this.hasTurn = mancala.isPlayersTurn(name);
-		int firstHoleIndex = this.name == mancala.getNameOfPlayerOne() ? 0 : 7;
-		for (int i = 0; i < 7; ++i) {
-			this.pits[i] = new PitDTO(
-					firstHoleIndex + i,
-					mancala.getStonesForPit(i + firstHoleIndex));
-		}
+		// int firstHoleIndex = this.name == escape.getNameOfPlayerOne() ? 0 : 7;
+		// for (int i = 0; i < 7; ++i) {
+		// 	this.pits[i] = new PitDTO(
+		// 			firstHoleIndex + i,
+		// 			escape.getStonesForPit(i + firstHoleIndex));
+		// }
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public boolean getHasTurn() {
-		return hasTurn;
-	}
-
-	public PitDTO[] getPits() {
-		return pits;
+	public ItemDTO[] getItems() {
+		return items;
 	}
 }

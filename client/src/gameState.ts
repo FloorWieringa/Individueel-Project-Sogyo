@@ -1,10 +1,9 @@
 
 export interface GameState {
     players: Player;
-    textID: number;
     gameStatus: {
         endOfGame: boolean;
-        winner: string;
+        winner: boolean;
     };
 }
 
