@@ -3,7 +3,6 @@ package escape.api.models;
 public class ItemDTO {
 
 	public int index;
-	public int nrOfStones;
 	public boolean heldStatus;
 
 	public ItemDTO(int index, boolean heldStatus) {

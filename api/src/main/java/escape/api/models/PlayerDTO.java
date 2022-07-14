@@ -1,26 +1,21 @@
 package escape.api.models;
 
 import escape.domain.Playable;
+import escape.domain.Implementation;
 
 public class PlayerDTO {
 
-	public String name;
+	public String namePlayer;
 	public ItemDTO[] items = new ItemDTO[7];
 
 	public PlayerDTO(
 			Playable escape,
 			String name) {
-		this.name = name;
-		// int firstHoleIndex = this.name == escape.getNameOfPlayerOne() ? 0 : 7;
-		// for (int i = 0; i < 7; ++i) {
-		// 	this.pits[i] = new PitDTO(
-		// 			firstHoleIndex + i,
-		// 			escape.getStonesForPit(i + firstHoleIndex));
-		// }
+		this.namePlayer = name;
 	}
 
 	public String getName() {
-		return name;
+		return namePlayer;
 	}
 
 	public ItemDTO[] getItems() {

@@ -5,6 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 import escape.api.models.*;
+import escape.domain.Implementation;
 import escape.domain.Playable;
 
 @Path("/start")
@@ -16,7 +17,7 @@ public class StartGame {
         @Context HttpServletRequest request,
         PlayerInputDTO players) {
             HttpSession session = request.getSession(true);
-            Playable escape = new Playable();
+            Playable escape = new Implementation(players.getName());
             session.setAttribute("escape", escape);
             var output = new EscapeDTO(escape);
             return Response.status(200).entity(output).build();

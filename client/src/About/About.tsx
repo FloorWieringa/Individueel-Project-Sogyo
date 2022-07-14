@@ -37,6 +37,6 @@ export function About() {
         </p>
         <p className="flavourtext">At the sound of your voice, the elevator stops.</p>
         <p className="flavourtext">Then a cross beeping begins.</p>
-        <p className="flavourtext">Not liking that at all, <Link to="/">you prise the doors open...</Link></p>
+        <p className="flavourtext">Not liking that at all, <Link to="/start">you prise the doors open...</Link></p>
     </div>
 }

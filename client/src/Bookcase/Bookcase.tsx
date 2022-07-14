@@ -1,4 +1,5 @@
 import "./Bookcase.css";
+import { Link } from "react-router-dom";
 
 export function Bookcase() {
     return <div>
@@ -20,5 +21,7 @@ export function Bookcase() {
         <p className="flavourtext">|    |   |   |   |   |   |   |   |   |    |   |   |   |   |   |   |   |   |</p>
         <p className="flavourtext">
         -------------------------------------- </p>
+        <p>     </p>
+        <Link to="/play" className="flavourtext"> Return </Link>
     </div>
 }

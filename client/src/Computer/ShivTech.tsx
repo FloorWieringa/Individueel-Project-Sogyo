@@ -1,23 +1,20 @@
-import "./Computer.css";
+import "./ShivTech.css";
 import { Link } from "react-router-dom";
-import { FormEvent } from "react";
 import React, { useState } from "react";
 
-export function Computer() {
+export function ShivTech() {
 
-    var [submittedPassword, setSubmittedPassword] = useState("");
+    var [submittedSecondPassword, setSubmittedSecondPassword] = useState("");
 
-    if ((submittedPassword == "BEGIN") || (submittedPassword == "begin") || (submittedPassword == "Begin")){
+    if ((submittedSecondPassword == "SCRAMBLED BELOW") || (submittedSecondPassword == "scrambled below")){
         return <div>
             <h1>Close-up of the computer screen</h1>
             <p className="flavourtext">--------------------------------------</p>
 
         <p className="flavourtext">--------------------------------------</p>
         <p>     </p>
-        <p>The computer loads up. There's virtually nothing on the desktop; one icon that says 'ShivTech' and one that says 'Heroes'.</p>
-        <Link to="/shivtech" className="flavourtext"> Click on 'ShivTech'</Link>
-        <p></p>
-        <Link to="/heroes" className="flavourtext"> Click on 'Heroes'</Link>
+        <p>You type in the password, hit 'confirm', and just like that, the buzzing in the air is silenced. The lasers are off.</p>
+        <Link to="/computer" className="flavourtext"> Return to initial screen </Link>
         </div>
     }
     else {
@@ -30,8 +27,8 @@ export function Computer() {
         <div>
             <form>
                 <input type="text" 
-                value={submittedPassword}
-                onChange={(e) => setSubmittedPassword(e.target.value)}
+                value={submittedSecondPassword}
+                onChange={(e) => setSubmittedSecondPassword(e.target.value)}
                 ></input>  
             </form>
         </div>

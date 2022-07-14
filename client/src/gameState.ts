@@ -4,6 +4,7 @@ export interface GameState {
     gameStatus: {
         endOfGame: boolean;
         winner: boolean;
+        comment: String;
     };
 }
 

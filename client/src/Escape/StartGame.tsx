@@ -30,7 +30,7 @@ export function StartGame({ setGameState }: StartGameProps) {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nameplayer1: playerOne})
+                body: JSON.stringify({ name: playerOne})
             });
 
             if (response.ok) {
@@ -42,7 +42,6 @@ export function StartGame({ setGameState }: StartGameProps) {
         } 
         catch (error) {
             console.error("something went wrong");
-                //(error.toString());
         }
     }
 

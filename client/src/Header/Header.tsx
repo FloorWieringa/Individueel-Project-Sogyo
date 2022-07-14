@@ -13,12 +13,14 @@ export function Header() {
             The Lair
         </div>
         <div className="main-navigation">
-            <Link to="/about">Start</Link>
-            <Link to="/"></Link>
+            <Link to="/">Intro</Link>
+            <Link to="/start">Start</Link>
+            <Link to="/play">Play</Link>
             <Link to="/escaped"> Success </Link>
             <Link to="/failedescape"> Failure </Link>
             <Link to="/computer"> Computer screen</Link>
             <Link to="/bookcase"> Bookcase contents</Link>
+            <Link to="/lift"> Lift </Link>
         </div>
     </header>
 }

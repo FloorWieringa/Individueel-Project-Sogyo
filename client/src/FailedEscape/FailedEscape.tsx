@@ -1,5 +1,6 @@
 import React from "react";
 import "./FailedEscape.css";
+import { Link } from "react-router-dom";
 
 export function FailedEscape() {
     return <div>
@@ -13,5 +14,7 @@ export function FailedEscape() {
         she turns up dead tomorrow. There must be some way you can procure a good outcome
         for everyone here!
         </p>
+        <p>     </p>
+        <Link to="/play" className="flavourtext"> Return </Link>
     </div>
 }

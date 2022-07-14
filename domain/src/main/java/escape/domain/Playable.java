@@ -1,5 +1,8 @@
 package escape.domain;
 
-public class Playable {
+public interface Playable {
     
+    String getName();
+
+    String getComments(int id);
 }
