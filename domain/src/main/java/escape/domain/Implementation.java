@@ -19,4 +19,9 @@ public class Implementation implements Playable {
     public String getComments(int id) {
         return Items.retrieveComments(id);
     }
+
+    @Override
+    public Items getItems() {
+        return items;
+    }
 }

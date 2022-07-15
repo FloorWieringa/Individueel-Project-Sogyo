@@ -15,6 +15,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
     const [Message, setMessage] = useState("");
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
+    //const [InventoryAccess, setInventoryAccess] = useState("");
+    var inventoryAccess = false;
 
     async function changeText(id:number){
         try{
@@ -43,17 +45,55 @@ export function Play({ gameState, setGameState }: PlayProps) {
         editableText(id);
     }
 
+    var [casePassword, setCasePassword] = useState("");
+
     function editableText(id: number){
         switch(id){
             case 3:
                 return (<div><button onClick={()=>changeText(16)}> Press button 1 </button> <button onClick={()=>changeText(17)}> Press button 2 </button></div>)
             case 4:
-                return (<Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>)
+                return (<div>
+                    <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
+            case 6:
+                if ((casePassword == "AFHNZ") || (casePassword == "afhnz")){
+                    return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
+                        Inside there are lots of spaces for weapons, but it's almost completely empty at the 
+                        moment. Viperyon must have taken them out for a while. The only thing he's left behind 
+                        is <div id="addItem" onClick={()=>addItem()}>an aerosol can labelled 'Instant Fog'.</div></div>
+                        <p></p>
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
+                }
+                else {return (<div>
+                    <p>Enter password:</p>
+                    <form>
+                        <input type="text" 
+                        value={casePassword}
+                        onChange={(e) => setCasePassword(e.target.value)}
+                        ></input>  
+                    </form>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p>
+                </div>)}
             case 11:
-                return (<Link to="/lift" className="flavourtext"> Enter the lift </Link>)
+                return (<div><Link to="/lift" className="flavourtext"> Enter the lift </Link>
+                        <p></p>
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
+            case 14:
+                // link to action: examine bed from domain items here
+                return (<div>
+
+                </div>)
             case 15:
-                return (<Link to="/bookcase" className="flavourtext"> Take a closer look at the shelves </Link>)
+                return (<div><Link to="/bookcase" className="flavourtext"> Take a closer look at the shelves </Link>
+                        <p></p>
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
         }
+    }
+
+    function addItem() {
+        //add item to inventory (change status)    
     }
 
     function redirectionText(id: number){
@@ -160,6 +200,17 @@ export function Play({ gameState, setGameState }: PlayProps) {
         setHoldItem("");
     }
 
+    function takeItem(){
+        // something should probably happen here. look at it after the inventory system is up and running.
+        return (
+            <div>
+                <p> Which item would you like to use? </p>
+                <p> insert items here somehow</p>
+            </div>)  
+    }
+    
+    
+
     return (
         <div>
             <p> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
@@ -176,6 +227,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
             <p>{gameState?.gameStatus.comment}</p>
             <p className="Message">{Message}</p>
             <p>{editableText(parseInt(AiDee))}</p>
+            <p></p>
             <div className="lair"></div>
                 <div className="room">
                     <table className="roomtable">           
@@ -382,8 +434,13 @@ export function Play({ gameState, setGameState }: PlayProps) {
                         </tr> 
                         </tbody> 
                     </table>
+                    <p className="inventorycheat">down</p>
+                    <p></p>
+                    <p></p>
+                    <hr></hr>
                 </div>
             <p className="HoldItem">{HoldItem}</p>
+            <p></p>
         </div>
     )
 }

@@ -36,3 +36,18 @@ p{
 .roomtable{
     background-image: url(https://i.imgur.com/yCheMVB.png);
 }
+.inventorycheat {
+    color: #944500;
+}
+
+#useItem {
+    text-decoration: underline;
+}
+
+#addItem {
+    display: inline-block;
+}
+
+#textBeforeAddItem {
+    display: inline-block;
+}

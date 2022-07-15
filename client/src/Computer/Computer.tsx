@@ -10,23 +10,19 @@ export function Computer() {
     if ((submittedPassword == "BEGIN") || (submittedPassword == "begin") || (submittedPassword == "Begin")){
         return <div>
             <h1>Close-up of the computer screen</h1>
-            <p className="flavourtext">--------------------------------------</p>
-
-        <p className="flavourtext">--------------------------------------</p>
-        <p>     </p>
-        <p>The computer loads up. There's virtually nothing on the desktop; one icon that says 'ShivTech' and one that says 'Heroes'.</p>
-        <Link to="/shivtech" className="flavourtext"> Click on 'ShivTech'</Link>
         <p></p>
-        <Link to="/heroes" className="flavourtext"> Click on 'Heroes'</Link>
+            <p> Correct Password! </p>
+        <Link to="/computer2" className="flavourtext"> Enter </Link>
+        <p></p>
+        <Link to="/play" className="flavourtext"> Return </Link>
         </div>
     }
     else {
         return <div>
         <h1>Close-up of the computer screen</h1>
-        <p className="flavourtext">--------------------------------------</p>
-
-        <p className="flavourtext">--------------------------------------</p>
-        <p>     </p>
+        <p></p>
+        <p>Enter Password:</p>
+        <p></p>
         <div>
             <form>
                 <input type="text" 

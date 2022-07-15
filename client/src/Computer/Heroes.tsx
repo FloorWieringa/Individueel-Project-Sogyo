@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 export function Heroes() {
     return (
         <div>
+            <h1>Close-up of the computer screen</h1>
+        <p></p>
             <h2> A text document opens: </h2>
             <p></p>
             <p className="heroestext">Of my five greatest enemies, only Force of Nature eludes me. But that will change very soon 
@@ -27,7 +29,7 @@ had fire.</p>
 document, but I'm not foolish enough to risk it. I won't let anyone use my genius to procure 
 that silly reward.</p>
             <p></p>
-            <Link to="/computer" className="flavourtext"> Return to initial screen </Link> 
+            <Link to="/computer2" className="flavourtext"> Return </Link> 
         </div>
     )
 }

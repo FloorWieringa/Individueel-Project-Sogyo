@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./Header/Header";
+import { Sidebar } from "./Sidebar/Sidebar";
 import { About } from "./About/About";
 import { Escaped } from "./Escaped/Escaped";
 import { Escape } from "./Escape/Escape";
@@ -11,6 +12,7 @@ import { Lift } from "./Lift/Lift";
 import { Play } from "./Escape/Play"
 import { ShivTech } from "./Computer/ShivTech";
 import { Heroes } from "./Computer/Heroes";
+import { Computer2 } from "./Computer/Computer2";
 
 import "./App.css";
 import { GameState } from "./gameState";
@@ -22,8 +24,9 @@ export function App() {
     return (
         <Router>
             <Header />
-
+            <Sidebar />
             <div className="main-content">
+                
                 <Routes>
                     <Route path="/" element={<About />} />
 
@@ -40,6 +43,7 @@ export function App() {
                     <Route path="/lift" element={<Lift />} />
                     <Route path="/shivtech" element={<ShivTech />} />
                     <Route path="/heroes" element={<Heroes />} />
+                    <Route path="/computer2" element={<Computer2 />} />
                 </Routes>
             </div>
         </Router>

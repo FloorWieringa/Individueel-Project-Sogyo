@@ -6,7 +6,7 @@ import escape.domain.Implementation;
 public class PlayerDTO {
 
 	public String namePlayer;
-	public ItemDTO[] items = new ItemDTO[7];
+	public ItemDTO[] items = new ItemDTO[8];
 
 	public PlayerDTO(
 			Playable escape,

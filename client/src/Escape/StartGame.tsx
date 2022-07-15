@@ -6,9 +6,6 @@ type StartGameProps = {
     setGameState(newGameState: GameState): void;
 }
 
-/**
- * Allows the players to enter their name. A name is required for both players. They can't have the same names.
- */
 export function StartGame({ setGameState }: StartGameProps) {
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -18,7 +15,7 @@ export function StartGame({ setGameState }: StartGameProps) {
     async function tryStartGame(e: React.FormEvent) {
         e.preventDefault(); // Prevent default browser behavior of submitting forms
         // if (!playerOne) {
-        //     setErrorMessage("A name is required for the player");
+        //     setErrorMessage("We do need to know which name to put on your hypothetical gravestone");
         //     return;
         // }
         setErrorMessage("");
@@ -46,6 +43,7 @@ export function StartGame({ setGameState }: StartGameProps) {
     }
 
     return (
+        <div>
         <form onSubmit={(e) => tryStartGame(e)}>
             <input value={playerOne}
                 placeholder="Your name here"
@@ -58,5 +56,9 @@ export function StartGame({ setGameState }: StartGameProps) {
                 Enter the room
             </button>
         </form>
+        <p></p>
+        <p>Maybe a little explanation here.</p>
+        <p>Or maybe not :&#41;</p>
+        </div>
     )
 }
