@@ -11,12 +11,9 @@ type PlayProps = {
 }
 
 export function Play({ gameState, setGameState }: PlayProps) {
-
     const [Message, setMessage] = useState("");
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
-    //const [InventoryAccess, setInventoryAccess] = useState("");
-    var inventoryAccess = false;
 
     async function changeText(id:number){
         try{
@@ -29,9 +26,29 @@ export function Play({ gameState, setGameState }: PlayProps) {
                 body: JSON.stringify({id: id})
             });
         if (response.ok) {
-            const gameState = await response.json();
+            const gameState = await response.json() as GameState;
             setGameState(gameState);
             setAiDee(JSON.stringify(id));
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
+
+    async function itemInteraction(item: String) {
+        try{
+            const response = await fetch('escape/api/item', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({item: item})
+            });
+        if (response.ok) {
+            const gameState = await response.json() as GameState;
+            setGameState(gameState);
         } else {
             console.error(response.statusText);
         }
@@ -50,12 +67,12 @@ export function Play({ gameState, setGameState }: PlayProps) {
     function editableText(id: number){
         switch(id){
             case 3:
-                return (<div><button onClick={()=>changeText(16)}> Press button 1 </button> <button onClick={()=>changeText(17)}> Press button 2 </button></div>)
+                return (<div><button onClick={()=>changeText(16)}> Press button 1 </button> <button onClick={()=>changeText(17)}> Press button 2 </button></div>);
             case 4:
                 return (<div>
                     <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
                     <p></p>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
             case 6:
                 if ((casePassword == "AFHNZ") || (casePassword == "afhnz")){
                     return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
@@ -75,11 +92,15 @@ export function Play({ gameState, setGameState }: PlayProps) {
                     </form>
                     <p></p>
                     <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p>
-                </div>)}
+                </div>);}
+            case 7:
+                return (<div>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
+                
             case 11:
                 return (<div><Link to="/lift" className="flavourtext"> Enter the lift </Link>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
             case 14:
                 // link to action: examine bed from domain items here
                 return (<div>
@@ -88,7 +109,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
             case 15:
                 return (<div><Link to="/bookcase" className="flavourtext"> Take a closer look at the shelves </Link>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>)
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
         }
     }
 
@@ -168,40 +189,41 @@ export function Play({ gameState, setGameState }: PlayProps) {
     }
     
 
-    function showHoldItem() {
-        if (gameState?.players.items[0].heldStatus == true) {
-            setHoldItem("Holding slim book");
-            return;
-        }
-        if (gameState?.players.items[1].heldStatus == true) {
-            setHoldItem("Holding wire");
-            return;
-        }
-        if (gameState?.players.items[2].heldStatus == true) {
-            setHoldItem("Holding book on Modulanium");
-            return;
-        }
-        if (gameState?.players.items[3].heldStatus == true) {
-            setHoldItem("Holding wire");
-            return;
-        }
-        if (gameState?.players.items[4].heldStatus == true) {
-            setHoldItem("Holding hair strands");
-            return;
-        }
-        if (gameState?.players.items[5].heldStatus == true) {
-            setHoldItem("Holding robot hand");
-            return;
-        } 
-        if (gameState?.players.items[6].heldStatus == true) {
-            setHoldItem("Holding rope");
-            return;
-        }
-        setHoldItem("");
-    }
+    // function showHoldItem() {
+    //     if (gameState?.players.items[0].heldStatus == true) {
+    //         setHoldItem("Holding slim book");
+    //         return;
+    //     }
+    //     if (gameState?.players.items[1].heldStatus == true) {
+    //         setHoldItem("Holding wire");
+    //         return;
+    //     }
+    //     if (gameState?.players.items[2].heldStatus == true) {
+    //         setHoldItem("Holding book on Modulanium");
+    //         return;
+    //     }
+    //     if (gameState?.players.items[3].heldStatus == true) {
+    //         setHoldItem("Holding wire");
+    //         return;
+    //     }
+    //     if (gameState?.players.items[4].heldStatus == true) {
+    //         setHoldItem("Holding hair strands");
+    //         return;
+    //     }
+    //     if (gameState?.players.items[5].heldStatus == true) {
+    //         setHoldItem("Holding robot hand");
+    //         return;
+    //     } 
+    //     if (gameState?.players.items[6].heldStatus == true) {
+    //         setHoldItem("Holding rope");
+    //         return;
+    //     }
+    //     setHoldItem("");
+    // }
 
     function takeItem(){
         // something should probably happen here. look at it after the inventory system is up and running.
+        console.log("click");
         return (
             <div>
                 <p> Which item would you like to use? </p>
@@ -361,11 +383,11 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
                             <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 9 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 10 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 11 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 12 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 13 </td>
                             <td className="space"> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
@@ -380,13 +402,13 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space"> 14 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
@@ -400,13 +422,13 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space"> 5 </td>
                             <td className="space"> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space"> 14 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
@@ -420,13 +442,13 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 5 </td>
                             <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 6 </td>
                             <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space"> 14 </td>
+                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
                             <td className="space"> 15 </td>
                             <td className="space"> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
@@ -435,8 +457,6 @@ export function Play({ gameState, setGameState }: PlayProps) {
                         </tbody> 
                     </table>
                     <p className="inventorycheat">down</p>
-                    <p></p>
-                    <p></p>
                     <hr></hr>
                 </div>
             <p className="HoldItem">{HoldItem}</p>

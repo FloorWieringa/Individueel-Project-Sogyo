@@ -7,18 +7,19 @@ import jakarta.ws.rs.core.*;
 import escape.api.models.*;
 import escape.domain.Playable;
 
-@Path("change")
-public class ChangeText {
+@Path("item")
+public class ItemInteraction {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response change(
-            @Context HttpServletRequest request, changeFlavourTextDTO id) {
+    public Response item(
+            @Context HttpServletRequest request, ItemInteractionDTO item) {
         HttpSession session = request.getSession();
         Playable Escape = (Playable) session.getAttribute("escape");
-        Escape.setCommentID(id.id);
+        //Escape.getItems(item.item);
+        Escape.addToInventory(item.getItem());
         session.setAttribute("escape", Escape);
-        EscapeDTO output = new EscapeDTO(Escape);        
+        EscapeDTO output = new EscapeDTO(Escape);  
         return Response.status(200).entity(output).build();
     }
 }

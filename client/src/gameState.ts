@@ -1,6 +1,6 @@
 
 export interface GameState {
-    players: Player;
+    players: Player | undefined;
     gameStatus: {
         endOfGame: boolean;
         winner: boolean;
@@ -15,6 +15,6 @@ interface Player {
 
 interface Item {
     name: String;
-    ID: number;
     heldStatus: boolean;
+    inPossession: boolean;
 }

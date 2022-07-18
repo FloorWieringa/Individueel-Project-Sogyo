@@ -7,6 +7,46 @@ export function Computer2() {
         return <div>
         <h1>Close-up of the computer screen</h1>
         <p></p>
+        <table className="computerTable">
+            <tbody>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
         <p>The computer loads up. There's virtually nothing on the desktop; one icon that says 'ShivTech' and one that says 'Heroes'.</p>
         <Link to="/shivtech" className="flavourtext"> Click on 'ShivTech'</Link>
         <p></p>

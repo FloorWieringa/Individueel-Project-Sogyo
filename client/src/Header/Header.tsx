@@ -18,9 +18,9 @@ export function Header() {
             <Link to="/play">Play</Link>
             <Link to="/escaped"> Success </Link>
             <Link to="/failedescape"> Failure </Link>
-            <Link to="/computer"> Computer screen</Link>
-            <Link to="/bookcase"> Bookcase contents</Link>
-            <Link to="/lift"> Lift </Link>
+            <Link to="/computer"></Link>
+            <Link to="/bookcase"></Link>
+            <Link to="/lift"></Link>
         </div>
     </header>
 }

@@ -16,9 +16,8 @@ public class GameStatusDTO {
             Playable escape) {
         this.endOfGame = false;
         this.won = false;
-        this.comment = escape.getComments(changeFlavourTextDTO.getID()); 
+        this.comment = escape.getComments(); 
         }
-    
 
     public boolean getEndOfGame() {
         return endOfGame;

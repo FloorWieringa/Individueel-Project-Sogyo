@@ -24,8 +24,8 @@ export function App() {
     return (
         <Router>
             <Header />
-            <Sidebar />
-            <div className="main-content">
+            <Sidebar gameState={gameState} setGameState={setGameState} />
+            <div className="main-content" id="cover">
                 
                 <Routes>
                     <Route path="/" element={<About />} />

@@ -1,14 +1,22 @@
-.flavourtext {
-    font-size: 20px;
-    color:rgb(255, 234, 209);
-    font-family:'Courier New', Courier, monospace;
-}
-
 h1 {
     color:rgb(255, 234, 209);
     font-family:'Courier New', Courier, monospace;
 }
 
-.flavourtext a {
-    color: rgb(255, 234, 209);
+.computerTable {
+    background-image: url(https://i.imgur.com/NkIaoiA.png);
+}
+
+.computerSpace {
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(0, 0, 0);
+    height: 36px;
+    width: 40px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+}
+
+.computerSpace:hover {
+    color:rgb(0, 0, 0);
 }

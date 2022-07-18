@@ -3,7 +3,8 @@ package escape.domain;
 public class Implementation implements Playable {
 
     Player player;
-    Items items;
+
+    int id;
     
     public Implementation(String namePlayer){
         player = new Player(namePlayer);
@@ -16,12 +17,33 @@ public class Implementation implements Playable {
     }
 
     @Override
-    public String getComments(int id) {
+    public String getComments() {
         return Items.retrieveComments(id);
     }
 
     @Override
-    public Items getItems() {
-        return items;
+    public Items getItems(String name) {
+        return player.retrieveItems(name);
+    }
+
+    @Override
+    public void setCommentID(int id) {
+        this.id = id;        
+    }
+
+    @Override
+    public int getCommentID() {
+        return id;
+    }
+
+    // @Override
+    // public String getItem() {
+    //     return player.itemName;
+    // }
+
+    @Override
+    public void addToInventory(String item) {
+        player.addToInventory(item);
+        
     }
 }

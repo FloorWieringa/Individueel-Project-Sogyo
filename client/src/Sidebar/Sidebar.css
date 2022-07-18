@@ -1,16 +1,6 @@
-.flavourtext {
-    font-size: 20px;
-    color:rgb(255, 234, 209);
-    font-family:'Courier New', Courier, monospace;
-}
-
 h1 {
     color:rgb(255, 234, 209);
     font-family:'Courier New', Courier, monospace;
-}
-
-.flavourtext a {
-    color: rgb(255, 234, 209);
 }
 
 #inventory {

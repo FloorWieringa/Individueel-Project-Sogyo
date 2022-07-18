@@ -1,13 +1,13 @@
 package escape.api.models;
 
 import escape.domain.Playable;
-import escape.domain.Implementation;
 
 public class EscapeDTO {
 
     public GameStatusDTO gameStatus;
     public PlayerDTO player;
-    public changeFlavourTextDTO id;
+    public changeFlavourTextDTO id;    
+    public ItemInteractionDTO item;
 
     public EscapeDTO(
             Playable Escape) {
@@ -25,5 +25,9 @@ public class EscapeDTO {
 
     public changeFlavourTextDTO getID(){
         return id;
+    }
+
+    public ItemInteractionDTO getItem(){
+        return item;
     }
 }

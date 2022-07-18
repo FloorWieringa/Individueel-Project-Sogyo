@@ -6,6 +6,46 @@ export function Heroes() {
         <div>
             <h1>Close-up of the computer screen</h1>
         <p></p>
+        <table className="computerTable">
+            <tbody>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+                <tr>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                    <td className="computerSpace"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
             <h2> A text document opens: </h2>
             <p></p>
             <p className="heroestext">Of my five greatest enemies, only Force of Nature eludes me. But that will change very soon 
@@ -30,6 +70,8 @@ document, but I'm not foolish enough to risk it. I won't let anyone use my geniu
 that silly reward.</p>
             <p></p>
             <Link to="/computer2" className="flavourtext"> Return </Link> 
+            <p className="inventorycheat"> down </p>
+            <p className="inventorycheat"> down </p>
         </div>
     )
 }

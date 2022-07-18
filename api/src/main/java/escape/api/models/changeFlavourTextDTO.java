@@ -2,13 +2,13 @@ package escape.api.models;
 
 public class changeFlavourTextDTO {
 
-	public static int id;
+	public int id;
 
 	public void setID(int id){
 		this.id = id;
 	}
 
-	public static int getID() {
+	public int getID() {
 		return id;
 	}
 }

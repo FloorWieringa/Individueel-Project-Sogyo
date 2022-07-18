@@ -4,7 +4,16 @@ public interface Playable {
     
     String getName();
 
-    String getComments(int id);
+    String getComments();
 
-    Items getItems();
+    Items getItems(String name);
+
+    void setCommentID(int id);
+
+    int getCommentID();
+
+    // String getItem();
+
+    void addToInventory(String item);
+
 }
