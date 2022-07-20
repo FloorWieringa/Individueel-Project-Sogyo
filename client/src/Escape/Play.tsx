@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Escape } from "./Escape";
 import { idText } from "typescript";
 
-export function Play({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>} ) {
+export function Play({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>}) {
     const [Message, setMessage] = useState("");
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
@@ -32,7 +32,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }
     }
 
-    async function itemInteraction(item: String) {
+    async function itemToTrue(item: String) {
         try{
             const response = await fetch('escape/api/item', {
                 method: 'POST',
@@ -52,39 +52,58 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }
     }
 
-    function changeAllText(id: number){
-        changeText(id);
+    async function itemToFalse(item: String) {
+        try{
+            const response = await fetch('escape/api/itemfalse', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({item: item})
+            });
+        if (response.ok) {
+            const newGameState = await response.json() as GameState;
+            setGameState(newGameState);
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
+
+    async function changeAllText(id: number){
+        await changeText(id);
         redirectionText(id);
         editableText(id);
         addItem(id);
     }
 
     var [casePassword, setCasePassword] = useState("");
-    var elevatorOpen:boolean;
-    var placement = 10;
+    var [elevatorOpen, setElevatorOpen] = useState(false);
 
     function editableText(id: number){
         switch(id){
             case 1: // costume stand
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 2: // chemistry table
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 3: // desk
-                return (<div><button onClick={()=>changeText(29)}> Press button 1 </button> <button onClick={()=>changeText(30)}> Press button 2 </button></div>);
+                return (<div><button onClick={()=>openElevatorWrap()}> Press button 1 </button> <button onClick={()=>changeText(30)}> Press button 2 </button></div>);
             case 4: // computer
                 return (<div>
                     <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
                     <p></p>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                    <p className="flavourtext">{takeItem(9)}</p></div>);
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 5: // world map
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 6: // weapon case
                 if ((casePassword == "AFHNZ") || (casePassword == "afhnz")){
                     return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
@@ -92,8 +111,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         moment. Viperyon must have taken them out for a while. The only thing he's left behind 
                         is <div id="addItem" onClick={()=>addItem(37)}>an aerosol can labelled 'Instant Fog'.</div></div>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                        <p className="flavourtext">{takeItem(9)}</p></div>);
+                        <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                        <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 }
                 else {return (<div>
                     <p>Enter password:</p>
@@ -104,73 +123,86 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         ></input>  
                     </form>
                     <p></p>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                    <p className="flavourtext">{takeItem(9)}</p>
-                </div>);}
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);}         
             case 7: // robot hand
                 return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                    <p className="flavourtext">{takeItem(9)}</p></div>);
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 8: // barrier
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 9: // chair
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 10: // rope
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 11: // elevator
             if (elevatorOpen == true) {
                 return (<div><Link to="/lift" className="flavourtext"> Enter the elevator </Link>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                        <p className="flavourtext">{takeItem(9)}</p></div>);
+                        <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                        <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
             else {
-                return (<div><p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                return (<div><p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
             case 12: //trap door
                 return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                    <p className="flavourtext">{takeItem(9)}</p></div>);
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 13: // pictures
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 14: //bed
-                return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                return (<div><div id="textBeforeAddItem"> This bed is clearly not someone's first choice of sleeping arrangements. 
+                    It's small and not well kept, and the sheets are paper thin.   
+                    <div id="addItem" onClick={()=>addItem(38)}> A couple of stray hairs </div><div>litter the pillow, 
+                    and one of the posts on this four-poster bed has been broken off, making it a three-poster. 
+                    If you had to guess, you'd say it was Viperyon's old childhood bed, repurposed.</div></div>
+                <p></p>
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 15: // bookcase
                 return (<div>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                        <p className="flavourtext">{takeItem(9)}</p></div>);
+                        <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                        <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 16: // next to bed
                 return (<div>
-                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                <p className="flavourtext">{takeItem(9)}</p></div>);
+                <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 17:
                     return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
-                    <p className="flavourtext">{takeItem(9)}</p></div>);
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 29:
-                elevatorOpen = true;
+                
         }
     }
 
-    function addItem(id: number) {
+    async function openElevatorWrap(){
+        openElevator();
+        await changeText(29);
+    }
+    function openElevator(){
+        setElevatorOpen(true);
+    }
+
+    async function addItem(id: number) {
         switch(id){
             case 20: // rope
                 if (gameState?.players?.items[4].inPossession == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[4].inPossession = true;
                     setGameState(deepCopy);
+                    await itemToTrue("Rope");
                 }
                 break;
             case 22: // modulanium
@@ -187,13 +219,6 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);
                 }
                 break;
-            case 32: // wire
-                if (gameState?.players?.items[0].inPossession == false) {
-                    var deepCopy = {...gameState};
-                    deepCopy.players.items[0].inPossession = true;
-                    setGameState(deepCopy);
-                }
-                break;
             case 34: // robot hand
                 if (gameState?.players?.items[2].inPossession == false) {
                     var deepCopy = {...gameState};
@@ -206,6 +231,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     var deepCopy = {...gameState};
                     deepCopy.players.items[3].inPossession = true;
                     setGameState(deepCopy);
+                    await itemToTrue("Fog spray");
                 }
                 break;
             case 38: // hair strands
@@ -227,7 +253,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
 
     function redirectionText(id: number){
         if (id == 1) {
-            setMessage("this is a test text");
+            setMessage("");
             return;
         }
         if (id == 2) {
@@ -297,39 +323,39 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
     }
     
 
-    // function showHoldItem() {
-    //     if (gameState?.players.items[0].heldStatus == true) {
-    //         setHoldItem("Holding slim book");
-    //         return;
-    //     }
-    //     if (gameState?.players.items[1].heldStatus == true) {
-    //         setHoldItem("Holding wire");
-    //         return;
-    //     }
-    //     if (gameState?.players.items[2].heldStatus == true) {
-    //         setHoldItem("Holding book on Modulanium");
-    //         return;
-    //     }
-    //     if (gameState?.players.items[3].heldStatus == true) {
-    //         setHoldItem("Holding wire");
-    //         return;
-    //     }
-    //     if (gameState?.players.items[4].heldStatus == true) {
-    //         setHoldItem("Holding hair strands");
-    //         return;
-    //     }
-    //     if (gameState?.players.items[5].heldStatus == true) {
-    //         setHoldItem("Holding robot hand");
-    //         return;
-    //     } 
-    //     if (gameState?.players.items[6].heldStatus == true) {
-    //         setHoldItem("Holding rope");
-    //         return;
-    //     }
-    //     setHoldItem("");
-    // }
+    function setHoldItemUseState() {
+        if (gameState?.players.items[0].inPossession == true) {
+            setHoldItem("Holding slim book");
+            return;
+        }
+        if (gameState?.players.items[1].inPossession == true) {
+            setHoldItem("Holding wire");
+            return;
+        }
+        if (gameState?.players.items[2].inPossession == true) {
+            setHoldItem("Holding book on Modulanium");
+            return;
+        }
+        if (gameState?.players.items[3].inPossession == true) {
+            setHoldItem("Holding wire");
+            return;
+        }
+        if (gameState?.players.items[4].inPossession == true) {
+            setHoldItem("Holding hair strands");
+            return;
+        }
+        if (gameState?.players.items[5].inPossession == true) {
+            setHoldItem("Holding robot hand");
+            return;
+        } 
+        if (gameState?.players.items[6].inPossession == true) {
+            setHoldItem("Holding rope");
+            return;
+        } else {
+        setHoldItem("")}
+    }
 
-    function takeItem(placement: number){
+    function displayInventoryItem(placement: number){
         var placement = placement;
         var wire;
         if (gameState?.players?.items[0].inPossession == true){
@@ -379,9 +405,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         } else {
             modulanium = null;
         }
-
         console.log("click");
-        return (
+        return ( HoldItem != "" && <div className="flavourtext">
             <div>
                 <div onClick={()=>usingItem(0, placement)}> {wire} </div>
                 <div onClick={()=>usingItem(1, placement)}> {slimBook} </div>
@@ -391,7 +416,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 <div onClick={()=>usingItem(5, placement)}> {bookModulanium} </div>
                 <div onClick={()=>usingItem(6, placement)}> {hairStrands} </div>
                 <div onClick={()=>usingItem(7, placement)}> {modulanium} </div>
-            </div>)  
+            </div></div>)  
     }
 
     function usingItem(id: number, placement: number){
@@ -405,7 +430,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     }
             changeAllText(34);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 1: // slim book
@@ -416,7 +441,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);                    }
             changeAllText(17);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 2: // robot hand
@@ -426,7 +451,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     deepCopy.players.items[2].heldStatus = true;
                     setGameState(deepCopy);                    }
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 3: // fog spray
@@ -437,7 +462,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);                    }
             changeAllText(19);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 4: // rope
@@ -448,7 +473,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);                    }
             changeAllText(36);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 5: // book modulanium
@@ -458,7 +483,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     deepCopy.players.items[5].heldStatus = true;
                     setGameState(deepCopy);                    }
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 6: // hair strands
@@ -469,7 +494,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);                    }
             changeAllText(26);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             case 7: // modulanium
@@ -480,7 +505,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);                    }
             changeAllText(28);
             } else {
-                return "Nothing happens."
+                console.log("Nothing happens.");
             }
             break;
             default:
@@ -553,7 +578,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                             <td className="space" id="glasscase" onClick={()=>changeAllText(6)}> C1 </td>
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
                             <td className="space" id="robothand" onClick={()=>changeAllText(7)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="robothand" onClick={()=>changeAllText(7)}> 4 </td>
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>

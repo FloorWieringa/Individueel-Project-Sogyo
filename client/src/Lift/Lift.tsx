@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import type { GameState } from "../gameState";
 
-export function Lift() {
+export function Lift({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>}) {
 
     var [PhoneBox, setPhoneBox] = useState("");
 
@@ -60,7 +60,7 @@ export function Lift() {
                 <p>     </p>
                 {
                     PhoneBox != "" && <div className="flavourtext">
-                        <div id="textBeforeAddItem">You open the emergency phone box. The cord for the phone has been cut. Typical. But sitting in the box is <div id="addItem" onClick={()=>addItem()}> 
+                        <div id="textBeforeAddItem">You open the emergency phone box. The cord for the phone has been cut. Typical. But sitting in the box is <div id="addItem" onClick={()=>addItem(32)}> 
                              a small piece of wire.</div></div>
                             <div> It doesn't belong here, but it does look like it would be functional if put in the right place.</div>
                     </div>
@@ -74,8 +74,15 @@ export function Lift() {
         setPhoneBox("tekst")
     }
 
-    function addItem() {
- // under construction
+    function addItem(id:number) {
+     switch(id){
+        case 32: // wire
+        if (gameState?.players?.items[0].inPossession == false) {
+        var deepCopy = {...gameState};
+        deepCopy.players.items[0].inPossession = true;
+        setGameState(deepCopy);
+    }
         console.log("click");
     }
+}
 }

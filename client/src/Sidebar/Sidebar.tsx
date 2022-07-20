@@ -17,9 +17,7 @@ export function Sidebar({ gameState }:  {gameState: GameState | undefined} ) {
         */
 
     console.log(gameState?.players?.items[3].name);
-    console.log(gameState?.players?.items[3].heldStatus);
     console.log(gameState?.players?.items[3].inPossession);
-    console.log(gameState?.players.items[3].inPossession);
 
 
     const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true && item.heldStatus == false))

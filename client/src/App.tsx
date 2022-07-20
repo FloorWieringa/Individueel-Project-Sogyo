@@ -42,7 +42,7 @@ export function App() {
                     <Route path="/failedescape" element={<FailedEscape />} />
                     <Route path="/computer" element={<Computer gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/bookcase" element={<Bookcase />} />
-                    <Route path="/lift" element={<Lift />} />
+                    <Route path="/lift" element={<Lift gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/shivtech" element={<ShivTech gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/heroes" element={<Heroes />} />
                     <Route path="/computer2" element={<Computer2 />} />

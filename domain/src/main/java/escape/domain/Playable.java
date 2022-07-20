@@ -18,4 +18,6 @@ public interface Playable {
 
     Items getItem();
 
+    void removeFromInventory(String item);
+
 }

@@ -19,7 +19,7 @@ public class Implementation implements Playable {
 
     @Override
     public String getComments() {
-        return Items.retrieveComments(id);
+        return player.retrieveComments(id);
     }
 
     @Override
@@ -46,5 +46,10 @@ public class Implementation implements Playable {
     public void addToInventory(String item) {
         player.addToInventory(item);
         
+    }
+
+    @Override
+    public void removeFromInventory(String item) {
+        player.removeFromInventory(item);
     }
 }

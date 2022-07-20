@@ -16,7 +16,6 @@ public class ItemInteraction {
             @Context HttpServletRequest request, ItemInteractionDTO item) {
         HttpSession session = request.getSession();
         Playable Escape = (Playable) session.getAttribute("escape");
-        //Escape.getItems(item.item);
         Escape.addToInventory(item.getItem());
         session.setAttribute("escape", Escape);
         EscapeDTO output = new EscapeDTO(Escape);  
