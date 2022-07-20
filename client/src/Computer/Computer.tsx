@@ -2,13 +2,41 @@ import "./Computer.css";
 import { Link } from "react-router-dom";
 import { FormEvent } from "react";
 import React, { useState } from "react";
+import type { GameState } from "../gameState";
 
-export function Computer() {
+type PlayProps = {
+    gameState: GameState | undefined;
+    setGameState(newGameState: GameState): void;
+}
+
+export function Computer({ gameState, setGameState }: PlayProps) {
 
     var [submittedPassword, setSubmittedPassword] = useState("");
     var [Mouse, setMouse] = useState("");
 
+    async function changeText(id:number){
+        try{
+            const response = await fetch('escape/api/change', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: id})
+            });
+        if (response.ok) {
+            const gameState = await response.json() as GameState;
+            setGameState(gameState);
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
+
     if ((submittedPassword == "BEGIN") || (submittedPassword == "begin") || (submittedPassword == "Begin")){
+
+        changeText(24);
         return <div>
             <h1>Close-up of the computer screen</h1>
         <p></p>

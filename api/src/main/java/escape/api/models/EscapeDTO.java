@@ -11,7 +11,7 @@ public class EscapeDTO {
 
     public EscapeDTO(
             Playable Escape) {
-        player = new PlayerDTO(Escape, Escape.getName());
+        player = new PlayerDTO(Escape, Escape.getName(), Escape.getItems());
         gameStatus = new GameStatusDTO(Escape);
     }
 

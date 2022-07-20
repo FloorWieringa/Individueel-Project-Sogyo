@@ -5,6 +5,7 @@ public class Implementation implements Playable {
     Player player;
 
     int id;
+    String name;
     
     public Implementation(String namePlayer){
         player = new Player(namePlayer);
@@ -22,8 +23,13 @@ public class Implementation implements Playable {
     }
 
     @Override
-    public Items getItems(String name) {
+    public Items getItem() {
         return player.retrieveItems(name);
+    }
+
+    @Override
+    public Items[] getItems() {
+        return player.getInventory();
     }
 
     @Override
@@ -35,11 +41,6 @@ public class Implementation implements Playable {
     public int getCommentID() {
         return id;
     }
-
-    // @Override
-    // public String getItem() {
-    //     return player.itemName;
-    // }
 
     @Override
     public void addToInventory(String item) {

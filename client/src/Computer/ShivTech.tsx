@@ -1,12 +1,39 @@
 import "./ShivTech.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import type { GameState } from "../gameState";
 
-export function ShivTech() {
+type PlayProps = {
+    gameState: GameState | undefined;
+    setGameState(newGameState: GameState): void;
+}
+
+export function ShivTech({ gameState, setGameState }: PlayProps) {
+
+    async function changeText(id:number){
+        try{
+            const response = await fetch('escape/api/change', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: id})
+            });
+        if (response.ok) {
+            const gameState = await response.json() as GameState;
+            setGameState(gameState);
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
 
     var [submittedSecondPassword, setSubmittedSecondPassword] = useState("");
 
     if ((submittedSecondPassword == "SCRAMBLED BELOW") || (submittedSecondPassword == "scrambled below")){
+        changeText(25);
         return <div>
             <h1>Close-up of the computer screen</h1>
             <table className="computerTable">

@@ -1,19 +1,21 @@
 package escape.api.models;
 
+import escape.domain.Items;
+
 public class ItemDTO {
 
-	public int index;
+	public String name;
 	public boolean heldStatus;
 	public boolean inPossession;
 
-	public ItemDTO(int index, boolean heldStatus) {
-		this.index = index;
-		this.heldStatus = false;
-		this.inPossession = false;
+	public ItemDTO(Items currentItem) {
+		this.name = currentItem.itemName;
+		this.heldStatus = currentItem.holding;
+		this.inPossession = currentItem.found;
 	}
 
-	public int getIndex() {
-		return index;
+	public String getName() {
+		return name;
 	}
 
 	public boolean getHeldStatus() {

@@ -31,7 +31,7 @@ export function StartGame({ setGameState }: StartGameProps) {
             });
 
             if (response.ok) {
-                const gameState = await response.json();
+                const gameState = await response.json() as GameState;
                 setGameState(gameState);
             } else {
                 console.error(response.statusText);

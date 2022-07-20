@@ -8,6 +8,17 @@ h1 {
     padding-right: 50px;
 }
 
+#inventoryItems {
+  text-align: left;
+  padding-left: 50px;
+  color:rgb(255, 234, 209);
+  font-family:'Courier New', Courier, monospace;
+  font-size: 20px;
+  position: relative;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
 .sidebar {
     background-color: rgb(44, 19, 19);
     overflow: hidden;

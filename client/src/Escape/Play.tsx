@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 import { Escape } from "./Escape";
 import { idText } from "typescript";
 
-type PlayProps = {
-    gameState: GameState | undefined;
-    setGameState(newGameState: GameState): void;
-}
-
-export function Play({ gameState, setGameState }: PlayProps) {
+export function Play({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>} ) {
     const [Message, setMessage] = useState("");
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
@@ -26,8 +21,9 @@ export function Play({ gameState, setGameState }: PlayProps) {
                 body: JSON.stringify({id: id})
             });
         if (response.ok) {
-            const gameState = await response.json() as GameState;
-            setGameState(gameState);
+            const newGameState = await response.json() as GameState;
+            console.log(newGameState)
+            setGameState(newGameState);
             setAiDee(JSON.stringify(id));
         } else {
             console.error(response.statusText);
@@ -47,8 +43,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
                 body: JSON.stringify({item: item})
             });
         if (response.ok) {
-            const gameState = await response.json() as GameState;
-            setGameState(gameState);
+            const newGameState = await response.json() as GameState;
+            setGameState(newGameState);
         } else {
             console.error(response.statusText);
         }
@@ -60,27 +56,44 @@ export function Play({ gameState, setGameState }: PlayProps) {
         changeText(id);
         redirectionText(id);
         editableText(id);
+        addItem(id);
     }
 
     var [casePassword, setCasePassword] = useState("");
+    var elevatorOpen:boolean;
+    var placement = 10;
 
     function editableText(id: number){
         switch(id){
-            case 3:
-                return (<div><button onClick={()=>changeText(16)}> Press button 1 </button> <button onClick={()=>changeText(17)}> Press button 2 </button></div>);
-            case 4:
+            case 1: // costume stand
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 2: // chemistry table
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 3: // desk
+                return (<div><button onClick={()=>changeText(29)}> Press button 1 </button> <button onClick={()=>changeText(30)}> Press button 2 </button></div>);
+            case 4: // computer
                 return (<div>
                     <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
                     <p></p>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
-            case 6:
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                    <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 5: // world map
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 6: // weapon case
                 if ((casePassword == "AFHNZ") || (casePassword == "afhnz")){
                     return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
                         Inside there are lots of spaces for weapons, but it's almost completely empty at the 
                         moment. Viperyon must have taken them out for a while. The only thing he's left behind 
-                        is <div id="addItem" onClick={()=>addItem()}>an aerosol can labelled 'Instant Fog'.</div></div>
+                        is <div id="addItem" onClick={()=>addItem(37)}>an aerosol can labelled 'Instant Fog'.</div></div>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                        <p className="flavourtext">{takeItem(9)}</p></div>);
                 }
                 else {return (<div>
                     <p>Enter password:</p>
@@ -91,30 +104,125 @@ export function Play({ gameState, setGameState }: PlayProps) {
                         ></input>  
                     </form>
                     <p></p>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                    <p className="flavourtext">{takeItem(9)}</p>
                 </div>);}
-            case 7:
+            case 7: // robot hand
                 return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
-                
-            case 11:
-                return (<div><Link to="/lift" className="flavourtext"> Enter the lift </Link>
-                        <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
-            case 14:
-                // link to action: examine bed from domain items here
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                    <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 8: // barrier
                 return (<div>
-
-                </div>)
-            case 15:
-                return (<div><Link to="/bookcase" className="flavourtext"> Take a closer look at the shelves </Link>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 9: // chair
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 10: // rope
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 11: // elevator
+            if (elevatorOpen == true) {
+                return (<div><Link to="/lift" className="flavourtext"> Enter the elevator </Link>
                         <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>takeItem()}> Use item from inventory </p></div>);
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                        <p className="flavourtext">{takeItem(9)}</p></div>);
+            }
+            else {
+                return (<div><p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            }
+            case 12: //trap door
+                return (<div>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                    <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 13: // pictures
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 14: //bed
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 15: // bookcase
+                return (<div>
+                        <p></p>
+                        <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                        <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 16: // next to bed
+                return (<div>
+                <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 17:
+                    return (<div>
+                    <p className="flavourtext" id="useItem" onClick={()=>takeItem(9)}> Use item from inventory </p>
+                    <p className="flavourtext">{takeItem(9)}</p></div>);
+            case 29:
+                elevatorOpen = true;
         }
     }
 
-    function addItem() {
-        //add item to inventory (change status)    
+    function addItem(id: number) {
+        switch(id){
+            case 20: // rope
+                if (gameState?.players?.items[4].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[4].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 22: // modulanium
+                if (gameState?.players?.items[7].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[7].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 26: // slim book
+                if (gameState?.players?.items[1].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[1].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 32: // wire
+                if (gameState?.players?.items[0].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[0].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 34: // robot hand
+                if (gameState?.players?.items[2].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[2].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 37: // fog spray
+                if (gameState?.player?.items[3].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[3].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 38: // hair strands
+                if (gameState?.players?.items[6].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[6].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+            case 100: // book modulanium
+                if (gameState?.players?.items[5].inPossession == false) {
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[5].inPossession = true;
+                    setGameState(deepCopy);
+                }
+                break;
+        }  
     }
 
     function redirectionText(id: number){
@@ -221,18 +329,165 @@ export function Play({ gameState, setGameState }: PlayProps) {
     //     setHoldItem("");
     // }
 
-    function takeItem(){
-        // something should probably happen here. look at it after the inventory system is up and running.
+    function takeItem(placement: number){
+        var placement = placement;
+        var wire;
+        if (gameState?.players?.items[0].inPossession == true){
+            wire = gameState?.players?.items[0].name;
+        } else {
+            wire = null;
+        }
+        var slimBook;
+        if (gameState?.players?.items[1].inPossession == true){
+            slimBook = gameState?.players?.items[1].name;
+        } else {
+            slimBook = null;
+        }
+        var robotHand;
+        if (gameState?.players?.items[2].inPossession == true){
+            robotHand = gameState?.players?.items[2].name;
+        } else {
+            robotHand = null;
+        }
+        var fogSpray;
+        if (gameState?.players?.items[3].inPossession == true){
+            fogSpray = gameState?.players?.items[3].name;
+        } else {
+            fogSpray = null;
+        }
+        var rope;
+        if (gameState?.players?.items[4].inPossession == true){
+            rope = gameState?.players?.items[4].name;
+        } else {
+            rope = null;
+        }
+        var bookModulanium;
+        if (gameState?.players?.items[5].inPossession == true){
+            bookModulanium = gameState?.players?.items[5].name;
+        } else {
+            bookModulanium = null;
+        }
+        var hairStrands;
+        if (gameState?.players?.items[6].inPossession == true){
+            hairStrands = gameState?.players?.items[6].name;
+        } else {
+            hairStrands = null;
+        }
+        var modulanium;
+        if (gameState?.players?.items[7].inPossession == true){
+            modulanium = gameState?.players?.items[7].name;
+        } else {
+            modulanium = null;
+        }
+
         console.log("click");
         return (
             <div>
-                <p> Which item would you like to use? </p>
-                <p> insert items here somehow</p>
+                <div onClick={()=>usingItem(0, placement)}> {wire} </div>
+                <div onClick={()=>usingItem(1, placement)}> {slimBook} </div>
+                <div onClick={()=>usingItem(2, placement)}> {robotHand} </div>
+                <div onClick={()=>usingItem(3, placement)}> {fogSpray} </div>
+                <div onClick={()=>usingItem(4, placement)}> {rope} </div>
+                <div onClick={()=>usingItem(5, placement)}> {bookModulanium} </div>
+                <div onClick={()=>usingItem(6, placement)}> {hairStrands} </div>
+                <div onClick={()=>usingItem(7, placement)}> {modulanium} </div>
             </div>)  
     }
-    
-    
 
+    function usingItem(id: number, placement: number){
+        switch(id){
+            case 0: // wire
+            if (placement == 0){
+                if (gameState?.players.items[0].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[0].heldStatus = true;
+                    setGameState(deepCopy);
+                    }
+            changeAllText(34);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 1: // slim book
+            if (placement == 1){
+                if (gameState?.players.items[1].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[1].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            changeAllText(17);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 2: // robot hand
+            if (placement == 2){
+                if (gameState?.players.items[2].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[2].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 3: // fog spray
+            if (placement == 3){
+                if (gameState?.players.items[3].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[3].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            changeAllText(19);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 4: // rope
+            if (placement == 4){
+                if (gameState?.players.items[4].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[4].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            changeAllText(36);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 5: // book modulanium
+            if (placement == 5){
+                if (gameState?.players.items[5].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[5].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 6: // hair strands
+            if (placement == 6){
+                if (gameState?.players.items[6].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[6].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            changeAllText(26);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            case 7: // modulanium
+            if (placement == 7){
+                if (gameState?.players.items[7].heldStatus == false){
+                    var deepCopy = {...gameState};
+                    deepCopy.players.items[7].heldStatus = true;
+                    setGameState(deepCopy);                    }
+            changeAllText(28);
+            } else {
+                return "Nothing happens."
+            }
+            break;
+            default:
+                return "";
+        }
+    }
+    
     return (
         <div>
             <p> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
@@ -255,153 +510,153 @@ export function Play({ gameState, setGameState }: PlayProps) {
                     <table className="roomtable">           
                         <tbody>        
                         <tr>
-                            <td className="space"> A1 </td>
-                            <td className="space"> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> A1 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
                             <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 3 </td>
                             <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 4 </td>
                             <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 8</td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 9 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 10 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 11 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
                             <td className="space" id="pc" onClick={()=>changeAllText(4)}> 17 </td>
                             <td className="space" id="pc" onClick={()=>changeAllText(4)}> 18 </td>
                         </tr>                    
                         <tr>
                             <td className="space" id="glasscase" onClick={()=>changeAllText(6)}> B1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 8 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 9 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 10 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 11 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
                             <td className="space" id="pc" onClick={()=>changeAllText(4)}> 17 </td>
                             <td className="space" id="pc" onClick={()=>changeAllText(4)}> 18 </td>
                         </tr>
                         <tr>
                             <td className="space" id="glasscase" onClick={()=>changeAllText(6)}> C1 </td>
-                            <td className="space"> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
                             <td className="space" id="robothand" onClick={()=>changeAllText(7)}> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
-                            <td className="space"> 9 </td>
-                            <td className="space"> 10 </td>
-                            <td className="space"> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 8 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 9 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 10 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 11 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 12 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
                         </tr> 
                         <tr>
-                            <td className="space"> D1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> D1 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 8 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 9 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 10 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
                         </tr> 
                         <tr>
-                            <td className="space"> E1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 8 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> E1 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
+                            <td className="space" id="chair" onClick={()=>changeAllText(9)}> 8 </td>
                             <td className="space" id="chair" onClick={()=>changeAllText(9)}> 9 </td>
                             <td className="space" id="coiledrope" onClick={()=>changeAllText(10)}> 10 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
+                            <td className="space" id="coiledrope" onClick={()=>changeAllText(10)}> 11 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
                             <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space" id="liftdoor" onClick={()=>changeAllText(11)}> F1 </td>
-                            <td className="space"> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
                             <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 3 </td>
                             <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 8 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 9 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 10 </td>
                             <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 11 </td>
-                            <td className="space"> 12 </td>
-                            <td className="space"> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space"> 17 </td>
-                            <td className="space"> 18 </td>
+                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 17 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 18 </td>
                         </tr> 
                         <tr>
                             <td className="space" id="liftdoor" onClick={()=>changeAllText(11)}> G1 </td>
-                            <td className="space"> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
                             <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 3 </td>
                             <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
-                            <td className="space"> 8 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 8 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 9 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 10 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 11 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 12 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 13 </td>
-                            <td className="space"> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
                         </tr> 
                         <tr>
-                            <td className="space"> H1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> H1 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
@@ -409,19 +664,19 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
                         </tr> 
                         <tr>
-                            <td className="space"> I1 </td>
-                            <td className="space"> 2 </td>
-                            <td className="space"> 3 </td>
-                            <td className="space"> 4 </td>
-                            <td className="space"> 5 </td>
-                            <td className="space"> 6 </td>
-                            <td className="space"> 7 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> I1 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
@@ -429,8 +684,8 @@ export function Play({ gameState, setGameState }: PlayProps) {
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
                             <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
                             <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
                             <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
                         </tr> 
@@ -456,7 +711,9 @@ export function Play({ gameState, setGameState }: PlayProps) {
                         </tr> 
                         </tbody> 
                     </table>
-                    <p className="inventorycheat">down</p>
+                    <p className="inventorycheat">.</p>
+                    <p className="inventorycheat">.</p>
+                    <p className="inventorycheat">.</p>
                     <hr></hr>
                 </div>
             <p className="HoldItem">{HoldItem}</p>

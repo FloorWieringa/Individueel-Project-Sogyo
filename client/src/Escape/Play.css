@@ -21,6 +21,7 @@ table {
     border: transparent;
     background: transparent;
     vertical-align: bottom;
+    opacity: 0;
 }
 
 p{
@@ -30,7 +31,7 @@ p{
 }
 
 .roomtable{
-    background-image: url(https://i.imgur.com/yCheMVB.png);
+    background-image: url(https://i.imgur.com/Sul4BIG.jpg);
 }
 .inventorycheat {
     color: rgb(95, 31, 8);

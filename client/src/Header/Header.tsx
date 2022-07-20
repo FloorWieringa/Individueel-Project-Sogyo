@@ -20,7 +20,7 @@ export function Header() {
             <Link to="/failedescape"> Failure </Link>
             <Link to="/computer"></Link>
             <Link to="/bookcase"></Link>
-            <Link to="/lift"></Link>
+            <Link to="/lift"> Elevator </Link>
         </div>
     </header>
 }

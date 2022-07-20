@@ -6,7 +6,7 @@ public interface Playable {
 
     String getComments();
 
-    Items getItems(String name);
+    Items[] getItems();
 
     void setCommentID(int id);
 
@@ -15,5 +15,7 @@ public interface Playable {
     // String getItem();
 
     void addToInventory(String item);
+
+    Items getItem();
 
 }

@@ -8,39 +8,44 @@ public class Player {
         this.name = name;
     }
 
-    Items wire = new Items("wire", false, false);
-    Items slimBook = new Items("slimBook", false, false);
-    Items robotHand = new Items("robotHand", false, false);
-    Items fogSpray = new Items("fogSpray", false, false);
-    Items rope = new Items("rope", false, false);
-    Items bookModulanium = new Items("bookModulanium", false, false);
-    Items hairStrands = new Items("hairStrands", false, false);
-    Items modulanium = new Items("modulanium", false, false);
+    Items wire = new Items("Wire", false, false);
+    Items slimBook = new Items("Slim book", false, false);
+    Items robotHand = new Items("Robot hand", false, false);
+    Items fogSpray = new Items("Fog spray", false, false);
+    Items rope = new Items("Rope", false, false);
+    Items bookModulanium = new Items("Book on modulanium", false, false);
+    Items hairStrands = new Items("Hair strands", false, false);
+    Items modulanium = new Items("Modulanium", false, false);
 
     public Items retrieveItems(String name){
         switch(name){
-            case "wire":
+            case "Wire":
                 return wire;
-            case "slimBook":
+            case "Slim book":
                 return slimBook;
-            case "robotHand":
+            case "Robot hand":
                 return robotHand;
-            case "fogSpray":
+            case "Fog spray":
                 return fogSpray;
-            case "rope":
+            case "Rope":
                 return rope;
-            case "bookModulanium":
+            case "Book on modulanium":
                 return bookModulanium;
-            case "hairStrands":
+            case "Hair strands":
                 return hairStrands;
-            case "modulanium":
+            case "Modulanium":
                 return modulanium;
             default:
-                return robotHand;
+                return null;
         }
     }
 
     public void addToInventory(String item){
         retrieveItems(item).found = true;
-}
+    }
+
+    public Items[] getInventory(){
+        Items[] inventoryItems = {wire, slimBook, robotHand, fogSpray, rope, bookModulanium, hairStrands, modulanium};
+        return inventoryItems;
+    }
 }

@@ -70,8 +70,10 @@ document, but I'm not foolish enough to risk it. I won't let anyone use my geniu
 that silly reward.</p>
             <p></p>
             <Link to="/computer2" className="flavourtext"> Return </Link> 
-            <p className="inventorycheat"> down </p>
-            <p className="inventorycheat"> down </p>
+            <p className="inventorycheat">.</p>
+            <p className="inventorycheat">.</p>
+            <p className="inventorycheat">.</p>
+            <p className="inventorycheat">.</p>
         </div>
     )
 }

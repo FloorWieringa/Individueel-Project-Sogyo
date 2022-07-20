@@ -21,16 +21,18 @@ export function App() {
 
     const [ gameState, setGameState ] = useState<GameState | undefined>(undefined); 
     
+
     return (
+
         <Router>
             <Header />
-            <Sidebar gameState={gameState} setGameState={setGameState} />
+            <Sidebar gameState={gameState} />
             <div className="main-content" id="cover">
-                
+                <>
                 <Routes>
                     <Route path="/" element={<About />} />
 
-                    <Route path="/start" element={<Escape />} />
+                    <Route path="/start" element={<Escape gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/play" element={
                         <Play gameState={gameState} setGameState={setGameState}/>
                     }/>
@@ -38,14 +40,16 @@ export function App() {
                     <Route path="/escaped" element={<Escaped />} />
                     }
                     <Route path="/failedescape" element={<FailedEscape />} />
-                    <Route path="/computer" element={<Computer />} />
+                    <Route path="/computer" element={<Computer gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/bookcase" element={<Bookcase />} />
                     <Route path="/lift" element={<Lift />} />
-                    <Route path="/shivtech" element={<ShivTech />} />
+                    <Route path="/shivtech" element={<ShivTech gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/heroes" element={<Heroes />} />
                     <Route path="/computer2" element={<Computer2 />} />
                 </Routes>
+                </>
             </div>
         </Router>
+
     )
 }
