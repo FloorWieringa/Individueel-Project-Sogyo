@@ -136,7 +136,7 @@ export function ShivTech({ gameState, setGameState }: PlayProps) {
             </form>
         </div>
         <p>     </p>
-        <Link to="/play" className="flavourtext"> Return </Link>
+        <Link to="/computer2" className="flavourtext"> Return </Link>
     </div>
     }
 }

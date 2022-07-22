@@ -45,12 +45,11 @@ export function StartGame({ setGameState }: StartGameProps) {
     return (
         <div>
         <form onSubmit={(e) => tryStartGame(e)}>
-            <input value={playerOne}
+            <input id="input" value={playerOne}
                 placeholder="Your name here"
                 onChange={(e) => setPlayerOne(e.target.value)}
             />
-
-            <p className="errorMessage">{errorMessage}</p>
+            <p></p>
 
             <button className="startGameButton" type="submit">
                 Enter the room

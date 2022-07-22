@@ -36,7 +36,6 @@ export function Computer({ gameState, setGameState }: PlayProps) {
 
     if ((submittedPassword == "BEGIN") || (submittedPassword == "begin") || (submittedPassword == "Begin")){
 
-        changeText(24);
         return <div>
             <h1>Close-up of the computer screen</h1>
         <p></p>

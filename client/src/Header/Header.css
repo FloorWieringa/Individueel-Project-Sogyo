@@ -22,6 +22,7 @@
 .main-header div {
     display: flex;
     align-items: center;
+    color: rgb(44, 19, 19)
 }
 
 .main-header img {

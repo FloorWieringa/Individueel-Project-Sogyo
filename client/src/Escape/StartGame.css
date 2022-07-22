@@ -1,10 +1,16 @@
 .startGameButton {
-    font-size: 2em;
-    background-color: lightgreen;
+    background-color: rgb(247, 209, 44);
     border: 2px solid black;
+    font-size: 26px;
+    padding: 5px 12px;
+    border-radius: 8px;
 }
 
 .errorMessage {
     height: 1em;
     color: red;
+}
+
+#input {
+    font-size: 16px;
 }

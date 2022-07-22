@@ -15,8 +15,5 @@ h1 {
     border: transparent;
     background: transparent;
     vertical-align: bottom;
-}
-
-.computerSpace:hover {
-    color:rgb(0, 0, 0);
+    cursor: pointer;
 }

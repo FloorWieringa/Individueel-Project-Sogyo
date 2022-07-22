@@ -163,7 +163,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
             case 3: // desk
-                return (<div><button onClick={()=>openElevatorWrap()}> Press button 1 </button> <button onClick={()=>changeText(30)}> Press button 2 </button></div>);
+                return (<div><button id="deskButtons" onClick={()=>openElevatorWrap()}> Press button 1 </button> <button id="deskButtons" onClick={()=>changeText(30)}> Press button 2 </button></div>);
             case 4: // computer
                 return (<div>
                     <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
@@ -197,15 +197,17 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 }         
             case 7: // robot hand
-            if (wireInserted == false){
-                return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                    <p className="flavourtext">{displayInventoryItem(0)}</p></div>);
-            }
-            else {
+            if (gameState?.players.items[0].heldStatus == true && gameState.players.items[0].inPossession == false){
+                console.log("in if")
                 return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(4)}</p></div>);
+            }
+            else {
+                console.log("in else");
+                return (<div>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(0)}</p></div>);
             }
             case 8: // barrier
                 return (<div>
@@ -228,7 +230,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 };
             case 11: // elevator
-            if (elevatorOpen == true && (seenChairMessage == false || operativeMask == false)) {
+            if ((elevatorOpen == true || gameState?.players.items[0].heldStatus == true) && (seenChairMessage == false || operativeMask == false)) {
                 return (<div>
                     <Link to="/lift" className="flavourtext"> Enter the elevator </Link>
                     <p></p>
@@ -580,14 +582,14 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         console.log("click");
         return ( HoldItem != "" && <div className="flavourtext">
             <div>
-                <div onClick={()=>usingItem(0, placement)}> {wire} </div>
-                <div onClick={()=>usingItem(1, placement)}> {slimBook} </div>
-                <div onClick={()=>usingItem(2, placement)}> {robotHand} </div>
-                <div onClick={()=>usingItem(3, placement)}> {fogSpray} </div>
-                <div onClick={()=>usingItem(4, placement)}> {rope} </div>
-                <div onClick={()=>usingItem(5, placement)}> {bookModulanium} </div>
-                <div onClick={()=>usingItem(6, placement)}> {hairStrands} </div>
-                <div onClick={()=>usingItem(7, placement)}> {modulanium} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(0, placement)}> {wire} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(1, placement)}> {slimBook} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(2, placement)}> {robotHand} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(3, placement)}> {fogSpray} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(4, placement)}> {rope} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(5, placement)}> {bookModulanium} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(6, placement)}> {hairStrands} </div>
+                <div id="inventoryDisplay" onClick={()=>usingItem(7, placement)}> {modulanium} </div>
             </div></div>)  
     }
 

@@ -2,7 +2,10 @@ td {
     empty-cells: hide;
     font-family: Arial, Helvetica, sans-serif;
     padding: 8px;
+}
 
+td:hover {
+    color: aliceblue;
 }
 
 table {
@@ -11,6 +14,7 @@ table {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center; 
+    cursor: pointer;
 }
 
 .space {
@@ -22,6 +26,10 @@ table {
     background: transparent;
     vertical-align: bottom;
     opacity: 0;
+}
+
+.space:hover {
+    color:aliceblue;
 }
 
 p{
@@ -44,12 +52,31 @@ p{
 
 #useItem {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #addItem {
     display: inline-block;
+    cursor: pointer;
 }
 
 #textBeforeAddItem {
     display: inline-block;
+}
+
+#empty:hover {
+    color:rgb(255, 248, 240);
+}
+
+#inventoryDisplay {
+    cursor: pointer;
+}
+
+#deskButtons {
+    background-color: #e7e7e7; 
+    color: black;
+    font-size: 19px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    cursor: pointer;
 }
