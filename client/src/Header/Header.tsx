@@ -14,13 +14,13 @@ export function Header() {
         </div>
         <div className="main-navigation">
             <Link to="/">Intro</Link>
-            <Link to="/start">Start</Link>
+            <Link to="/start"></Link>
             <Link to="/play">Play</Link>
-            <Link to="/escaped"> Success </Link>
-            <Link to="/failedescape"> Failure </Link>
+            <Link to="/escaped"> </Link>
+            <Link to="/failedescape"> </Link>
             <Link to="/computer"></Link>
             <Link to="/bookcase"></Link>
-            <Link to="/lift"> Elevator </Link>
+            <Link to="/lift"></Link>
         </div>
     </header>
 }

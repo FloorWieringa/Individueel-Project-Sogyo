@@ -35,6 +35,11 @@ p{
 }
 .inventorycheat {
     color: rgb(95, 31, 8);
+    opacity: 0;
+}
+
+.italicText {
+    font-style: italic;
 }
 
 #useItem {

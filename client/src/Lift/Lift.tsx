@@ -74,13 +74,34 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
         setPhoneBox("tekst")
     }
 
-    function addItem(id:number) {
+    async function itemToTrue(item: String) {
+        try{
+            const response = await fetch('escape/api/item', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({item: item})
+            });
+        if (response.ok) {
+            const newGameState = await response.json() as GameState;
+            setGameState(newGameState);
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
+    
+    async function addItem(id:number) {
      switch(id){
         case 32: // wire
         if (gameState?.players?.items[0].inPossession == false) {
         var deepCopy = {...gameState};
         deepCopy.players.items[0].inPossession = true;
         setGameState(deepCopy);
+        await itemToTrue("Wire");
     }
         console.log("click");
     }
