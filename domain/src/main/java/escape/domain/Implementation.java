@@ -52,4 +52,9 @@ public class Implementation implements Playable {
     public void removeFromInventory(String item) {
         player.removeFromInventory(item);
     }
+
+    @Override
+    public void heldToTrue(String item) {
+        player.heldToTrue(item);        
+    }
 }

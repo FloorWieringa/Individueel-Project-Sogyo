@@ -39,7 +39,7 @@ p{
 }
 
 .roomtable{
-    background-image: url(https://i.imgur.com/Sul4BIG.jpg);
+    background-image: url(https://i.imgur.com/JO1aojB.jpg);
 }
 .inventorycheat {
     color: rgb(95, 31, 8);
@@ -80,3 +80,33 @@ p{
     border-radius: 12px;
     cursor: pointer;
 }
+
+#inventory {
+    text-align: right;
+    padding-right: 50px;
+}
+
+#inventoryItems {
+  text-align: left;
+  padding-left: 50px;
+  color:rgb(255, 234, 209);
+  font-family:'Courier New', Courier, monospace;
+  font-size: 20px;
+  position: relative;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.sidebar {
+    background-color: rgb(44, 19, 19);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }

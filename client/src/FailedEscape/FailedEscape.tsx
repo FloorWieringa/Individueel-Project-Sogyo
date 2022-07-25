@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export function FailedEscape() {
     return <div>
-        <h1>Unsuccessful ending</h1>
+        <h1>Success... ?</h1>
         <p className="flavourtext">
         The angry beeping in the elevator stops. For a second there's total silence, then a deep
         rumbling shakes the elevator into action. Before you know it you're back at street level.

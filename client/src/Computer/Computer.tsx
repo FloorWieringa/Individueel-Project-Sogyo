@@ -13,6 +13,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
 
     var [submittedPassword, setSubmittedPassword] = useState("");
     var [Mouse, setMouse] = useState("");
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
 
     async function changeText(id:number){
         try{
@@ -83,6 +84,12 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         <Link to="/computer2" className="flavourtext"> Enter </Link>
         <p></p>
         <Link to="/play" className="flavourtext"> Return </Link>
+        <div className="sidebar" id="sidebar"> 
+        <>
+        <h2 id="inventory"> Inventory </h2>
+        {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+        </>
+        </div>
         </div>
     }
     else {
@@ -143,7 +150,13 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         </div>
         <p>     </p>
         <Link to="/play" className="flavourtext"> Return </Link>
-    </div>
+        <div className="sidebar" id="sidebar"> 
+        <>
+        <h2 id="inventory"> Inventory </h2>
+        {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+        </>
+        </div>
+        </div>
     }
 
     function examineMouse(){

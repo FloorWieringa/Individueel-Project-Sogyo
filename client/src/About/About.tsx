@@ -22,7 +22,7 @@ export function About() {
         of the caped crime-stopper. At first you showed very little interest. You have better things
         to do with your time than chase violent eccentrics in dress-up.
         </p>
-        <p className="flavourtext">But as time passes and nobody collects the reward, your sharp eyes and astute brains can't help seeing what
+        <p className="flavourtext">But as time passes and nobody collects the reward, your sharp eyes and astute brain can't help seeing what
         everyone else has missed: where Force of Nature tends to show up, the direction they
         usually come from... little clues. And when even more weeks went by with nobody noticing
         these things, you can't resist. You're pretty sure you've worked out where Force of Nature's

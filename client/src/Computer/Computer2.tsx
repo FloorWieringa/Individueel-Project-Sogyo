@@ -1,8 +1,16 @@
 import "./Computer.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import type { GameState } from "../gameState";
 
-export function Computer2() {
+type PlayProps = {
+    gameState: GameState | undefined;
+    setGameState(newGameState: GameState): void;
+}
+
+export function Computer2({ gameState, setGameState }: PlayProps) {
+
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
 
         return <div>
         <h1>Close-up of the computer screen</h1>
@@ -53,6 +61,12 @@ export function Computer2() {
         <Link to="/heroes" className="flavourtext"> Click on 'Heroes'</Link>
         <p></p>
         <Link to="/play" className="flavourtext"> Return </Link>
+        <div className="sidebar" id="sidebar"> 
+        <>
+        <h2 id="inventory"> Inventory </h2>
+        {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+        </>
+        </div>
         </div>
     
 }

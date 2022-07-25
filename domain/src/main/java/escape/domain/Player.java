@@ -15,6 +15,9 @@ public class Player {
     Items bookModulanium = new Items("Book on modulanium", false, false);
     Items hairStrands = new Items("Hair strands", false, false);
     Items modulanium = new Items("Modulanium", false, false);
+    Items chair = new Items("Chair", false, false);
+    Items workingMask = new Items("Working mask", false, false);
+    Items elevatorDoors = new Items("Elevator doors", false, false);
 
     public Items retrieveItems(String name){
         switch(name){
@@ -34,6 +37,12 @@ public class Player {
                 return hairStrands;
             case "Modulanium":
                 return modulanium;
+            case "Chair":
+                return chair;
+            case "Working mask":
+                return workingMask;
+            case "Elevator doors":
+                return elevatorDoors;
             default:
                 return null;
         }
@@ -49,8 +58,12 @@ public class Player {
     }
 
     public Items[] getInventory(){
-        Items[] inventoryItems = {wire, slimBook, robotHand, fogSpray, rope, bookModulanium, hairStrands, modulanium};
+        Items[] inventoryItems = {wire, slimBook, robotHand, fogSpray, rope, bookModulanium, hairStrands, modulanium, chair, workingMask, elevatorDoors};
         return inventoryItems;
+    }
+
+    public void heldToTrue(String item){
+        retrieveItems(item).holding = true;
     }
 
     public String commentary;
@@ -58,7 +71,6 @@ public class Player {
     public boolean trapdoorOpen = false;
     public boolean lasersOff = false;
     public boolean lookingForModulanium = false;
-    public boolean seenMouseNote = false;
     public boolean havingModulanium = false;
     public boolean operativeMask = false;
     public boolean secretVaultOpen = false;
@@ -109,6 +121,7 @@ public class Player {
             }
             else {
                 havingSeenChair = true;
+                chair.holding = true;
                 return "There's a message scratched into the underside of the wood of the chair: He's gone for now, but he'll be back to finish me off at any moment. It's all over for me, but I'm writing this with my earring just in case Force of Nature is trapped here after I'm gone. Force of Nature, I'm warning you: this Viperyon is serious business. He's killed all the others -– I can see Pure Platinum's hand over there, like a sick trophy. If you somehow get out of this laser cage, to make the elevator work you need to go inside and say the name of his last victim. I guess... that'll be me. But it has to be said in his voice. That's the only thing that triggers it. Good luck. The world needs you.";
             }
             case 10: // coiled rope
@@ -150,9 +163,11 @@ public class Player {
                 return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between thick chemistry tomes where a very thin book could fit. It must be Viperyon's favourite.";          
             }
             if (lookingForModulanium == true && secretVaultOpen == false) {
+                bookModulanium.found = true;
                 return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between thick chemistry tomes where a very thin book could fit. It must be Viperyon's favourite. You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
             }
             if (lookingForModulanium == true && secretVaultOpen == true){
+                bookModulanium.found = true;
                 return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with thick chemistry tomes. You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green. You also take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.";
             }
             if (lookingForModulanium == false && secretVaultOpen == true){
@@ -173,16 +188,10 @@ public class Player {
             havingModulanium = true;
                 return "Following some strange rules of chemistry that you don't 100% understand, the mixture shines bright gold. It matches the picture on the cover of the Modulanium book exactly.";
             case 23: // Computer - examining the mouse
-            if (seenMouseNote == false){
                 return "Well, that’s why it’s not working: there’s a post-it stuck to the bottom. Written on it are four words: Password: map’s missing firsts.";
-            }
-            else {
-                return "";
-            }
-            case 24: // Computer - inputting first password 'BEGIN'
-            seenMouseNote = true;
             case 25: // Computer - inputting second password 'SCRAMBLED BELOW'
             lasersOff = true;
+                return "Viperyon must have designed the computer themselves. It's impressively modern and fancy -– flat screen, touch screen, holographic screen, the works. There is a mouse, too, but it doesn’t seem to be working. And unfortunately, when you try to tap anything on the screen with your finger, you're prompted to give a password.";
             case 26: // Costume stand - inserting hair sample
                 return "You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.";
             case 27: // Costume stand - trying on mask w/o Modulanium
@@ -195,10 +204,12 @@ public class Player {
                 }
             case 28: // Costume stand - trying on mask with Modulanium
             operativeMask = true;
+            workingMask.holding = true;
             havingUsedModulanium = true;
                 return "You try on the mask, and it comes alive with power. The sound of your breath comes out deep and intimidating. You speak, and the modulated voice of Viperyon echoes through the room.";
             case 29: // Desk - pressing button 1
             elevatorOpen = true;
+            elevatorDoors.holding = true;
                 return "You press the first button, and behind you, the elevator door opens up again.";
             case 30: // Desk - pressing button 2
             trapdoorOpen = true;

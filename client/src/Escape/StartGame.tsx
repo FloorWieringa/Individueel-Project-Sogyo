@@ -56,8 +56,12 @@ export function StartGame({ setGameState }: StartGameProps) {
             </button>
         </form>
         <p></p>
-        <p>Maybe a little explanation here.</p>
-        <p>Or maybe not :&#41;</p>
+        <p>Gameplay:</p>
+        <p>- Both text and images may be clickable in different parts. Be sure to try clicking on items you are interested in, to see if you can inspect it closer. When text is clickable, the mouse will turn into a pointer.</p>
+        <p>- You can see which items you currently have available by looking at the inventory at the bottom of the page. If you want to use an item, you can click 'use item from inventory' at the top of the page, and select an item from the list that appears.</p>
+        <p>- Untagged spaces might be interactable. For example, if you would like to try looking under a desk, you might have to click the space next to the actual desk, as the 'you' in the room would be crouching next to it in order to look under.</p>
+        <p>- It might be smart to revisit some places after gaining new information.</p>
+        <p>- The golden rule of escape rooms still applies: breaking things is never the solution. </p>
         </div>
     )
 }

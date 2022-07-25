@@ -6,6 +6,7 @@ import type { GameState } from "../gameState";
 export function Lift({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>}) {
 
     var [PhoneBox, setPhoneBox] = useState("");
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
 
     return <div>
         <h1>Elevator</h1>
@@ -67,6 +68,12 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 <p></p>
             <Link to="/play" className="flavourtext"> Return </Link>
+        </div>
+        <div className="sidebar" id="sidebar"> 
+        <>
+        <h2 id="inventory"> Inventory </h2>
+        {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+        </>
         </div>
     </div>
 

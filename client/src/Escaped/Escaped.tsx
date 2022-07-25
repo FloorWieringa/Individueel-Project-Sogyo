@@ -3,7 +3,7 @@ import "./Escaped.css";
 
 export function Escaped() {
     return <div>
-        <h1>Successful ending</h1>
+        <h1>You made it!</h1>
         <p className="flavourtext">
         The angry beeping in the elevator stops. For a second there's total silence, then a deep
         rumbling shakes the elevator into action. Before you know it you're back at street level.

@@ -73,43 +73,65 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }
     }
 
+    async function itemHeldToTrue(item: String) {
+        try{
+            const response = await fetch('escape/api/itemheldtrue', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({item: item})
+            });
+        if (response.ok) {
+            const newGameState = await response.json() as GameState;
+            setGameState(newGameState);
+        } else {
+            console.error(response.statusText);
+        }
+        } catch (error) {
+        }
+    }
+
     async function changeAllText(id: number){
         await changeText(id);
-        redirectionText(id);
+        //redirectionText(id);
         editableText(id);
         addItem(id);
         setHoldItem("");
     }
 
     var [casePassword, setCasePassword] = useState("");
-    var [elevatorOpen, setElevatorOpen] = useState(false);
+    // var [elevatorOpen, setElevatorOpen] = useState(false);
     var [lasersVisible, setLasersVisible] = useState(false);
     var [laserNoteFound, setLaserNoteFound] = useState(false);
-    var [wireInserted, setWireInserted] = useState(false);
+    // var [wireInserted, setWireInserted] = useState(false);
     var [blueMeasure, setBlueMeasure] = useState("");
     var [redMeasure, setRedMeasure] = useState("");
     var [yellowMeasure, setYellowMeasure] = useState("");
     var [lookingForModulanium, setLookingForModulanium] = useState (false);
-    var [lasersOff, setLasersOff] = useState(false);
-    var [operativeMask, setOperativeMask] = useState(false);
-    var [seenChairMessage, setSeenChairMessage] = useState(false);
+    // var [lasersOff, setLasersOff] = useState(false);
+    // var [operativeMask, setOperativeMask] = useState(false);
+    // var [seenChairMessage, setSeenChairMessage] = useState(false);
     var [nameForceOfNature, setNameForceOfNature] = useState("");
     var [townForceOfNature, setTownForceOfNature] = useState("");
     var [namePreviousVictim, setNamePreviousVictim] = useState("");
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
   
 
-    function eventMarkers(id: number){
+    async function eventMarkers(id: number){
         switch(id){
             case 27: // after trying on the mask
                 setLookingForModulanium(true);
             break;
             case 28:
-                setOperativeMask(true);
+                //setOperativeMask(true);
+                await itemToTrue("Working mask");
             break;
         }
-        if (gameState?.players.items[4].heldStatus == true && gameState.players.items[4].inPossession == false) {
-            setSeenChairMessage(true);
-        }
+        // if (gameState?.players.items[4].heldStatus == true && gameState.players.items[4].inPossession == false) {
+        //     setSeenChairMessage(true);
+        // }
     }
 
     function editableText(id: number){
@@ -128,7 +150,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 <p className="flavourtext">{displayInventoryItem(6)}</p></div>);
             }
             case 2: // chemistry table
-            if ((blueMeasure == ("0.5" || "0,5")) && (yellowMeasure == ("1.5" || "1,5")) && (redMeasure == ("2" || "2.0" || "2,0"))){
+            if ((blueMeasure == "0.5" || blueMeasure == "0,5") && (yellowMeasure == "1.5" || yellowMeasure == "1,5") && (redMeasure == "2" || redMeasure == "2.0" || redMeasure == "2,0")){
                 return (<div><div id="addItem" onClick={()=>addItem(22)}>Following some strange rules of chemistry that you don't 100% understand, 
                 the mixture shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
@@ -230,20 +252,29 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 };
             case 11: // elevator
-            if ((elevatorOpen == true || gameState?.players.items[0].heldStatus == true) && (seenChairMessage == false || operativeMask == false)) {
+            if ((gameState?.players.items[10].heldStatus == true) && ((gameState?.players.items[8].heldStatus == false) || (gameState?.players.items[9].heldStatus == false))) {
                 return (<div>
                     <Link to="/lift" className="flavourtext"> Enter the elevator </Link>
                     <p></p>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
-            if (seenChairMessage == true && operativeMask == true){
-                if (namePreviousVictim == ("Maxwell Martin" || "maxwell martin" || "MAXWELL MARTIN")) {
-                    if (nameForceOfNature == ("Taylor Prescott" || "taylor prescott" || "TAYLOR PRESCOTT") && townForceOfNature == ("Bern" || "bern" || "BERN")) {
-                        <Link to="/escaped" className="flavourtext"> Escape! </Link>
+            // if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == false)){
+            //     return (<p>seenChairMessage</p>)
+            // } 
+            // if ((gameState?.players.items[9].heldStatus == true) && (gameState?.players.items[8].heldStatus == false)){
+            //     return (<p>operativeMask</p>)
+            // }
+            // if ((gameState?.players.items[9].heldStatus == false) && (gameState?.players.items[8].heldStatus == false)){
+            //     return (<p>everything false</p>)
+            // }
+            if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == true)){
+                if (namePreviousVictim == "Maxwell Martin" || namePreviousVictim == "maxwell martin" || namePreviousVictim == "MAXWELL MARTIN") {
+                    if ((nameForceOfNature == "Taylor Prescott" || nameForceOfNature == "taylor prescott" || nameForceOfNature == "TAYLOR PRESCOTT") && (townForceOfNature == "Bern" || townForceOfNature == "bern" || townForceOfNature == "BERN")) {
+                        return (<div><Link to="/escaped" className="flavourtext"> Escape! </Link></div>)
                     }
                     else {
-                        <Link to="/failedescape" className="flavourtext"> Escape! </Link>
+                        return (<div><Link to="/failedescape" className="flavourtext"> Escape! </Link></div>)
                     }
                 }
                 else {
@@ -269,28 +300,27 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         value={namePreviousVictim}
                         onChange={(e) => setNamePreviousVictim(e.target.value)}
                         ></input>  
-                    </form>
-                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>)
+                    </form></div>)
                 };
             }
             else {
+                console.log(gameState?.players.items[10].heldStatus);
                 return (<div><p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
             break;
             case 12: //trap door
-            if (laserNoteFound == false){
-                return (<div>
-                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                    <p className="flavourtext">{displayInventoryItem(2)}</p></div>);
-            }
-            else {
+            if (laserNoteFound == true || (gameState?.players.items[2].heldStatus == true && gameState.player.items[2].inPossession == false)){
                 return (<div>
                     <p className="italicText">This is the shutdown password for your ShivTech computer LASER system. Please memorise 
                     after reading and discard this letter for security purposes.</p>
                     <p className="italicText">YOUR PASSWORD IS SCRAMBLED BELOW.</p>
                     <p className="italicText">NHIRERG.</p>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(2)}</p></div>);
+            }
+            else {
+                return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(2)}</p></div>);
             }
@@ -340,12 +370,12 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }
     }
 
-    function openElevator(){
-        setElevatorOpen(true);
-    }
+    // function openElevator(){
+    //     setElevatorOpen(true);
+    // }
 
     async function openElevatorWrap(){
-        openElevator();
+        //openElevator();
         await changeText(29);
     }
 
@@ -357,9 +387,9 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         setLaserNoteFound(true);
     }
 
-    function setSetWireInserted(){
-        setWireInserted(true);
-    }
+    // function setSetWireInserted(){
+    //     setWireInserted(true);
+    // }
 
     async function addItem(id: number) {
         switch(id){
@@ -425,76 +455,76 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }  
     }
 
-    function redirectionText(id: number){
-        if (id == 1) {
-            setMessage("");
-            return;
-        }
-        if (id == 2) {
-            setMessage("")
-            return;
-        }
-        if (id == 3) {
-            setMessage("")
-            return;
-        }
-        if (id == 4) {
-            setMessage("")
-            return;
-        }
-        if (id == 5) {
-            setMessage("")
-            return;
-        }
-        if (id == 6) {
-            setMessage("")
-            return;
-        }
-        if (id == 7) {
-            setMessage("")
-            return;
-        }
-        if (id == 8) {
-            setMessage("")
-            return;
-        }
-        if (id == 9) {
-            setMessage("")
-            return;
-        }
-        if (id == 10) {
-            setMessage("")
-            return;
-        }
-        if (id == 11) {
-            setMessage("")
-            return;
-        }
-        if (id == 12) {
-            setMessage("")
-            return;
-        }
-        if (id == 13) {
-            setMessage("")
-            return;
-        }
-        if (id == 14) {
-            setMessage("")
-            return;
-        }
-        if (id == 15) {
-            setMessage("")
-            return;
-        }
-        if (id == 16) {
-            setMessage("")
-            return;
-        }
-        if (id == 17) {
-            setMessage("")
-            return;
-        }
-    }
+    // function redirectionText(id: number){
+    //     if (id == 1) {
+    //         setMessage("");
+    //         return;
+    //     }
+    //     if (id == 2) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 3) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 4) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 5) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 6) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 7) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 8) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 9) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 10) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 11) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 12) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 13) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 14) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 15) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 16) {
+    //         setMessage("")
+    //         return;
+    //     }
+    //     if (id == 17) {
+    //         setMessage("")
+    //         return;
+    //     }
+    // }
     
 
     function setHoldItemUseState() {
@@ -601,7 +631,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     var deepCopy = {...gameState};
                     deepCopy.players.items[0].heldStatus = true;
                     setGameState(deepCopy);}
-            setSetWireInserted();
+            //setSetWireInserted();
             changeAllText(34);
             await itemToFalse("Wire");
             } else {
@@ -922,6 +952,15 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         </tr> 
                         </tbody> 
                     </table>
+                    <div className="sidebar" id="sidebar"> 
+                    <>
+                    <h2 id="inventory"> Inventory </h2>
+                    {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+                    </>
+                    </div>
+                    <p className="inventorycheat">.</p>
+                    <p className="inventorycheat">.</p>
+                    <p className="inventorycheat">.</p>
                     <p className="inventorycheat">.</p>
                     <p className="inventorycheat">.</p>
                     <p className="inventorycheat">.</p>

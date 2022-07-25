@@ -20,4 +20,6 @@ public interface Playable {
 
     void removeFromInventory(String item);
 
+    void heldToTrue(String item);
+
 }
