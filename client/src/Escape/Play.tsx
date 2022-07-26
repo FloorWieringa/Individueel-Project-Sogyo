@@ -310,13 +310,13 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 15: // bookcase
             if  (gameState?.players.items[12].heldStatus == true){
-                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with <div id="addItem" className="flavourtext" onClick={()=>addItem(40)}> thick chemistry tomes. </div> You take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.</div></div>
+                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with <div id="addItem" className="flavourtext" onClick={()=>addItem(39)}> thick chemistry tomes. </div> You take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.</div></div>
                     <p></p>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(1)}</p></div>);
             }
             else {
-                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between <div id="addItem" className="flavourtext" onClick={()=>addItem(40)}> thick chemistry tomes </div> where a very thin book could fit. It must be Viperyon's favourite.</div></div>
+                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between <div id="addItem" className="flavourtext" onClick={()=>addItem(39)}> thick chemistry tomes </div> where a very thin book could fit. It must be Viperyon's favourite.</div></div>
                     <p></p>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(1)}</p></div>);
@@ -419,7 +419,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     await itemToTrue("Hair strands");
                 }
                 break;
-            case 40: // book modulanium
+            case 39: // book modulanium
                 if (gameState?.players?.items[5].inPossession == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[5].inPossession = true;
