@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import type { GameState } from "../gameState";
 import "./Play.css";
 import { Link } from "react-router-dom";
-import { Escape } from "./Escape";
-import { idText } from "typescript";
 
 export function Play({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>}) {
-    const [Message, setMessage] = useState("");
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
 
@@ -95,27 +92,18 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
 
     async function changeAllText(id: number){
         await changeText(id);
-        //redirectionText(id);
         editableText(id);
         addItem(id);
         setHoldItem("");
     }
 
     var [casePassword, setCasePassword] = useState("");
-    // var [elevatorOpen, setElevatorOpen] = useState(false);
     var [lasersVisible, setLasersVisible] = useState(false);
     var [laserNoteFound, setLaserNoteFound] = useState(false);
-    // var [wireInserted, setWireInserted] = useState(false);
     var [blueMeasure, setBlueMeasure] = useState("");
     var [redMeasure, setRedMeasure] = useState("");
     var [yellowMeasure, setYellowMeasure] = useState("");
     var [lookingForModulanium, setLookingForModulanium] = useState (false);
-    // var [lasersOff, setLasersOff] = useState(false);
-    // var [operativeMask, setOperativeMask] = useState(false);
-    // var [seenChairMessage, setSeenChairMessage] = useState(false);
-    var [nameForceOfNature, setNameForceOfNature] = useState("");
-    var [townForceOfNature, setTownForceOfNature] = useState("");
-    var [namePreviousVictim, setNamePreviousVictim] = useState("");
     const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
   
 
@@ -125,26 +113,22 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 setLookingForModulanium(true);
             break;
             case 28:
-                //setOperativeMask(true);
                 await itemToTrue("Working mask");
             break;
         }
-        // if (gameState?.players.items[4].heldStatus == true && gameState.players.items[4].inPossession == false) {
-        //     setSeenChairMessage(true);
-        // }
     }
 
     function editableText(id: number){
         switch(id){
             case 1: // costume stand
             if (gameState?.players.items[1].heldStatus == true || gameState?.players.items[1].inPossession == true){
-                return (<div><div id="textBeforeAddItem"> Now that you're getting a closer look at the costume stand, you see that this is <div id="addItem" onClick={()=>changeText(27)}> Viperyon's backup costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard.</div></div>
+                return (<div><div id="textBeforeAddItem"> Now that you're getting a closer look at the costume stand, you see that this is <div id="addItem" className="flavourtext" onClick={()=>changeText(27)}> Viperyon's backup costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard.</div></div>
                 <p></p>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(6)}</p></div>);
             }
             else {
-                return (<div><div id="textBeforeAddItem"> Now that you're getting a closer look at the costume stand, you see that this is <div id="addItem" onClick={()=>changeText(27)}> Viperyon's backup costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard. The chest guard part looks like it opens up, and you notice a small panel around where the right ribs would be. There's a little screen there: it says, “Insert biological sample to activate.”</div></div>
+                return (<div><div id="textBeforeAddItem"> Now that you're getting a closer look at the costume stand, you see that this is <div id="addItem" className="flavourtext" onClick={()=>changeText(27)}> Viperyon's backup costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard. The chest guard part looks like it opens up, and you notice a small panel around where the right ribs would be. There's a little screen there: it says, “Insert biological sample to activate.”</div></div>
                 <p></p>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(6)}</p></div>);
@@ -154,27 +138,56 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 return (<div><div id="addItem" onClick={()=>addItem(22)}>Following some strange rules of chemistry that you don't 100% understand, 
                 the mixture shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
+                <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
             }
-            else {
+            if ((redMeasure != "2") && gameState?.players.items[5].inPossession == false && gameState?.players.items[5].heldStatus == true){
                 return (<div>
                     <p>You guess that you could try mixing them, if you knew how and what for.</p>
                     <form>
-                        <p>Amount of red: </p>
+                        <p className="flavourtext">Amount of red: </p>
                         <input type="text" 
                         value={redMeasure}
                         onChange={(e) => setRedMeasure(e.target.value)}
                         ></input>  
                     </form>
                     <form>
-                        <p>Amount of blue: </p>
+                        <p className="flavourtext">Amount of blue: </p>
                         <input type="text" 
                         value={blueMeasure}
                         onChange={(e) => setBlueMeasure(e.target.value)}
                         ></input>  
                     </form>
                     <form>
-                        <p>Amount of yellow: </p>
+                        <p className="flavourtext">Amount of yellow: </p>
+                        <input type="text" 
+                        value={yellowMeasure}
+                        onChange={(e) => setYellowMeasure(e.target.value)}
+                        ></input>  
+                    </form>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>changeText(41)}> Check notes </p>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
+            }
+            else {
+                return (<div>
+                    <p>You guess that you could try mixing them, if you knew how and what for.</p>
+                    <form>
+                        <p className="flavourtext">Amount of red: </p>
+                        <input type="text" 
+                        value={redMeasure}
+                        onChange={(e) => setRedMeasure(e.target.value)}
+                        ></input>  
+                    </form>
+                    <form>
+                        <p className="flavourtext">Amount of blue: </p>
+                        <input type="text" 
+                        value={blueMeasure}
+                        onChange={(e) => setBlueMeasure(e.target.value)}
+                        ></input>  
+                    </form>
+                    <form>
+                        <p className="flavourtext">Amount of yellow: </p>
                         <input type="text" 
                         value={yellowMeasure}
                         onChange={(e) => setYellowMeasure(e.target.value)}
@@ -182,10 +195,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     </form>
                     <p></p>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
+                    <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
             }
             case 3: // desk
-                return (<div><button id="deskButtons" onClick={()=>openElevatorWrap()}> Press button 1 </button> <button id="deskButtons" onClick={()=>changeText(30)}> Press button 2 </button></div>);
+                return (<div><button id="deskButtons" onClick={()=>openElevator()}> Press button 1 </button> <button id="deskButtons" onClick={()=>openTrapDoor()}> Press button 2 </button></div>);
             case 4: // computer
                 return (<div>
                     <Link to="/computer" className="flavourtext"> Take a closer look at the computer </Link>
@@ -207,7 +220,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 }
                 else {return (<div>
-                    <p>Enter password:</p>
+                    <p className="flavourtext">Enter password:</p>
                     <form>
                         <input type="text" 
                         value={casePassword}
@@ -220,13 +233,11 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }         
             case 7: // robot hand
             if (gameState?.players.items[0].heldStatus == true && gameState.players.items[0].inPossession == false){
-                console.log("in if")
                 return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(4)}</p></div>);
             }
             else {
-                console.log("in else");
                 return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(0)}</p></div>);
@@ -259,52 +270,14 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
-            // if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == false)){
-            //     return (<p>seenChairMessage</p>)
-            // } 
-            // if ((gameState?.players.items[9].heldStatus == true) && (gameState?.players.items[8].heldStatus == false)){
-            //     return (<p>operativeMask</p>)
-            // }
-            // if ((gameState?.players.items[9].heldStatus == false) && (gameState?.players.items[8].heldStatus == false)){
-            //     return (<p>everything false</p>)
-            // }
-            if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == true)){
-                if (namePreviousVictim == "Maxwell Martin" || namePreviousVictim == "maxwell martin" || namePreviousVictim == "MAXWELL MARTIN") {
-                    if ((nameForceOfNature == "Taylor Prescott" || nameForceOfNature == "taylor prescott" || nameForceOfNature == "TAYLOR PRESCOTT") && (townForceOfNature == "Bern" || townForceOfNature == "bern" || townForceOfNature == "BERN")) {
-                        return (<div><Link to="/escaped" className="flavourtext"> Escape! </Link></div>)
-                    }
-                    else {
-                        return (<div><Link to="/failedescape" className="flavourtext"> Escape! </Link></div>)
-                    }
-                }
-                else {
+             if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == true)){
                 return (<div>
-                    <p>By the way, have you discovered the name and hometown of Force of Nature? </p>
-                    <form>
-                        <p>Name Force Of Nature: </p>
-                        <input type="text" 
-                        value={nameForceOfNature}
-                        onChange={(e) => setNameForceOfNature(e.target.value)}
-                        ></input>  
-                    </form>
-                    <form>
-                        <p>Hometown Force of Nature: </p>
-                        <input type="text" 
-                        value={townForceOfNature}
-                        onChange={(e) => setTownForceOfNature(e.target.value)}
-                        ></input>  
-                    </form>
-                    <p>Wearing the mask, your voice modulated to sound like Viperyon, you state the name of his previous victim: </p>
-                    <form>
-                        <input type="text" 
-                        value={namePreviousVictim}
-                        onChange={(e) => setNamePreviousVictim(e.target.value)}
-                        ></input>  
-                    </form></div>)
-                };
+                    <Link to="/lift" className="flavourtext"> Enter the elevator </Link>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
             else {
-                console.log(gameState?.players.items[10].heldStatus);
                 return (<div><p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             }
@@ -329,26 +302,37 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 14: //bed
-                return (<div><div id="textBeforeAddItem"> This bed is clearly not someone's first choice of sleeping arrangements. 
-                    It's small and not well kept, and the sheets are paper thin. <div id="addItem" onClick={()=>addItem(38)}> A couple of stray hairs </div><div> 
-                    litter the pillow, and one of the posts on this four-poster bed has been broken off, making it a three-poster. 
+                return (<div><div id="textBeforeAddItem"><div> This bed is clearly not someone's first choice of sleeping arrangements. 
+                    It's small and not well kept, and the sheets are paper thin. <div id="addItem" className="flavourtext" onClick={()=>addItem(38)}> A couple of stray hairs </div> litter the pillow, and one of the posts on this four-poster bed has been broken off, making it a three-poster. 
                     If you had to guess, you'd say it was Viperyon's old childhood bed, repurposed.</div></div>
                 <p></p>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 15: // bookcase
-                return (<div>
-                        <p></p>
-                        <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
-                        <p className="flavourtext">{displayInventoryItem(1)}</p></div>);
+            if  (gameState?.players.items[12].heldStatus == true){
+                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with <div id="addItem" className="flavourtext" onClick={()=>addItem(40)}> thick chemistry tomes. </div> You take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.</div></div>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(1)}</p></div>);
+            }
+            else {
+                return (<div><div id="textBeforeAddItem"><div>The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between <div id="addItem" className="flavourtext" onClick={()=>addItem(40)}> thick chemistry tomes </div> where a very thin book could fit. It must be Viperyon's favourite.</div></div>
+                    <p></p>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(1)}</p></div>);
+            }
             case 16: // next to bed
                 return (<div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 17:
-                    return (<div>
+                return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
+            case 26:
+                return (<div>
+                    <div>You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" onClick={()=>addItem(26)}> a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div></div>
+                </div>)
             case 27:
                 return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
@@ -365,17 +349,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="italicText">NHIRERG.</p>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(2)}</p></div>);
-                
-                
         }
     }
 
-    // function openElevator(){
-    //     setElevatorOpen(true);
-    // }
-
-    async function openElevatorWrap(){
-        //openElevator();
+    async function openElevator(){
         await changeText(29);
     }
 
@@ -387,9 +364,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         setLaserNoteFound(true);
     }
 
-    // function setSetWireInserted(){
-    //     setWireInserted(true);
-    // }
+    async function openTrapDoor(){
+        changeText(30);
+        await itemHeldToTrue("Trap door");
+    }
 
     async function addItem(id: number) {
         switch(id){
@@ -441,91 +419,16 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     await itemToTrue("Hair strands");
                 }
                 break;
-            case 15: // book modulanium
-            if (lookingForModulanium == true){
+            case 40: // book modulanium
                 if (gameState?.players?.items[5].inPossession == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[5].inPossession = true;
                     setGameState(deepCopy);
                     await itemToTrue("Book on modulanium");
                 }
-            }
-            else {}
                 break;
         }  
     }
-
-    // function redirectionText(id: number){
-    //     if (id == 1) {
-    //         setMessage("");
-    //         return;
-    //     }
-    //     if (id == 2) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 3) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 4) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 5) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 6) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 7) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 8) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 9) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 10) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 11) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 12) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 13) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 14) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 15) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 16) {
-    //         setMessage("")
-    //         return;
-    //     }
-    //     if (id == 17) {
-    //         setMessage("")
-    //         return;
-    //     }
-    // }
-    
 
     function setHoldItemUseState() {
         if (gameState?.players.items[0].inPossession == true) {
@@ -631,7 +534,6 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     var deepCopy = {...gameState};
                     deepCopy.players.items[0].heldStatus = true;
                     setGameState(deepCopy);}
-            //setSetWireInserted();
             changeAllText(34);
             await itemToFalse("Wire");
             } else {
@@ -646,12 +548,13 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     setGameState(deepCopy);}
             changeAllText(17);
             await itemToFalse("Slim book");
+            await itemHeldToTrue("Secret vault");
             } else {
                 console.log("Nothing happens.");
             }
             break;
             case 2: // robot hand
-            if (placement == 2){
+            if (placement == 2 && gameState?.players.items[11].heldStatus == true){
                 if (gameState?.players.items[2].heldStatus == false){
                     var deepCopy = {...gameState};
                     deepCopy.players.items[2].heldStatus = true;
@@ -695,6 +598,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     deepCopy.players.items[5].heldStatus = true;
                     setGameState(deepCopy);}
             await itemToFalse("Book on modulanium");
+            await changeText(40);
             } else {
                 console.log("Nothing happens.");
             }
@@ -705,9 +609,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     var deepCopy = {...gameState};
                     deepCopy.players.items[6].heldStatus = true;
                     setGameState(deepCopy);}
-            changeAllText(26);
-            await itemToFalse("Hair strands");
-            await itemToTrue("Slim book");
+                    await changeText(26);
+                    editableText(26);
+                    setHoldItem("");
+                    await itemToFalse("Hair strands");
             } else {
                 console.log("Nothing happens.");
             }
@@ -731,19 +636,18 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
     
     return (
         <div>
-            <p> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
-            <p>In the corner opposite you is a large desk with a high-tech computer and a world map sitting on the surface, and stretching along the wall beside it is some kind of DIY chemistry lab. There's a large bookcase on the other side of the desk, 
+            <p className="flavourtext"> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
+            <p className="flavourtext">In the corner opposite you is a large desk with a high-tech computer and a world map sitting on the surface, and stretching along the wall beside it is some kind of DIY chemistry lab. There's a large bookcase on the other side of the desk, 
                 and a small bed for when all the hero work tires them out.</p> 
-            <p>But then a funny feeling comes over you. In the centre of the room is a chair with a coil of rope beside it, like it's been used for tying someone up and torturing them. On the wall closest to you is a series of photos, but they're hung in less of
+            <p className="flavourtext">But then a funny feeling comes over you. In the centre of the room is a chair with a coil of rope beside it, like it's been used for tying someone up and torturing them. On the wall closest to you is a series of photos, but they're hung in less of
                 a 'family memories' way and more of a 'murderous stalker' way. To your left is a pedestal, on which sits a stationary, robotic prosthetic hand. Just behind that is a glass case that
                 looks like it should hold weapons, and further back still is the most damning thing: a costume rack. But it isn't the costume of Force of Nature. </p>
-            <p>It's the costume of Viperyon, the most heinous hero massacre-ist on this side of the planet.</p>
-            <p>Looks like you may have screwed up.</p>
-            <p>Now you're in somewhat of a sticky situation. You absolutely don't want to be here when Viperyon returns, but you have no idea how to get the elevator working again. Also, although you may have failed in your search for Force of Nature's lair, Viperyon is an expert at disseminating the identities of heroes and tracking them down. You might be able to get the information you need from here and still get that reward money. At the very least, you would need their full name and their home city.</p>
-            <p>Whatever you're going to do, do it fast.</p>
+            <p className="flavourtext">It's the costume of Viperyon, the most heinous hero massacre-ist on this side of the planet.</p>
+            <p className="flavourtext">Looks like you may have screwed up.</p>
+            <p className="flavourtext">Now you're in somewhat of a sticky situation. You absolutely don't want to be here when Viperyon returns, but you have no idea how to get the elevator working again. Also, although you may have failed in your search for Force of Nature's lair, Viperyon is an expert at disseminating the identities of heroes and tracking them down. You might be able to get the information you need from here and still get that reward money. At the very least, you would need their full name and their home city.</p>
+            <p className="flavourtext">Whatever you're going to do, do it fast.</p>
             <hr></hr>
             <p>{gameState?.gameStatus.comment}</p>
-            <p className="Message">{Message}</p>
             <p>{editableText(parseInt(AiDee))}</p>
             <p></p>
             <div className="lair"></div>

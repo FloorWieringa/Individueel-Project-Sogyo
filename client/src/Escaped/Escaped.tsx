@@ -1,5 +1,6 @@
 import React from "react";
 import "./Escaped.css";
+import { Link } from "react-router-dom";
 
 export function Escaped() {
     return <div>
@@ -13,5 +14,6 @@ export function Escaped() {
         she turns up dead tomorrow. There must be some way you can procure a good outcome
         for everyone here!
         </p>
+        <Link to="/Credits" className="flavourtext"> Credits </Link>
     </div>
 }

@@ -60,7 +60,7 @@ grabbing her all the easier.</p>
 fellow.</p>
             <p className="heroestext">I actually found myself coming to respect Taylor Prescott. Why? No needless jewellery. It's 
 idiotic what some heroes wear.</p>
-            <p className="heroestext"> remember when I learned that Sam Howitz had power over fire. It was an exciting moment; 
+            <p className="heroestext"> I remember when I learned that Sam Howitz had power over fire. It was an exciting moment; 
 before then I thought he was the one with power over wind or ice, and that Maxwell Martin 
 had fire.</p>
             <p className="heroestext">And of course, there was the moment I killed Avery Lee. I'll never forget it.

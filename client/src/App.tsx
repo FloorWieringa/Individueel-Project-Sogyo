@@ -13,6 +13,7 @@ import { Play } from "./Escape/Play"
 import { ShivTech } from "./Computer/ShivTech";
 import { Heroes } from "./Computer/Heroes";
 import { Computer2 } from "./Computer/Computer2";
+import { Credits } from "./Credits/Credits";
 
 import "./App.css";
 import { GameState } from "./gameState";
@@ -46,6 +47,7 @@ export function App() {
                     <Route path="/shivtech" element={<ShivTech gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/heroes" element={<Heroes />} />
                     <Route path="/computer2" element={<Computer2 gameState={gameState} setGameState={setGameState}/>} />
+                    <Route path="/credits" element={<Credits />} />
                 </Routes>
                 </>
             </div>

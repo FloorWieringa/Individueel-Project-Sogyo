@@ -7,6 +7,9 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
 
     var [PhoneBox, setPhoneBox] = useState("");
     const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
+    var [nameForceOfNature, setNameForceOfNature] = useState("");
+    var [townForceOfNature, setTownForceOfNature] = useState("");
+    var [namePreviousVictim, setNamePreviousVictim] = useState("");
 
     return <div>
         <h1>Elevator</h1>
@@ -67,6 +70,8 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
                     </div>
                 }
                 <p></p>
+                {escaping()}
+                <p></p>
             <Link to="/play" className="flavourtext"> Return </Link>
         </div>
         <div className="sidebar" id="sidebar"> 
@@ -100,6 +105,44 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
         } catch (error) {
         }
     }
+
+    function escaping(){
+        if ((gameState?.players.items[8].heldStatus == true) && (gameState?.players.items[9].heldStatus == true)){
+            if (namePreviousVictim == "Maxwell Martin" || namePreviousVictim == "maxwell martin" || namePreviousVictim == "MAXWELL MARTIN") {
+                if ((nameForceOfNature == "Taylor Prescott" || nameForceOfNature == "taylor prescott" || nameForceOfNature == "TAYLOR PRESCOTT") && (townForceOfNature == "Bern" || townForceOfNature == "bern" || townForceOfNature == "BERN")) {
+                    return (<div><Link to="/escaped" className="flavourtext"> Escape! </Link></div>)
+                }
+                else {
+                    return (<div><Link to="/failedescape" className="flavourtext"> Escape! </Link></div>)
+                }
+            }
+            else {
+            return (<div>
+                <p className="flavourtext">Have you discovered the name and hometown of Force of Nature? </p>
+                <form>
+                    <p className="flavourtext">Name Force Of Nature: </p>
+                    <input type="text" 
+                    value={nameForceOfNature}
+                    onChange={(e) => setNameForceOfNature(e.target.value)}
+                    ></input>  
+                </form>
+                <form>
+                    <p className="flavourtext">Hometown Force of Nature: </p>
+                    <input type="text" 
+                    value={townForceOfNature}
+                    onChange={(e) => setTownForceOfNature(e.target.value)}
+                    ></input>  
+                </form>
+                <p className="flavourtext">Wearing the mask, your voice modulated to sound like Viperyon, you state the name of his previous victim: </p>
+                <form>
+                    <input type="text" 
+                    value={namePreviousVictim}
+                    onChange={(e) => setNamePreviousVictim(e.target.value)}
+                    ></input>  
+                </form></div>)
+            };
+        }
+    }
     
     async function addItem(id:number) {
      switch(id){
@@ -109,8 +152,8 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
         deepCopy.players.items[0].inPossession = true;
         setGameState(deepCopy);
         await itemToTrue("Wire");
-    }
+            }
         console.log("click");
+        }
     }
-}
 }

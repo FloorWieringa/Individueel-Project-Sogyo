@@ -80,7 +80,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
             </tbody>
         </table>
         <p></p>
-            <p> Correct Password! </p>
+            <p className="flavourtext"> Correct Password! </p>
         <Link to="/computer2" className="flavourtext"> Enter </Link>
         <p></p>
         <Link to="/play" className="flavourtext"> Return </Link>
@@ -138,7 +138,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         <p></p>
         <p className="Mouse">{Mouse}</p>
         <p></p>
-        <p>Enter Password:</p>
+        <p className="flavourtext">Enter Password:</p>
         <p></p>
         <div>
             <form>

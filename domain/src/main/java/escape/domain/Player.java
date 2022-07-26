@@ -18,6 +18,8 @@ public class Player {
     Items chair = new Items("Chair", false, false);
     Items workingMask = new Items("Working mask", false, false);
     Items elevatorDoors = new Items("Elevator doors", false, false);
+    Items trapDoor = new Items("Trap door", false, false);
+    Items vaultOpen = new Items("Secret vault", false, false);
 
     public Items retrieveItems(String name){
         switch(name){
@@ -43,6 +45,10 @@ public class Player {
                 return workingMask;
             case "Elevator doors":
                 return elevatorDoors;
+            case "Trap door":
+                return trapDoor;
+            case "Secret vault":
+                return vaultOpen;
             default:
                 return null;
         }
@@ -58,7 +64,7 @@ public class Player {
     }
 
     public Items[] getInventory(){
-        Items[] inventoryItems = {wire, slimBook, robotHand, fogSpray, rope, bookModulanium, hairStrands, modulanium, chair, workingMask, elevatorDoors};
+        Items[] inventoryItems = {wire, slimBook, robotHand, fogSpray, rope, bookModulanium, hairStrands, modulanium, chair, workingMask, elevatorDoors, trapDoor, vaultOpen};
         return inventoryItems;
     }
 
@@ -158,25 +164,11 @@ public class Player {
                 return "There are five photos, stabbed to the wall a bit savagely. They're candid shots –- very candid. The subjects clearly had no idea they were being watched. Each photo has a very different-looking subject. Photo 1 is a woman with glasses and long, blonde hair. Photo 2 is a man with an earring, and also with long, blonde hair. Photo 3 is a woman with glasses and short, brown hair. Photo 4 is a man with short, brown hair. And photo 5 is a woman with earrings and long, brown hair. Maybe these are Viperyon's victims? You really have no idea.";
             case 14: // bed, untouched
                 return "";
-            case 15: // bookcase
-            if (lookingForModulanium == false && secretVaultOpen == false){
-                return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between thick chemistry tomes where a very thin book could fit. It must be Viperyon's favourite.";          
-            }
-            if (lookingForModulanium == true && secretVaultOpen == false) {
-                bookModulanium.found = true;
-                return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing –- except one. The very top shelf has a single space between thick chemistry tomes where a very thin book could fit. It must be Viperyon's favourite. You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
-            }
-            if (lookingForModulanium == true && secretVaultOpen == true){
-                bookModulanium.found = true;
-                return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with thick chemistry tomes. You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green. You also take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.";
-            }
-            if (lookingForModulanium == false && secretVaultOpen == true){
-                return "The bookcase is packed, but very neatly so. Each shelf is full but not overflowing, mostly filled with thick chemistry tomes. You take another look in the secret vault: full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.";
-            }
+            case 15: // bookcase 
+                return "";
             case 16: // Bed - checking the underside
                 return "You crouch next to the bed. Written in marker on the underside is some sort of code! There's a question mark, a capital F, capital H, capital N, and another question mark. Underneath this are the words, number of bedposts a giveaway?";
             case 17: // Bookcase - place missing book(s)
-            secretVaultOpen = true;
                 return "You place the slim book onto the shelf. It fits into the gap perfectly. You feel a momentary shudder under your fingertips, and the entire bookcase begins to swing open. A full-on, Scooby-Doo-like secret door! You find yourselves staring into a vault, full of cabinets and cupboards, all of them labelled with the names of various world currencies. Dollars, Yen, Rupiah, everything. One area catches your eye: on a cupboard labelled 'Francs', there's an entire shelf empty. Viperyon must have cleared it out recently.";
             case 19: // Chair/rope - spraying fog spray
             lasersVisible = true;
@@ -193,7 +185,7 @@ public class Player {
             lasersOff = true;
                 return "Viperyon must have designed the computer themselves. It's impressively modern and fancy -– flat screen, touch screen, holographic screen, the works. There is a mouse, too, but it doesn’t seem to be working. And unfortunately, when you try to tap anything on the screen with your finger, you're prompted to give a password.";
             case 26: // Costume stand - inserting hair sample
-                return "You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.";
+                return "";
             case 27: // Costume stand - trying on mask w/o Modulanium
             lookingForModulanium = true;
                 if (havingModulanium == false){
@@ -235,6 +227,10 @@ public class Player {
             case 38: // Bed - taking the hair strands
             //hairStrands.found = true;
                 return "You take the hair strands and pocket them; who knows what might be useful in this place?";
+            case 40:
+                return "You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
+            case 41:
+                return "You take another look at the book 'Modulanium: the Secret to Modulating Your Own Success'. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
             default:
                 return " ";
         }
