@@ -1,1 +1,1 @@
-web be: ./gradlew start
+web: ./gradlew start
