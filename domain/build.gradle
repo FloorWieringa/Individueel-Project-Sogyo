@@ -2,7 +2,6 @@ plugins {
     // Tell Gradle that we are building java as a library (non-executable piece of code intended for use by other applications).
     id 'java'
     id 'java-library'
-    id 'jacoco'
     id 'application'
     id 'pl.allegro.tech.build.axion-release' version '1.13.7'
 }
@@ -24,50 +23,4 @@ dependencies {
 test {
     // For running our tests, use the test runner provided by JUnit.
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
-    jacoco {
-        destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
-        classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
-    }
-}
- jacocoTestReport {
-     dependsOn test // tests are required to run before generating the report
- }
- jacoco {
-     toolVersion = "0.8.8"
-     reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
-     applyTo run
- }
- jacocoTestReport {
-     reports {
-         xml.required = false
-         csv.required = false
-         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
-     }
- }
- jacocoTestCoverageVerification {
-     violationRules {
-         rule {
-             limit {
-                 minimum = 0.0
-             }
-         }
-
-//         rule {
-//             enabled = false
-//             element = 'CLASS'
-//             includes = ['org.gradle.*']
-//
-//             limit {
-//                 counter = 'LINE'
-//                 value = 'TOTALCOUNT'
-//                 maximum = 0.3
-//             }
-//         }
-     }
- }
-
- tasks.register('applicationCodeCoverageReport', JacocoReport) {
-     executionData run
-     sourceSets sourceSets.main
  }
