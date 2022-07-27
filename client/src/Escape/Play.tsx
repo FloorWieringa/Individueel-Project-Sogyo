@@ -687,7 +687,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 10 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 11 </td>
                             <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
+                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td> 
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
                             <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
                             <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
