@@ -1,14 +1,25 @@
 package escape;
 
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
+import org.eclipse.jetty.server.handler.HandlerList;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Server server = startServer(8080);
+
+        ResourceHandler handler = new ResourceHandler();
+        handler.setResourceBase("C:/Users/wieri/Sogyo/java-opdrachten/ip/client/build");
+        HandlerList handlers = new HandlerList();
+
         ServletContextHandler context = createStatefulContext(server);
+        handlers.setHandlers(new Handler[]{ handler, context });
+
+        server.setHandler(handlers);
         registerServlets(context);
 
         server.start();
