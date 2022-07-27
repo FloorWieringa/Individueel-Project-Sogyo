@@ -1,1 +1,1 @@
-web: ./gradlew start -p $PORT
+web: ./gradlew start
