@@ -39,7 +39,7 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
-    compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+    implementation 'com.heroku:webapp-runner:9.0.52.1'
 }
 
 application {
@@ -111,7 +111,7 @@ war.mustRunAfter clean
 
 task copyToLib(type: Copy) {
     into "$buildDir/server"
-    from(configurations.compile) {
+    from(configurations.implementation) {
         include "webapp-runner*"
     }
 }
