@@ -1,5 +1,7 @@
 package escape;
 
+import java.text.ParseException;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -10,23 +12,31 @@ import org.eclipse.jetty.server.handler.HandlerList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Server server = startServer(8080);
+        var environmentPort = System.getenv("PORT");
+        try {
+            int portnr = Integer.parseInt(environmentPort);
+            Server server = startServer(portnr);
 
-        ResourceHandler handler = new ResourceHandler();
-        handler.setResourceBase("C:/Users/wieri/Sogyo/java-opdrachten/ip/client/build");
-        HandlerList handlers = new HandlerList();
+            ResourceHandler handler = new ResourceHandler();
+            handler.setResourceBase("C:/Users/wieri/Sogyo/java-opdrachten/ip/client/build");
+            HandlerList handlers = new HandlerList();
+    
+            ServletContextHandler context = createStatefulContext(server);
+            handlers.setHandlers(new Handler[]{ handler, context });
+    
+            server.setHandler(handlers);
+            registerServlets(context);
+    
+            server.start();
+            System.out.println("Started server.");
+            System.out.println("Listening on http://localhost:8080/");
+            System.out.println("Press CTRL+C to exit.");
+            server.join();
+        } catch (NumberFormatException e) {
+            System.out.println("Port number incorrectly provided.");
+            System.out.println("Shutting down.");
+        }
 
-        ServletContextHandler context = createStatefulContext(server);
-        handlers.setHandlers(new Handler[]{ handler, context });
-
-        server.setHandler(handlers);
-        registerServlets(context);
-
-        server.start();
-        System.out.println("Started server.");
-        System.out.println("Listening on http://localhost:8080/");
-        System.out.println("Press CTRL+C to exit.");
-        server.join();
     }
 
     private static Server startServer(int port) {

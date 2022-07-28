@@ -1,1 +1,1 @@
-web: java -jar api/build/server/webapp-runner-9.0.52.1.jar api/build/libs/api.war
+web: ./gradlew run start

@@ -40,7 +40,10 @@ p{
 
 .roomtable{
     background-image: url(https://i.imgur.com/JO1aojB.jpg);
+    padding: 0px;
+    margin: 0px;
 }
+
 .inventorycheat {
     color: rgb(95, 31, 8);
     opacity: 0;

@@ -1,10 +1,8 @@
-
 plugins {
     id 'java'
     // This time we're building a command-line executable application.
     id 'application'
     id 'jacoco'
-    id 'war'
 }
 
 repositories {
@@ -39,7 +37,6 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
-    implementation 'com.heroku:webapp-runner:9.0.52.1'
 }
 
 application {
@@ -100,16 +97,3 @@ java {
     }
 }
 
-task stage() {
-    dependsOn clean, war
-}
-war.mustRunAfter clean
-
-task copyToLib(type: Copy) {
-    into "$buildDir/server"
-    from(configurations.runtimeClasspath) {
-        include "webapp-runner*"
-    }
-}
-
-stage.dependsOn(copyToLib)
