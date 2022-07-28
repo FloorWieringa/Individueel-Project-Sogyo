@@ -41,7 +41,7 @@ public class App {
     }
 
     private static Server startServer(int port) {
-        return new Server(8080);
+        return new Server(port);
     }
 
     private static ServletContextHandler createStatefulContext(Server server) {
