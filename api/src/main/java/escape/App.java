@@ -12,10 +12,6 @@ import org.eclipse.jetty.server.handler.HandlerList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        var environmentVariables = System.getenv();
-        for(String key : environmentVariables.keySet()){
-            System.out.println("key "+key+" value "+environmentVariables.get(key));
-        }
         var environmentPort = System.getenv("PORT");
         System.out.println("PORT variable: " + environmentPort);
         try {
@@ -34,7 +30,7 @@ public class App {
     
             server.start();
             System.out.println("Started server.");
-            System.out.println("Listening on http://localhost:8080/");
+            System.out.println("Listening on http://localhost:"+environmentPort+"/");
             System.out.println("Press CTRL+C to exit.");
             server.join();
         } catch (NumberFormatException e) {
