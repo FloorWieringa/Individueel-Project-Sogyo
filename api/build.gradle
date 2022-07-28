@@ -100,10 +100,6 @@ java {
     }
 }
 
-// dependencies {
-//   compile 'com.github.jsimone:webapp-runner:8.5.11.3'
-// }
-
 task stage() {
     dependsOn clean, war
 }
