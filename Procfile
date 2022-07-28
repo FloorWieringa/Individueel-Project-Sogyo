@@ -1,1 +1,1 @@
-web: ./gradlew run -a
+web: ./gradlew run --parallel
