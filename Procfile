@@ -1,1 +1,1 @@
-web: ./gradlew run -x build
+web: ./gradlew run -x build compileJava classes jar test check
