@@ -13,6 +13,7 @@ import org.eclipse.jetty.server.handler.HandlerList;
 public class App {
     public static void main(String[] args) throws Exception {
         var environmentPort = System.getenv("PORT");
+        System.out.println("PORT variable: " + environmentPort);
         try {
             int portnr = Integer.parseInt(environmentPort);
             Server server = startServer(portnr);
