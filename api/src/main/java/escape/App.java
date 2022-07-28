@@ -16,7 +16,7 @@ public class App {
         for(String key : environmentVariables.keySet()){
             System.out.println("key "+key+" value "+environmentVariables.get(key));
         }
-        var environmentPort = System.getenv("$PORT");
+        var environmentPort = System.getenv("PORT");
         System.out.println("PORT variable: " + environmentPort);
         try {
             int portnr = Integer.parseInt(environmentPort);
