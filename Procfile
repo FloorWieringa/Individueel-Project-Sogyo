@@ -1,1 +1,1 @@
-web: java -jar build/server/webapp-runner-*.jar build/libs/*.war
+web: java -jar api/build/server/webapp-runner-9.0.52.1.jar api/build/libs/api.war
