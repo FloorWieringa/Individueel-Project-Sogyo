@@ -647,7 +647,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             <p className="flavourtext">Now you're in somewhat of a sticky situation. You absolutely don't want to be here when Viperyon returns, but you have no idea how to get the elevator working again. Also, although you may have failed in your search for Force of Nature's lair, Viperyon is an expert at disseminating the identities of heroes and tracking them down. You might be able to get the information you need from here and still get that reward money. At the very least, you would need their full name and their home city.</p>
             <p className="flavourtext">Whatever you're going to do, do it fast.</p>
             <hr></hr>
-            <p>{gameState?.gameStatus.comment}</p>
+            <p className="commenttext">{gameState?.gameStatus.comment}</p>
             <p>{editableText(parseInt(AiDee))}</p>
             <p></p>
             <div className="lair"></div>
