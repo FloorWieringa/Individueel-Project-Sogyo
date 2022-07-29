@@ -116,5 +116,6 @@ p{
     .sidebar a {font-size: 18px;}
     .flavourtext {font-size: 16px};
     .commenttext {font-size: 16px;}
-    .roomtable {overflow-x:auto};
+    .roomtable {overflow-x: auto};
+    .room {overflow-x: auto};
   }
