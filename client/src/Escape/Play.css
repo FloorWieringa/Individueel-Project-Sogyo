@@ -43,7 +43,9 @@ p{
     padding: 0px;
     margin: 0px;
     max-width: 100%;
-    height: auto;
+    height: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .inventorycheat {
@@ -118,4 +120,5 @@ p{
     .commenttext {font-size: 16px;}
     .roomtable {overflow-x: auto};
     .room {overflow-x: auto};
+
   }
