@@ -630,7 +630,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             }
             break;
             default:
-                return "";
+                return ""; 
         }
     }
     
