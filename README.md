@@ -11,6 +11,8 @@ Above is a visual example of the room. The first line is the last part of the ex
 ## Installation
 This project uses a Gradle wrapper and currently runs the front-end using Node JS. In order to start the application, open Git Bash (or similar, but then please figure out how to translate the commands as well) in the client folder, and run _npm run build_. Then go back to the main folder, open another instance of Bash and run _./gradlew build run_. The application will open automatically. 
 
+Update 280722: currently it only runs on heroku. Commit to git then run _git push heroku main_ to deploy a new version. The app will run here: http://escape-room-the-lair.herokuapp.com/index.html.
+
 ## Usage
 It’s a game. You can play it.
 
@@ -23,9 +25,6 @@ Possible ideas for future developments:
 - 
 
 ## Authors and acknowledgment
-The story design is by Escape This Podcast, who can be found here: https://www.escapethispodcast.com/. Much thanks to them for letting me use their story. 
+The story design is by Escape This Podcast, who can be found here: https://www.escapethispodcast.com/. Much thanks to them for letting me use their story!
+
 The graphic for the main part of the room was made by Connie Sinteur.
-
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
