@@ -5,6 +5,7 @@ h1 {
 
 .computerTable {
     background-image: url(https://i.imgur.com/NkIaoiA.png);
+
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -18,8 +19,8 @@ h1 {
 .computerSpace {
     font-family: Arial, Helvetica, sans-serif;
     color:rgb(0, 0, 0);
-
-
+    height: auto;
+    width: auto;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
