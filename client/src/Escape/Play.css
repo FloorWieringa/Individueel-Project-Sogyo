@@ -129,3 +129,7 @@ p{
   #body {
     margin-right: 250px;
   }
+
+  .holdItem {
+    opacity: 0;
+  }

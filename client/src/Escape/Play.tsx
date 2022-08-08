@@ -174,21 +174,21 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 return (<div>
                     <p>You guess that you could try mixing them, if you knew how and what for.</p>
                     <form>
-                        <p className="flavourtext">Amount of red: </p>
+                        <div className="flavourtext">Amount of red: </div>
                         <input type="text" 
                         value={redMeasure}
                         onChange={(e) => setRedMeasure(e.target.value)}
                         ></input>  
                     </form>
                     <form>
-                        <p className="flavourtext">Amount of blue: </p>
+                        <div className="flavourtext">Amount of blue: </div>
                         <input type="text" 
                         value={blueMeasure}
                         onChange={(e) => setBlueMeasure(e.target.value)}
                         ></input>  
                     </form>
                     <form>
-                        <p className="flavourtext">Amount of yellow: </p>
+                        <div className="flavourtext">Amount of yellow: </div>
                         <input type="text" 
                         value={yellowMeasure}
                         onChange={(e) => setYellowMeasure(e.target.value)}
@@ -855,7 +855,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
 
                     <hr></hr>
                 </div>
-            <p className="HoldItem">{HoldItem}</p>
+            <p className="holdItem">{HoldItem}</p>
             <p></p>
         </div>
     ) 
