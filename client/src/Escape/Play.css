@@ -93,7 +93,7 @@ p{
 
 #inventoryItems {
   text-align: right;
-  padding-left: 50px;
+  padding-right: 50px;
   color:rgb(255, 234, 209);
   font-family:'Courier New', Courier, monospace;
   font-size: 20px;
@@ -108,7 +108,7 @@ p{
     position: fixed;
     bottom: 0;
     width: 20%;
-    left: 0;
+    right: 0;
   }
   
   @media screen and (max-height: 450px) {
