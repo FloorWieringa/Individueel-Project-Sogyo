@@ -85,10 +85,6 @@ that silly reward.</p>
             {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
             </>
             </div>
-            <p className="inventorycheat">.</p>
-            <p className="inventorycheat">.</p>
-            <p className="inventorycheat">.</p>
-            <p className="inventorycheat">.</p>
         </div>
     )
 }
