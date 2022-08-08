@@ -9,6 +9,8 @@ h1 {
 
 #computerTable {
     position: relative;
+    height: 180px;
+    width: 200px;
 }
 
 .computerSpace {
