@@ -12,7 +12,7 @@ export function Computer2({ gameState, setGameState }: PlayProps) {
 
     const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
 
-        return <div>
+        return <div id="body">
         <h1>Close-up of the computer screen</h1>
         <p></p>
         <table className="computerTable">

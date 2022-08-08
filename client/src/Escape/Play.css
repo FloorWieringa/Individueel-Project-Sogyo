@@ -98,3 +98,7 @@ p{
   .room {
     position: relative;
   }
+
+  #body {
+    margin-right: 250px;
+  }

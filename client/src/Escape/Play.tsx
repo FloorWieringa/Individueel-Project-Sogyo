@@ -635,7 +635,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
     }
     
     return (
-        <div>
+        <div id="body">
             <p className="flavourtext"> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
             <p className="flavourtext">In the corner opposite you is a large desk with a high-tech computer and a world map sitting on the surface, and stretching along the wall beside it is some kind of DIY chemistry lab. There's a large bookcase on the other side of the desk, 
                 and a small bed for when all the hero work tires them out.</p> 

@@ -11,7 +11,7 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
     var [townForceOfNature, setTownForceOfNature] = useState("");
     var [namePreviousVictim, setNamePreviousVictim] = useState("");
 
-    return <div>
+    return <div id="body">
         <h1>Elevator</h1>
         <p className="flavourtext">It's still beeping, but the inside looks like an 
         ordinary elevator. It has all the usual buttons, the weight capacity sign, the box with an 

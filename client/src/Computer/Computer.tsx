@@ -37,7 +37,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
 
     if ((submittedPassword == "BEGIN") || (submittedPassword == "begin") || (submittedPassword == "Begin")){
 
-        return <div>
+        return <div id="body">
             <h1>Close-up of the computer screen</h1>
         <p></p>
         <table className="computerTable">
@@ -93,7 +93,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         </div>
     }
     else {
-        return <div>
+        return <div id="body">
         <h1>Close-up of the computer screen</h1>
         <p></p>
         <table className="computerTable">
