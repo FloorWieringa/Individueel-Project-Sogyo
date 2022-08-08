@@ -44,6 +44,17 @@ export function StartGame({ setGameState }: StartGameProps) {
 
     return (
         <div>
+        <p className="flavourtext"> You find yourself in a squat, low-ceilinged room. For a second you're ecstatic –- there's no doubt whatsoever that this is a lair.</p> 
+        <p className="flavourtext">In the corner opposite you is a large desk with a high-tech computer and a world map sitting on the surface, and stretching along the wall beside it is some kind of DIY chemistry lab. There's a large bookcase on the other side of the desk, 
+            and a small bed for when all the hero work tires them out.</p> 
+        <p className="flavourtext">But then a funny feeling comes over you. In the centre of the room is a chair with a coil of rope beside it, like it's been used for tying someone up and torturing them. On the wall closest to you is a series of photos, but they're hung in less of
+            a 'family memories' way and more of a 'murderous stalker' way. To your left is a pedestal, on which sits a stationary, robotic prosthetic hand. Just behind that is a glass case that
+            looks like it should hold weapons, and further back still is the most damning thing: a costume rack. But it isn't the costume of Force of Nature. </p>
+        <p className="flavourtext">It's the costume of Viperyon, the most heinous hero massacre-ist on this side of the planet.</p>
+        <p className="flavourtext">Looks like you may have screwed up.</p>
+        <p className="flavourtext">Now you're in somewhat of a sticky situation. You absolutely don't want to be here when Viperyon returns, but you have no idea how to get the elevator working again. Also, although you may have failed in your search for Force of Nature's lair, Viperyon is an expert at disseminating the identities of heroes and tracking them down. You might be able to get the information you need from here and still get that reward money. At the very least, you would need their full name and their home city.</p>
+        <p className="flavourtext">Whatever you're going to do, do it fast.</p>
+        <hr></hr>
         <form onSubmit={(e) => tryStartGame(e)}>
             <input id="input" value={playerOne}
                 placeholder="Your name here"
@@ -52,7 +63,7 @@ export function StartGame({ setGameState }: StartGameProps) {
             <p></p>
 
             <button className="startGameButton" type="submit">
-                Enter the room
+                Start game
             </button>
         </form>
         <p></p>
@@ -65,6 +76,7 @@ export function StartGame({ setGameState }: StartGameProps) {
         <p>- The golden rule of escape rooms still applies: breaking things is never the solution. </p>
         <p>- Don't refresh the page after starting!</p>
         <p>- Different screen resolutions not yet supported: if you see white around the image, please change back to full screen. The mapping will be off otherwise.</p> 
+        <p>- You *never* need to press enter! Doing so will mess up the page.</p>
         </div>
     )
 }

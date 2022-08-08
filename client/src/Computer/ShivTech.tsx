@@ -10,6 +10,8 @@ type PlayProps = {
 
 export function ShivTech({ gameState, setGameState }: PlayProps) {
 
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
+
     async function changeText(id:number){
         try{
             const response = await fetch('escape/api/change', {
@@ -79,6 +81,12 @@ export function ShivTech({ gameState, setGameState }: PlayProps) {
         <p></p>
         <p>You type in the password, hit 'confirm', and just like that, the buzzing in the air is silenced. The lasers are off.</p>
         <Link to="/computer2" className="flavourtext"> Return </Link>
+        <div className="sidebar" id="sidebar"> 
+            <>
+            <h2 id="inventory"> Inventory </h2>
+            {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+            </>
+        </div>
         </div>
     }
     else {
@@ -137,6 +145,12 @@ export function ShivTech({ gameState, setGameState }: PlayProps) {
         </div>
         <p>     </p>
         <Link to="/computer2" className="flavourtext"> Return </Link>
+        <div className="sidebar" id="sidebar"> 
+            <>
+            <h2 id="inventory"> Inventory </h2>
+            {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+            </>
+        </div>
     </div>
     }
 }

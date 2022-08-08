@@ -1,7 +1,16 @@
 import "./Heroes.css";
 import { Link } from "react-router-dom";
+import type { GameState } from "../gameState";
 
-export function Heroes() {
+type PlayProps = {
+    gameState: GameState | undefined;
+    setGameState(newGameState: GameState): void;
+}
+
+export function Heroes({ gameState, setGameState }: PlayProps) {
+
+    const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
+
     return (
         <div>
             <h1>Close-up of the computer screen</h1>
@@ -70,6 +79,12 @@ document, but I'm not foolish enough to risk it. I won't let anyone use my geniu
 that silly reward.</p>
             <p></p>
             <Link to="/computer2" className="flavourtext"> Return </Link> 
+            <div className="sidebar" id="sidebar"> 
+            <>
+            <h2 id="inventory"> Inventory </h2>
+            {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
+            </>
+            </div>
             <p className="inventorycheat">.</p>
             <p className="inventorycheat">.</p>
             <p className="inventorycheat">.</p>
