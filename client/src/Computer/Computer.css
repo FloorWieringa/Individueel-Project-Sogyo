@@ -13,14 +13,14 @@ h1 {
 #computerTable {
     position: relative;
     height: 360px;
-    width: 400px;
+    width: 360px;
 }
 
 .computerSpace {
     font-family: Arial, Helvetica, sans-serif;
     color:rgb(0, 0, 0);
-    height: auto;
-    width: auto;
+    height: 72px;
+    width: 72px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
