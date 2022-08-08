@@ -876,5 +876,5 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             <p className="HoldItem">{HoldItem}</p>
             <p></p>
         </div>
-    )
+    ) 
 }
