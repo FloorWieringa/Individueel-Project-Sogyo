@@ -5,6 +5,9 @@ h1 {
 
 .computerTable {
     background-image: url(https://i.imgur.com/NkIaoiA.png);
+}
+
+#computerTable {
     position: relative;
 }
 
