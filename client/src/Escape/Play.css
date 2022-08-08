@@ -80,6 +80,7 @@ p{
 #inventory {
     text-align: right;
     padding-right: 50px;
+    padding-top: 100px;
 }
 
 #inventoryItems {

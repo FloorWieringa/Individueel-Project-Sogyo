@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export function Play({ gameState, setGameState }: {gameState : GameState | undefined; setGameState: React.Dispatch<React.SetStateAction<GameState | undefined>>}) {
     const [HoldItem, setHoldItem] = useState("");
     const [AiDee, setAiDee] = useState("");
-    
+
     async function changeText(id:number){
         try{
             const response = await fetch('escape/api/change', {
@@ -637,9 +637,6 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
 
     return (
         <div id="body">
-            <p className="commenttext">{gameState?.gameStatus.comment}</p>
-            <p>{editableText(parseInt(AiDee))}</p>
-            <p></p>
             <div className="lair"></div>
                 <div className="room">
                     <table className="roomtable">           
@@ -863,6 +860,9 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="inventorycheat">.</p>
                     <hr></hr>
                 </div>
+            <p className="commenttext">{gameState?.gameStatus.comment}</p>
+            <p>{editableText(parseInt(AiDee))}</p>
+            <p></p>
             <p className="HoldItem">{HoldItem}</p>
             <p></p>
         </div>
