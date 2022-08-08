@@ -843,6 +843,9 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                         </tr> 
                         </tbody> 
                     </table>
+                    <p className="commenttext">{gameState?.gameStatus.comment}</p>
+                    <p>{editableText(parseInt(AiDee))}</p>
+                    <p></p>
                     <div className="sidebar" id="sidebar"> 
                     <>
                     <h2 id="inventory"> Inventory </h2>
@@ -860,9 +863,6 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="inventorycheat">.</p>
                     <hr></hr>
                 </div>
-            <p className="commenttext">{gameState?.gameStatus.comment}</p>
-            <p>{editableText(parseInt(AiDee))}</p>
-            <p></p>
             <p className="HoldItem">{HoldItem}</p>
             <p></p>
         </div>
