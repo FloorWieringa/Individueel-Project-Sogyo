@@ -5,12 +5,14 @@ h1 {
 
 .computerTable {
     background-image: url(https://i.imgur.com/NkIaoiA.png);
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 #computerTable {
     position: relative;
-    height: 180px;
-    width: 200px;
+    height: 360px;
+    width: 400px;
 }
 
 .computerSpace {
