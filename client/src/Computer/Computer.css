@@ -17,3 +17,63 @@ h1 {
     vertical-align: bottom;
     cursor: pointer;
 }
+
+#computerSpaceA1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#computerSpaceA2 {
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+#computerSpaceA3 {
+    position: absolute;
+    top: 0;
+    left: 80;
+}
+
+#computerSpaceA4 {
+    position: absolute;
+    top: 0;
+    left: 120px;
+}
+
+#computerSpaceA5 {
+    position: absolute;
+    top: 0;
+    left: 160;
+}
+
+#computerSpaceB1 {
+    position: absolute;
+    top: 36px;
+    left: 0;
+}
+
+#computerSpaceB2 {
+    position: absolute;
+    top: 36px;
+    left: 40px;
+}
+
+#computerSpaceB3 {
+    position: absolute;
+    top: 36px;
+    left: 80;
+}
+
+#computerSpaceB4 {
+    position: absolute;
+    top: 36px;
+    left: 120px;
+}
+
+#computerSpaceB5 {
+    position: absolute;
+    top: 36px;
+    left: 160;
+}

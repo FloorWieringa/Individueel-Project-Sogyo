@@ -852,11 +852,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
                     </>
                     </div>
-
-                    <hr></hr>
                 </div>
             <p className="holdItem">{HoldItem}</p>
-            <p></p>
         </div>
     ) 
 }
