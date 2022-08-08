@@ -7,7 +7,6 @@ import { Escaped } from "./Escaped/Escaped";
 import { Escape } from "./Escape/Escape";
 import { FailedEscape } from "./FailedEscape/FailedEscape";
 import { Computer } from "./Computer/Computer";
-import { Bookcase } from "./Bookcase/Bookcase";
 import { Lift } from "./Lift/Lift";
 import { Play } from "./Escape/Play"
 import { ShivTech } from "./Computer/ShivTech";
@@ -42,7 +41,6 @@ export function App() {
                     }
                     <Route path="/failedescape" element={<FailedEscape />} />
                     <Route path="/computer" element={<Computer gameState={gameState} setGameState={setGameState}/>} />
-                    <Route path="/bookcase" element={<Bookcase />} />
                     <Route path="/lift" element={<Lift gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/shivtech" element={<ShivTech gameState={gameState} setGameState={setGameState}/>} />
                     <Route path="/heroes" element={<Heroes gameState={gameState} setGameState={setGameState}/>} />
