@@ -474,6 +474,7 @@ p{
     height: 486px;
     position: relative;
     background-size: contain;
+    margin-right: 250px;
 }
 
 .italicText {
@@ -545,14 +546,11 @@ p{
     .commenttext {font-size: 16px;}
     .roomtable {overflow-x: auto};
     .room {overflow-x: auto};
+
   }
 
   .room {
     position: relative;
-  }
-
-  #body {
-    margin-right: 250px;
   }
 
   .holdItem {

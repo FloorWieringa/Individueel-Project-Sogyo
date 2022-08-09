@@ -721,12 +721,12 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="commenttext">{gameState?.gameStatus.comment}</p>
                     <p>{editableText(parseInt(AiDee))}</p>
                     <p></p>
-                    <div className="sidebar" id="sidebar"> 
+                </div>
+                <div className="sidebar" id="sidebar"> 
                     <>
                     <h2 id="inventory"> Inventory </h2>
                     {itemsInPossession?.map((item)=>{return <div id="inventoryItems">{item.name}</div>})}
                     </>
-                    </div>
                 </div>
             <p className="holdItem">{HoldItem}</p>
         </div>
