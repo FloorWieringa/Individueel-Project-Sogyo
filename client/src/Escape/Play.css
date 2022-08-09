@@ -525,7 +525,7 @@ p{
     overflow: hidden;
     position: fixed;
     bottom: 0;
-    top: 0;
+    height: 100%;
     right: 0;
     width: 250px;
   }
@@ -550,7 +550,7 @@ p{
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 200px;
+        height: 100px;
     }
     .sidebar a {font-size: 18px;}
     .flavourtext {font-size: 17px};
