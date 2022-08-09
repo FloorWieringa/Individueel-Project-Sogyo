@@ -540,13 +540,23 @@ p{
 }
   
   @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
+    .sidebar {
+        padding-top: 15px;
+        top: 80%;
+        left: 0;
+        width: max-content;
+    }
     .sidebar a {font-size: 18px;}
     .flavourtext {font-size: 16px};
     .commenttext {font-size: 16px;}
     .roomtable {overflow-x: auto};
     .room {overflow-x: auto};
+    .body {margin-right: 0px;}
 
+  }
+
+  .body {
+    margin-right: 250px;
   }
 
   .room {
