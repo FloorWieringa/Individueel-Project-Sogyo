@@ -97,23 +97,11 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         <h1>Close-up of the computer screen</h1>
         <p></p>
         <div className="computerTable" id="computerTable">
-            <div className="computerSpace" id="computerSpaceA1"></div>
-            <div className="computerSpace" id="computerSpaceA2"></div>
-            <div className="computerSpace" id="computerSpaceA3"></div>
-            <div className="computerSpace" id="computerSpaceA4"></div>
-            <div className="computerSpace" id="computerSpaceA5"></div>
+            <div className="computerSpaceRow" id="computerSpaceA1"></div>
 
-            <div className="computerSpace" id="computerSpaceB1"></div>
-            <div className="computerSpace" id="computerSpaceB2"></div>
-            <div className="computerSpace" id="computerSpaceB3"></div>
-            <div className="computerSpace" id="computerSpaceB4"></div>
-            <div className="computerSpace" id="computerSpaceB5"></div>
+            <div className="computerSpaceRow" id="computerSpaceB1"></div>
 
-            <div className="computerSpace" id="computerSpaceC1"></div>
-            <div className="computerSpace" id="computerSpaceC2"></div>
-            <div className="computerSpace" id="computerSpaceC3"></div>
-            <div className="computerSpace" id="computerSpaceC4"></div>
-            <div className="computerSpace" id="computerSpaceC5"></div>
+            <div className="computerSpaceRow" id="computerSpaceC1"></div>
 
             <div className="computerSpace" id="computerSpaceD1"></div>
             <div className="computerSpace" id="computerSpaceD2"></div>

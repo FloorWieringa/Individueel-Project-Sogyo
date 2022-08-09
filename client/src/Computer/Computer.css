@@ -19,8 +19,19 @@ h1 {
 .computerSpace {
     font-family: Arial, Helvetica, sans-serif;
     color:rgb(0, 0, 0);
-    height: 70px;
+    height: 69px;
     width: 80px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+.computerSpaceRow {
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(0, 0, 0);
+    height: 69px;
+    width: 400px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -33,88 +44,16 @@ h1 {
     left: 0;
 }
 
-#computerSpaceA2 {
-    position: absolute;
-    top: 0;
-    left: 20%;
-}
-
-#computerSpaceA3 {
-    position: absolute;
-    top: 0;
-    left: 40%;
-}
-
-#computerSpaceA4 {
-    position: absolute;
-    top: 0;
-    left: 60%;
-}
-
-#computerSpaceA5 {
-    position: absolute;
-    top: 0;
-    left: 80%;
-}
-
 #computerSpaceB1 {
     position: absolute;
     top: 20%;
     left: 0;
 }
 
-#computerSpaceB2 {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-}
-
-#computerSpaceB3 {
-    position: absolute;
-    top: 20%;
-    left: 40%;
-}
-
-#computerSpaceB4 {
-    position: absolute;
-    top: 20%;
-    left: 60%;
-}
-
-#computerSpaceB5 {
-    position: absolute;
-    top: 20%;
-    left: 80%;
-}
-
 #computerSpaceC1 {
     position: absolute;
     top: 40%;
     left: 0;
-}
-
-#computerSpaceC2 {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-}
-
-#computerSpaceC3 {
-    position: absolute;
-    top: 40%;
-    left: 40%;
-}
-
-#computerSpaceC4 {
-    position: absolute;
-    top: 40%;
-    left: 60%;
-}
-
-#computerSpaceC5 {
-    position: absolute;
-    top: 40%;
-    left: 80%;
 }
 
 #computerSpaceD1 {
