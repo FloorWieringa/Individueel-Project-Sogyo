@@ -40,45 +40,13 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         return <div id="body">
             <h1>Close-up of the computer screen</h1>
         <p></p>
-        <table className="computerTable">
-            <tbody>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="computerTable" id="computerTable">
+            <div className="computerSpaceRow" id="computerSpaceA1"></div>
+            <div className="computerSpaceRow" id="computerSpaceB1"></div>
+            <div className="computerSpaceRow" id="computerSpaceC1"></div>
+            <div className="computerSpaceRow" id="computerSpaceD1"></div>
+            <div className="computerSpaceRow" id="computerSpaceE1"></div>
+        </div>
         <p></p>
             <p className="flavourtext"> Correct Password! </p>
         <Link to="/computer2" className="flavourtext"> Enter </Link>
@@ -98,21 +66,11 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         <p></p>
         <div className="computerTable" id="computerTable">
             <div className="computerSpaceRow" id="computerSpaceA1"></div>
-
             <div className="computerSpaceRow" id="computerSpaceB1"></div>
-
             <div className="computerSpaceRow" id="computerSpaceC1"></div>
-
-            <div className="computerSpace" id="computerSpaceD1"></div>
-            <div className="computerSpace" id="computerSpaceD2"></div>
-            <div className="computerSpace" id="computerSpaceD3"></div>
-            <div className="computerSpace" id="computerSpaceD4"></div>
+            <div className="computerSpacePartRow" id="computerSpaceD1"></div>
             <div className="computerSpace" id="computerSpaceD5" onClick={()=>examineMouse()}>.</div>
-
-            <div className="computerSpace" id="computerSpaceE1"></div>
-            <div className="computerSpace" id="computerSpaceE2"></div>
-            <div className="computerSpace" id="computerSpaceE3"></div>
-            <div className="computerSpace" id="computerSpaceE4"></div>
+            <div className="computerSpacePartRow" id="computerSpaceE1"></div>
             <div className="computerSpace" id="computerSpaceE5" onClick={()=>examineMouse()}>.</div>
         </div>
         <p></p>

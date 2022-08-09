@@ -1,27 +1,463 @@
-td {
-    empty-cells: hide;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 8px;
-}
-
-table {
-    border: none;
-    margin: 0px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center; 
-    cursor: pointer;
-}
-
-.space {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color:rgb(255, 248, 240);
+.space1 {
     height: 36px;
     width: 40px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
     opacity: 0;
+}
+
+.space2 {
+    height: 36px;
+    width: 80px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
+.space3 {
+    height: 36px;
+    width: 120px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
+.space4 {
+    height: 36px;
+    width: 160px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
+.space5 {
+    height: 36px;
+    width: 200px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
+.space6 {
+    height: 36px;
+    width: 240px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
+#emptyA1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#costumestandA3 {
+    position: absolute;
+    top: 0;
+    left: 11.11%;
+}
+
+#emptyA6 {
+    position: absolute;
+    top: 0;
+    left: 27.78%;
+}
+
+#chemtableA8 {
+    position: absolute;
+    top: 0;
+    left: 38.89%;
+}
+
+#emptyA13 {
+    position: absolute;
+    top: 0;
+    left: 66.67%;
+}
+
+#deskA16 {
+    position: absolute;
+    top: 0;
+    left: 83.33%;
+}
+
+#pcA17 {
+    position: absolute;
+    top: 0;
+    left: 88.89%;
+}
+
+#glasscaseB1 {
+    position: absolute;
+    top: 10%;
+    left: 0;
+}
+
+#emptyB2 {
+    position: absolute;
+    top: 10%;
+    left: 5.56%;
+}
+
+#chemtableB8 {
+    position: absolute;
+    top: 10%;
+    left: 38.89%;
+}
+
+#emptyB13 {
+    position: absolute;
+    top: 10%;
+    left: 66.67%;
+}
+
+#deskB16 {
+    position: absolute;
+    top: 10%;
+    left: 83.33%;
+}
+
+#pcB17 {
+    position: absolute;
+    top: 10%;
+    left: 88.89%;
+}
+
+#glasscaseC1 {
+    position: absolute;
+    top: 20%;
+    left: 0;
+}
+
+#emptyC2 {
+    position: absolute;
+    top: 20%;
+    left: 5.56%;
+}
+
+#robothandC3 {
+    position: absolute;
+    top: 20%;
+    left: 11.11%;
+}
+
+#emptyC5 {
+    position: absolute;
+    top: 20%;
+    left: 22.22%;
+}
+
+#emptyC11 {
+    position: absolute;
+    top: 20%;
+    left: 55.56%;
+}
+
+#deskC16 {
+    position: absolute;
+    top: 20%;
+    left: 83.33%;
+}
+
+#worldmapC17 {
+    position: absolute;
+    top: 20%;
+    left: 88.89%;
+}
+
+#emptyD1 {
+    position: absolute;
+    top: 30%;
+    left: 0;
+}
+
+#invisiblebarrierD7 {
+    position: absolute;
+    top: 30%;
+    left: 33.33%;
+}
+
+#emptyD13 {
+    position: absolute;
+    top: 30%;
+    left: 66.67%;
+}
+
+#deskD16 {
+    position: absolute;
+    top: 30%;
+    left: 83.33%;
+}
+
+#worldmapD17 {
+    position: absolute;
+    top: 30%;
+    left: 88.89%;
+}
+
+#emptyE1 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+}
+
+#invisiblebarrierE7 {
+    position: absolute;
+    top: 40%;
+    left: 33.33%;
+}
+
+#chairE8 {
+    position: absolute;
+    top: 40%;
+    left: 38.89%;
+}
+
+#coiledropeE10 {
+    position: absolute;
+    top: 40%;
+    left: 50.00%;
+}
+
+#invisiblebarrierE12 {
+    position: absolute;
+    top: 40%;
+    left: 61.11%;
+}
+
+#emptyE13 {
+    position: absolute;
+    top: 40%;
+    left: 66.67%;
+}
+
+#deskE16 {
+    position: absolute;
+    top: 40%;
+    left: 83.33%;
+}
+
+#worldmapE17 {
+    position: absolute;
+    top: 40%;
+    left: 88.89%;
+}
+
+#liftdoorF1 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+#emptyF2 {
+    position: absolute;
+    top: 50%;
+    left: 5.56%;
+}
+
+#trapdoorF3 {
+    position: absolute;
+    top: 50%;
+    left: 11.11%;
+}
+
+#emptyF5 {
+    position: absolute;
+    top: 50%;
+    left: 22.22%;
+}
+
+#invisiblebarrierF7 {
+    position: absolute;
+    top: 50%;
+    left: 33.33%;
+}
+
+#emptyF13 {
+    position: absolute;
+    top: 50%;
+    left: 66.67%;
+}
+
+#liftdoorG1 {
+    position: absolute;
+    top: 60%;
+    left: 0;
+}
+
+#emptyG2 {
+    position: absolute;
+    top: 60%;
+    left: 5.56%;
+}
+
+#trapdoorG3 {
+    position: absolute;
+    top: 60%;
+    left: 11.11%;
+}
+
+#emptyG5 {
+    position: absolute;
+    top: 60%;
+    left: 22.22%;
+}
+
+#nexttobedG9 {
+    position: absolute;
+    top: 60%;
+    left: 44.44%;
+}
+
+#emptyG14 {
+    position: absolute;
+    top: 60%;
+    left: 72.23%;
+}
+
+#bookcaseG17 {
+    position: absolute;
+    top: 60%;
+    left: 88.89%;
+}
+
+#emptyH1 {
+    position: absolute;
+    top: 70%;
+    left: 0;
+}
+
+#emptyH5 {
+    position: absolute;
+    top: 70%;
+    left: 22.22%;
+}
+
+#nexttobedH8 {
+    position: absolute;
+    top: 70%;
+    left: 38.89%;
+}
+
+#bedH9 {
+    position: absolute;
+    top: 70%;
+    left: 44.44%;
+}
+
+#nexttobedH14 {
+    position: absolute;
+    top: 70%;
+    left: 72.23%;
+}
+
+#emptyH15 {
+    position: absolute;
+    top: 70%;
+    left: 77.78%;
+}
+
+#bookcaseH17 {
+    position: absolute;
+    top: 70%;
+    left: 88.89%;
+}
+
+#emptyI1 {
+    position: absolute;
+    top: 80%;
+    left: 0;
+}
+
+#emptyI5 {
+    position: absolute;
+    top: 80%;
+    left: 22.22%;
+}
+
+#nexttobedI8 {
+    position: absolute;
+    top: 80%;
+    left: 38.89%;
+}
+
+#bedI9 {
+    position: absolute;
+    top: 80%;
+    left: 44.44%;
+}
+
+#nexttobedI14 {
+    position: absolute;
+    top: 80%;
+    left: 72.23%;
+}
+
+#emptyI15 {
+    position: absolute;
+    top: 80%;
+    left: 77.78%;
+}
+
+#bookcaseI17 {
+    position: absolute;
+    top: 80%;
+    left: 88.89%;
+}
+
+#emptyJ1 {
+    position: absolute;
+    top: 90%;
+    left: 0;
+}
+
+#stalkerpicturesJ2 {
+    position: absolute;
+    top: 90%;
+    left: 5.56%;
+}
+
+#emptyJ7 {
+    position: absolute;
+    top: 90%;
+    left: 33.33%;
+}
+
+#nexttobedJ8 {
+    position: absolute;
+    top: 90%;
+    left: 38.89%;
+}
+
+#bedJ9 {
+    position: absolute;
+    top: 90%;
+    left: 44.44%;
+}
+
+#nexttobedJ14 {
+    position: absolute;
+    top: 90%;
+    left: 72.23%;
+}
+
+#emptyJ15 {
+    position: absolute;
+    top: 90%;
+    left: 77.78%;
+}
+
+#bookcaseJ17 {
+    position: absolute;
+    top: 90%;
+    left: 88.89%;
 }
 
 p{
@@ -34,8 +470,9 @@ p{
     background-image: url(https://i.imgur.com/JO1aojB.jpg);
     padding: 0px;
     margin: 0px;
-    max-width: 100%;
-    height: auto;
+    width: 1269px;
+    height: 648px;
+    position: relative;
 }
 
 .italicText {

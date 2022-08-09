@@ -639,210 +639,85 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         <div id="body">
             <div className="lair"></div>
                 <div className="room">
-                    <table className="roomtable">           
-                        <tbody>        
-                        <tr>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> A1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 3 </td>
-                            <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 4 </td>
-                            <td className="space" id="costumerack" onClick={()=>changeAllText(1)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 8</td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 9 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 10 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 11 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
-                            <td className="space" id="pc" onClick={()=>changeAllText(4)}> 17 </td>
-                            <td className="space" id="pc" onClick={()=>changeAllText(4)}> 18 </td>
-                        </tr>                    
-                        <tr>
-                            <td className="space" id="glasscase" onClick={()=>changeAllText(6)}> B1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 8 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 9 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 10 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 11 </td>
-                            <td className="space" id="chemtable" onClick={()=>changeAllText(2)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td> 
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
-                            <td className="space" id="pc" onClick={()=>changeAllText(4)}> 17 </td>
-                            <td className="space" id="pc" onClick={()=>changeAllText(4)}> 18 </td>
-                        </tr>
-                        <tr>
-                            <td className="space" id="glasscase" onClick={()=>changeAllText(6)}> C1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="robothand" onClick={()=>changeAllText(7)}> 3 </td>
-                            <td className="space" id="robothand" onClick={()=>changeAllText(7)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 8 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 9 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 10 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 11 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> D1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 8 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 9 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 10 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 11 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> E1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
-                            <td className="space" id="chair" onClick={()=>changeAllText(9)}> 8 </td>
-                            <td className="space" id="chair" onClick={()=>changeAllText(9)}> 9 </td>
-                            <td className="space" id="coiledrope" onClick={()=>changeAllText(10)}> 10 </td>
-                            <td className="space" id="coiledrope" onClick={()=>changeAllText(10)}> 11 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="desk" onClick={()=>changeAllText(3)}> 16 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 17 </td>
-                            <td className="space" id="worldmap" onClick={()=>changeAllText(5)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="liftdoor" onClick={()=>changeAllText(11)}> F1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 3 </td>
-                            <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 7 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 8 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 9 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 10 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 11 </td>
-                            <td className="space" id="invisiblebarrier" onClick={()=>changeAllText(8)}> 12 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 17 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="liftdoor" onClick={()=>changeAllText(11)}> G1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 3 </td>
-                            <td className="space" id="trapdoor" onClick={()=>changeAllText(12)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 8 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 9 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 10 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 11 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 12 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 13 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> H1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> I1 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 2 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 3 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 4 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 5 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 6 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 7 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 15 </td>
-                            <td className="space" id="empty" onClick={()=>changeAllText(40)}> 16 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
-                        </tr> 
-                        <tr>
-                            <td className="space"> J1 </td>
-                            <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 2 </td>
-                            <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 3 </td>
-                            <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 4 </td>
-                            <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 5 </td>
-                            <td className="space" id="stalkerpictures" onClick={()=>changeAllText(13)}> 6 </td>
-                            <td className="space"> 7 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 8 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 9 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 10 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 11 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 12 </td>
-                            <td className="space" id="bed" onClick={()=>changeAllText(14)}> 13 </td>
-                            <td className="space" id="nexttobed" onClick={()=>changeAllText(16)}> 14 </td>
-                            <td className="space"> 15 </td>
-                            <td className="space"> 16 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 17 </td>
-                            <td className="space" id="bookcase" onClick={()=>changeAllText(15)}> 18 </td>
-                        </tr> 
-                        </tbody> 
-                    </table>
+                    <div className="roomtable">           
+                            <div className="space2" id="emptyA1" onClick={()=>changeAllText(40)}> A1 </div>
+                            <div className="space3" id="costumestandA3" onClick={()=>changeAllText(1)}> 3 </div>
+                            <div className="space2" id="emptyA6" onClick={()=>changeAllText(40)}> 6 </div>
+                            <div className="space5" id="chemtableA8" onClick={()=>changeAllText(2)}> 8</div>
+                            <div className="space3" id="emptyA13" onClick={()=>changeAllText(40)}> 13 </div>
+                            <div className="space1" id="deskA16" onClick={()=>changeAllText(3)}> 16 </div>
+                            <div className="space2" id="pcA17" onClick={()=>changeAllText(4)}> 17 </div>
+
+                            <div className="space1" id="glasscaseB1" onClick={()=>changeAllText(6)}> B1 </div>
+                            <div className="space5" id="emptyB2" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space5" id="chemtableB8" onClick={()=>changeAllText(2)}> 8 </div>
+                            <div className="space3" id="emptyB13" onClick={()=>changeAllText(40)}> 13 </div> 
+                            <div className="space1" id="deskB16" onClick={()=>changeAllText(3)}> 16 </div>
+                            <div className="space2" id="pcB17" onClick={()=>changeAllText(4)}> 17 </div>
+
+                            <div className="space1" id="glasscaseC1" onClick={()=>changeAllText(6)}> C1 </div>
+                            <div className="space1" id="emptyC2" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space2" id="robothandC3" onClick={()=>changeAllText(7)}> 3 </div>
+                            <div className="space6" id="emptyC5" onClick={()=>changeAllText(40)}> 5 </div>
+                            <div className="space5" id="emptyC11" onClick={()=>changeAllText(40)}> 15 </div>
+                            <div className="space1" id="deskC16" onClick={()=>changeAllText(3)}> 16 </div>
+                            <div className="space2" id="worldmapC17" onClick={()=>changeAllText(5)}> 17 </div>
+
+                            <div className="space6" id="emptyD1" onClick={()=>changeAllText(40)}> D1 </div>
+                            <div className="space6" id="invisiblebarrierD7" onClick={()=>changeAllText(8)}> 7 </div>
+                            <div className="space3" id="emptyD13" onClick={()=>changeAllText(40)}> 13 </div>
+                            <div className="space1" id="deskD16" onClick={()=>changeAllText(3)}> 16 </div>
+                            <div className="space2" id="worldmapD17" onClick={()=>changeAllText(5)}> 17 </div>
+
+                            <div className="space6" id="emptyE1" onClick={()=>changeAllText(40)}> E1 </div>
+                            <div className="space1" id="invisiblebarrierE7" onClick={()=>changeAllText(8)}> 7 </div>
+                            <div className="space2" id="chairE8" onClick={()=>changeAllText(9)}> 8 </div>
+                            <div className="space2" id="coiledropeE10" onClick={()=>changeAllText(10)}> 10 </div>
+                            <div className="space1" id="invisiblebarrierE12" onClick={()=>changeAllText(8)}> 12 </div>
+                            <div className="space3" id="emptyE13" onClick={()=>changeAllText(40)}> 13 </div>
+                            <div className="space1" id="deskE16" onClick={()=>changeAllText(3)}> 16 </div>
+                            <div className="space2" id="worldmapE17" onClick={()=>changeAllText(5)}> 17 </div>
+
+                            <div className="space1" id="liftdoorF1" onClick={()=>changeAllText(11)}> F1 </div>
+                            <div className="space1" id="emptyF2" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space2" id="trapdoorF3" onClick={()=>changeAllText(12)}> 3 </div>
+                            <div className="space2" id="emptyF5" onClick={()=>changeAllText(40)}> 5 </div>
+                            <div className="space6" id="invisiblebarrierF7" onClick={()=>changeAllText(8)}> 7 </div>
+                            <div className="space6" id="emptyF13" onClick={()=>changeAllText(40)}> 13 </div>
+
+                            <div className="space1" id="liftdoorG1" onClick={()=>changeAllText(11)}> G1 </div>
+                            <div className="space1" id="emptyG2" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space2" id="trapdoorG3" onClick={()=>changeAllText(12)}> 3 </div>
+                            <div className="space4" id="emptyG5" onClick={()=>changeAllText(40)}> 5 </div>
+                            <div className="space5" id="nexttobedG9" onClick={()=>changeAllText(16)}> 9 </div>
+                            <div className="space3" id="emptyG14" onClick={()=>changeAllText(40)}> 14 </div>
+                            <div className="space2" id="bookcaseG17" onClick={()=>changeAllText(15)}> 17 </div>
+
+                            <div className="space4" id="emptyH1" onClick={()=>changeAllText(40)}> H1 </div>
+                            <div className="space3" id="emptyH5" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space1" id="nexttobedH8" onClick={()=>changeAllText(16)}> 8 </div>
+                            <div className="space5" id="bedH9" onClick={()=>changeAllText(14)}> 9 </div>
+                            <div className="space1" id="nexttobedH14" onClick={()=>changeAllText(16)}> 14 </div>
+                            <div className="space2" id="emptyH15" onClick={()=>changeAllText(40)}> 15 </div>
+                            <div className="space2" id="bookcaseH17" onClick={()=>changeAllText(15)}> 17 </div>
+
+                            <div className="space4" id="emptyI1" onClick={()=>changeAllText(40)}> I1 </div>
+                            <div className="space3" id="emptyI5" onClick={()=>changeAllText(40)}> 5 </div>
+                            <div className="space1" id="nexttobedI8" onClick={()=>changeAllText(16)}> 8 </div>
+                            <div className="space5" id="bedI9" onClick={()=>changeAllText(14)}> 9 </div>
+                            <div className="space1" id="nexttobedI14" onClick={()=>changeAllText(16)}> 14 </div>
+                            <div className="space2" id="emptyI15" onClick={()=>changeAllText(40)}> 15 </div>
+                            <div className="space2" id="bookcaseI17" onClick={()=>changeAllText(15)}> 17 </div>
+
+                            <div className="space1" id="emptyJ1" onClick={()=>changeAllText(40)}> J1 </div>
+                            <div className="space5" id="stalkerpicturesJ2" onClick={()=>changeAllText(13)}> 2 </div>
+                            <div className="space1" id="emptyJ7" onClick={()=>changeAllText(40)}> 7 </div>
+                            <div className="space1" id="nexttobedJ8" onClick={()=>changeAllText(16)}> 8 </div>
+                            <div className="space5" id="bedJ9" onClick={()=>changeAllText(14)}> 9 </div>
+                            <div className="space1" id="nexttobedJ14" onClick={()=>changeAllText(16)}> 14 </div>
+                            <div className="space2" id="emptyJ15"> 15 </div>
+                            <div className="space2" id="bookcaseJ17" onClick={()=>changeAllText(15)}> 17 </div>
+                    </div>
                     <p className="commenttext">{gameState?.gameStatus.comment}</p>
                     <p>{editableText(parseInt(AiDee))}</p>
                     <p></p>
