@@ -550,9 +550,21 @@ p{
     .sidebar a {font-size: 18px;}
     .flavourtext {font-size: 16px};
     .commenttext {font-size: 16px;}
-    .roomtable {overflow-x: auto};
+    .roomtable {
+        overflow-x: auto;
+        margin-right: 0;
+    };
     .room {overflow-x: auto};
     #body {margin-right: 0px;}
+    #inventory {
+        text-align: left;
+        padding-bottom: 2cm;
+        padding-left: 50px;
+    }
+    #inventoryItems {
+        text-align: left;
+        padding-left: 50px;
+    }
 
   }
 
