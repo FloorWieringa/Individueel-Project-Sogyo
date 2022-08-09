@@ -1,6 +1,6 @@
 .space1 {
-    height: 36px;
-    width: 40px;
+    height: 48px;
+    width: 50px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -8,8 +8,8 @@
 }
 
 .space2 {
-    height: 36px;
-    width: 80px;
+    height: 48px;
+    width: 100px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -17,8 +17,8 @@
 }
 
 .space3 {
-    height: 36px;
-    width: 120px;
+    height: 48px;
+    width: 150px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -26,16 +26,7 @@
 }
 
 .space4 {
-    height: 36px;
-    width: 160px;
-    border: transparent;
-    background: transparent;
-    vertical-align: bottom;
-    opacity: 0;
-}
-
-.space5 {
-    height: 36px;
+    height: 48px;
     width: 200px;
     border: transparent;
     background: transparent;
@@ -43,9 +34,18 @@
     opacity: 0;
 }
 
+.space5 {
+    height: 48px;
+    width: 250px;
+    border: transparent;
+    background: transparent;
+    vertical-align: bottom;
+    opacity: 0;
+}
+
 .space6 {
-    height: 36px;
-    width: 240px;
+    height: 48px;
+    width: 300px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -473,6 +473,7 @@ p{
     width: 1269px;
     height: 648px;
     position: relative;
+    background-size: contain;
 }
 
 .italicText {
