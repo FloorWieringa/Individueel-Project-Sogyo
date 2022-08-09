@@ -539,7 +539,7 @@ p{
     cursor: pointer;
 }
   
-  @media screen and (max-height: 450px) {
+  @media screen and (max-height: 850px) {
     .sidebar {
         padding-top: 15px;
         top: 80%;
