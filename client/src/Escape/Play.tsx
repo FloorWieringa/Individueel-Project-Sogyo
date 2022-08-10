@@ -119,6 +119,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
         }
     }
 
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+    }
+
     function editableText(id: number){
         switch(id){
             case 1: // costume stand
@@ -222,7 +226,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 else {return (<div>
                     <p className="flavourtext">Enter password:</p>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <input type="text" 
                         value={casePassword}
                         onChange={(e) => setCasePassword(e.target.value)}
