@@ -480,6 +480,7 @@ p{
     height: 486px;
     position: relative;
     background-size: contain;
+    margin-right: 250px;
     cursor: pointer;
 }
 
@@ -546,6 +547,7 @@ p{
 }
 
 #body {
+    margin-right: 250px;
   }
 
   
@@ -555,12 +557,15 @@ p{
         bottom: 0;
         width: 100%;
         height: auto;
+        overflow: hidden;
+        position: fixed;
     }
     .sidebar a {font-size: 18px;}
     .flavourtext {font-size: 17px};
     .commenttext {
         font-size: 17px;
         margin-right: 0;
+        width: 100%;
     }
     .roomtable {
         overflow-x: auto;
