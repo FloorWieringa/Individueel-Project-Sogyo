@@ -719,7 +719,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                             <div className="space2" id="bookcaseJ17" onClick={()=>changeAllText(15)}> 17 </div>
                     </div>
                     <p className="commenttext">{gameState?.gameStatus.comment}</p>
-                    <p>{editableText(parseInt(AiDee))}</p>
+                    <p className="commenttext">{editableText(parseInt(AiDee))}</p>
                     <p></p>
                 </div>
                 <div className="sidebar" id="sidebar"> 

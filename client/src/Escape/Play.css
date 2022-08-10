@@ -556,7 +556,7 @@ p{
         left: 0;
         bottom: 0;
         width: 100%;
-        height: auto;
+        height: 15%;
         overflow: hidden;
         position: fixed;
     }
@@ -576,6 +576,7 @@ p{
     #inventory {
         text-align: left;
         padding-left: 50px;
+        padding-top: 10px;
     }
     #inventoryItems {
         text-align: left;
