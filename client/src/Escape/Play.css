@@ -570,18 +570,23 @@ p{
     .roomtable {
         overflow-x: auto;
         margin-right: 0;
-        margin-bottom: 15%;
     };
     .room {overflow-x: auto};
-    #body {margin-right: 0px;}
+    #body {
+        margin-right: 0px;
+    }
     #inventory {
         text-align: left;
         padding-left: 50px;
-        padding-top: 10px;
+        font-size: 18px;
     }
     #inventoryItems {
         text-align: left;
         padding-left: 50px;
+        font-size: 17px;
+    }
+    .room {
+        margin-bottom: 15%;
     }
 
   }
