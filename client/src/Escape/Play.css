@@ -570,6 +570,7 @@ p{
     .roomtable {
         overflow-x: auto;
         margin-right: 0;
+        margin-bottom: 15%;
     };
     .room {overflow-x: auto};
     #body {margin-right: 0px;}
