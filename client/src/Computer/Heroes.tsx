@@ -15,45 +15,13 @@ export function Heroes({ gameState, setGameState }: PlayProps) {
         <div>
             <h1>Close-up of the computer screen</h1>
         <p></p>
-        <table className="computerTable">
-            <tbody>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="computerTable" id="computerTable">
+            <div className="computerSpaceRow" id="computerSpaceA1"></div>
+            <div className="computerSpaceRow" id="computerSpaceB1"></div>
+            <div className="computerSpaceRow" id="computerSpaceC1"></div>
+            <div className="computerSpaceRow" id="computerSpaceD1"></div>
+            <div className="computerSpaceRow" id="computerSpaceE1"></div>
+        </div>
         <p></p>
             <h2> A text document opens: </h2>
             <p></p>

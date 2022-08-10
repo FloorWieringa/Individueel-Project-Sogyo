@@ -8,6 +8,10 @@ type PlayProps = {
     setGameState(newGameState: GameState): void;
 }
 
+const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+} // prevents the page from reloading when They Who Do Not Read Instructions press enter
+
 export function ShivTech({ gameState, setGameState }: PlayProps) {
 
     const itemsInPossession = gameState?.players.items.filter((item) => (item.inPossession == true));
@@ -37,46 +41,14 @@ export function ShivTech({ gameState, setGameState }: PlayProps) {
     if ((submittedSecondPassword == "SCRAMBLED BELOW") || (submittedSecondPassword == "scrambled below")){
         changeText(25);
         return <div>
-            <h1>Close-up of the computer screen</h1>
-            <table className="computerTable">
-            <tbody>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Close-up of the computer screen</h1>
+        <div className="computerTable" id="computerTable">
+            <div className="computerSpaceRow" id="computerSpaceA1"></div>
+            <div className="computerSpaceRow" id="computerSpaceB1"></div>
+            <div className="computerSpaceRow" id="computerSpaceC1"></div>
+            <div className="computerSpaceRow" id="computerSpaceD1"></div>
+            <div className="computerSpaceRow" id="computerSpaceE1"></div>
+        </div>
         <p></p>
         <p></p>
         <p>You type in the password, hit 'confirm', and just like that, the buzzing in the air is silenced. The lasers are off.</p>
@@ -93,50 +65,18 @@ export function ShivTech({ gameState, setGameState }: PlayProps) {
         return <div>
         <h1>Close-up of the computer screen</h1>
         <p>     </p>
-        <table className="computerTable">
-            <tbody>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-                <tr>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                    <td className="computerSpace"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="computerTable" id="computerTable">
+            <div className="computerSpaceRow" id="computerSpaceA1"></div>
+            <div className="computerSpaceRow" id="computerSpaceB1"></div>
+            <div className="computerSpaceRow" id="computerSpaceC1"></div>
+            <div className="computerSpaceRow" id="computerSpaceD1"></div>
+            <div className="computerSpaceRow" id="computerSpaceE1"></div>
+        </div>
         <p></p>
         <p>Enter secondary password:</p>
         <p></p>
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text" 
                 value={submittedSecondPassword}
                 onChange={(e) => setSubmittedSecondPassword(e.target.value)}

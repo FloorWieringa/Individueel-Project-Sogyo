@@ -9,6 +9,10 @@ type PlayProps = {
     setGameState(newGameState: GameState): void;
 }
 
+const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+}
+
 export function Computer({ gameState, setGameState }: PlayProps) {
 
     var [submittedPassword, setSubmittedPassword] = useState("");
@@ -79,7 +83,7 @@ export function Computer({ gameState, setGameState }: PlayProps) {
         <p className="flavourtext">Enter Password:</p>
         <p></p>
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text" 
                 value={submittedPassword}
                 onChange={(e) => setSubmittedPassword(e.target.value)}

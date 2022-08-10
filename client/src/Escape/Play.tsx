@@ -148,21 +148,21 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             if ((redMeasure != "2") && gameState?.players.items[5].inPossession == false && gameState?.players.items[5].heldStatus == true){
                 return (<div>
                     <p>You guess that you could try mixing them, if you knew how and what for.</p>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of red: </div>
                         <input type="text" 
                         value={redMeasure}
                         onChange={(e) => setRedMeasure(e.target.value)}
                         ></input>  
                     </form>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of blue: </div>
                         <input type="text" 
                         value={blueMeasure}
                         onChange={(e) => setBlueMeasure(e.target.value)}
                         ></input>  
                     </form>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of yellow: </div>
                         <input type="text" 
                         value={yellowMeasure}
@@ -177,21 +177,21 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             else {
                 return (<div>
                     <p>You guess that you could try mixing them, if you knew how and what for.</p>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of red: </div>
                         <input type="text" 
                         value={redMeasure}
                         onChange={(e) => setRedMeasure(e.target.value)}
                         ></input>  
                     </form>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of blue: </div>
                         <input type="text" 
                         value={blueMeasure}
                         onChange={(e) => setBlueMeasure(e.target.value)}
                         ></input>  
                     </form>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flavourtext">Amount of yellow: </div>
                         <input type="text" 
                         value={yellowMeasure}
