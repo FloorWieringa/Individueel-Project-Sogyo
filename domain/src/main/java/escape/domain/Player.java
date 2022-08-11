@@ -230,7 +230,7 @@ public class Player {
             case 39:
                 return "You notice an interesting looking book on the bottom shelf: Modulanium: the Secret to Modulating Your Own Success. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
             case 41:
-                return "You take another look at the book 'Modulanium: the Secret to Modulating Your Own Success'. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
+                return "You take a look at the book 'Modulanium: the Secret to Modulating Your Own Success'. The first chapter is all about extracting pure liquid Modulanium from its natural compound. Scanning the pages, you understand what you'll need: in simple terms, not using any of the fancy names, you'll need to mix one cup of red liquid, two cups of orange, and one cup of green.";
             default:
                 return " ";
         }

@@ -603,7 +603,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     deepCopy.players.items[5].heldStatus = true;
                     setGameState(deepCopy);}
             await itemToFalse("Book on modulanium");
-            await changeText(40);
+            await changeText(41);
             } else {
                 console.log("Nothing happens.");
             }
