@@ -17,56 +17,27 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
         ordinary elevator. It has all the usual buttons, the weight capacity sign, the box with an 
         emergency phone, nothing extraordinary.</p>
         <div className="liftRoom">
-                <table className="liftTable">           
-                    <tbody>        
-                    <tr>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onBlackBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onBlackBackground" onClick={()=>examinePhoneBox()}>.</td>
-                    </tr>
-                    <tr>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                    </tr>
-                    <tr>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                    </tr>
-                    <tr>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace"></td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onBlackBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                    </tr>
-                    <tr>
-                        <td className="liftspace"> </td>
-                        <td className="liftspace"> </td>
-                        <td className="liftspace"> </td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                        <td className="liftspace" id="onWhiteBackground" onClick={()=>examinePhoneBox()}>.</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div className="liftTable">           
+                        <div className="liftspace" id="liftA1"></div>
+                        <div className="liftspaceclickable" id="liftA2" onClick={()=>examinePhoneBox()}>.</div>
+
+                        <div className="liftspace" id="liftB1"></div>
+                        <div className="liftspaceclickable" id="liftB2" onClick={()=>examinePhoneBox()}>.</div>
+
+                        <div className="liftspace" id="liftC1"></div>
+                        <div className="liftspaceclickable" id="liftC2" onClick={()=>examinePhoneBox()}>.</div>
+
+                        <div className="liftspace" id="liftD1"></div>
+                        <div className="liftspaceclickable" id="liftD2" onClick={()=>examinePhoneBox()}>.</div>
+
+                        <div className="liftspace" id="liftE1"></div>
+                        <div className="liftspaceclickable" id="liftE2" onClick={()=>examinePhoneBox()}>.</div>
+                </div>
                 <p>     </p>
                 {
                     PhoneBox != "" && <div className="flavourtext">
                         <div id="textBeforeAddItem">You open the emergency phone box. The cord for the phone has been cut. Typical. But sitting in the box is <div id="addItem" onClick={()=>addItem(32)}> 
-                             a small piece of wire.</div></div>
-                            <div> It doesn't belong here, but it does look like it would be functional if put in the right place.</div>
+                             a small piece of wire.</div><div> It doesn't belong here, but it does look like it would be functional if put in the right place.</div></div>
                     </div>
                 }
                 <p></p>

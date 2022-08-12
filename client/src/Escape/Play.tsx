@@ -226,8 +226,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 if ((casePassword == "AFHNZ") || (casePassword == "afhnz")){
                     return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
                         Inside there are lots of spaces for weapons, but it's almost completely empty at the 
-                        moment. Viperyon must have taken them out for a while. The only thing he's left behind an aerosol can labelled
-                        is <div id="addItem" className="flavourtext" onClick={()=>addItem(37)}> 'Instant Fog'.</div></div>
+                        moment. Viperyon must have taken them out for a while. The only thing he's left behind is an aerosol can labelled
+                        <div id="addItem" className="flavourtext" onClick={()=>addItem(37)}> 'Instant Fog'.</div></div>
                         <p></p>
                         <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                         <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
