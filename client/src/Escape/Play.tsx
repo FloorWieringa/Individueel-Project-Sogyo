@@ -134,10 +134,10 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             }
             if (gameState?.players.items[6].heldStatus == true && gameState?.players.items[6].inPossession == false && gameState?.players.items[1].heldStatus == false){
                 return (<div><div id="textBeforeAddItem"> Now that you're getting a closer look at the costume stand, 
-                you see that this is </div><div id="addItem" className="flavourtext" onClick={()=>changeText(27)}> Viperyon's backup 
-                costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard.</div>
-                There's a secret compartment inside, and it contains <div id="addItem" onClick={()=>addItem(26)}> a slim book. 
-                </div>You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div>
+                you see that this is </div> <div id="addItem" className="flavourtext" onClick={()=>changeText(27)}> Viperyon's backup 
+                costume. </div> <div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard.</div>
+                There's a secret compartment inside, and it contains <div id="addItem" className="flavourtext" onClick={()=>addItem(26)}> a slim book. 
+                </div> You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div>
                 );
             }
             else {
