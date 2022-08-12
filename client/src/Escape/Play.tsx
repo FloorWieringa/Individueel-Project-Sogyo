@@ -148,8 +148,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             }
             case 2: // chemistry table
             if ((blueMeasure == "0.5" || blueMeasure == "0,5") && (yellowMeasure == "1.5" || yellowMeasure == "1,5") && (redMeasure == "2" || redMeasure == "2.0" || redMeasure == "2,0")){
-                return (<div><div id="addItem" className="flavourtext" onClick={()=>addItem(22)}>Following some strange rules of chemistry that you don't 100% understand, 
-                the mixture shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
+                return (<div><div id="textBeforeAddItem">Following some strange rules of chemistry that you don't 100% understand, <div id="addItem" className="flavourtext" onClick={()=>addItem(22)}>
+                    the mixture </div>shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
             }

@@ -35,9 +35,9 @@ export function Lift({ gameState, setGameState }: {gameState : GameState | undef
                 </div>
                 <p>     </p>
                 {
-                    PhoneBox != "" && <div className="flavourtext">
-                        <div id="textBeforeAddItem">You open the emergency phone box. The cord for the phone has been cut. Typical. But sitting in the box is <div id="addItem" onClick={()=>addItem(32)}> 
-                             a small piece of wire.</div><div> It doesn't belong here, but it does look like it would be functional if put in the right place.</div></div>
+                    PhoneBox != "" && <div>
+                        <div id="textBeforeAddItem">You open the emergency phone box. The cord for the phone has been cut. Typical. But sitting in the box is <div className="flavourtext" id="addItem" onClick={()=>addItem(32)}> 
+                             a small piece of wire.</div> It doesn't belong here, but it does look like it would be functional if put in the right place.</div>
                     </div>
                 }
                 <p></p>

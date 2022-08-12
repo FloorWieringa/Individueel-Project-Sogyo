@@ -16,8 +16,8 @@ h1 {
 
 .liftspaceclickable {
     font-family: Arial, Helvetica, sans-serif;
-    height: 30px;
-    width: 120px;
+    height: 59px;
+    width: 220px;
     border: transparent;
     background: transparent;
     vertical-align: bottom;
@@ -37,7 +37,7 @@ h1 {
 
 #liftB1 {
     top: 20%;
-    left: 50%;
+    left: 0%;
 }
 
 #liftB2 {
@@ -47,7 +47,7 @@ h1 {
 
 #liftC1 {
     top: 40%;
-    left: 50%;
+    left: 0%;
 }
 
 #liftC2 {
@@ -57,7 +57,7 @@ h1 {
 
 #liftD1 {
     top: 60%;
-    left: 50%;
+    left: 0%;
 }
 
 #liftD2 {
@@ -67,7 +67,7 @@ h1 {
 
 #liftE1 {
     top: 80%;
-    left: 50%;
+    left: 0%;
 }
 
 #liftE2 {
@@ -79,4 +79,6 @@ h1 {
     background-image: url(https://i.imgur.com/3XiSvGI.png);
     background-size: contain;
     position: relative;
+    height: 296px;
+    width: 480px;
 }
