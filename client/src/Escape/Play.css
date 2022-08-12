@@ -551,7 +551,10 @@ p{
   }
 
   
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 850px) {    
+    #body {
+        margin-right: 0px;
+    }
     .sidebar {
         left: 0;
         bottom: 0;
@@ -572,9 +575,7 @@ p{
         margin-right: 0;
     };
     .room {overflow-x: auto};
-    #body {
-        margin-right: 0px;
-    }
+
     #inventory {
         text-align: left;
         padding-left: 50px;
@@ -588,7 +589,7 @@ p{
         padding-bottom: 5px;
     }
     .room {
-        margin-bottom: 17%;
+        margin-bottom: 20%;
     }
 
   }
