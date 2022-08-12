@@ -137,7 +137,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 you see that this is </div><div id="addItem" className="flavourtext" onClick={()=>changeText(27)}> Viperyon's backup 
                 costume. </div><div>It's still sturdy and intimidating, but the colours are a lot more modest and the stitching more haphazard.</div>
                 There's a secret compartment inside, and it contains <div id="addItem" onClick={()=>addItem(26)}> a slim book. 
-                You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div></div>
+                </div>You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div>
                 );
             }
             else {
@@ -149,7 +149,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             case 2: // chemistry table
             if ((blueMeasure == "0.5" || blueMeasure == "0,5") && (yellowMeasure == "1.5" || yellowMeasure == "1,5") && (redMeasure == "2" || redMeasure == "2.0" || redMeasure == "2,0")){
                 return (<div><div id="textBeforeAddItem">Following some strange rules of chemistry that you don't 100% understand, <div id="addItem" className="flavourtext" onClick={()=>addItem(22)}>
-                    the mixture </div>shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
+                    the mixture </div> shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
             }
@@ -344,7 +344,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 26:
                 return (<div>
-                    <div>You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" className="flavourtext" onClick={()=>addItem(26)}> a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div></div>
+                    <div id="textBeforeAddItem">You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" className="flavourtext" onClick={()=>addItem(26)}> a slim book.</div> You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div>
                 </div>)
             case 27:
                 return (<div>
