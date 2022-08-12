@@ -148,7 +148,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
             }
             case 2: // chemistry table
             if ((blueMeasure == "0.5" || blueMeasure == "0,5") && (yellowMeasure == "1.5" || yellowMeasure == "1,5") && (redMeasure == "2" || redMeasure == "2.0" || redMeasure == "2,0")){
-                return (<div><div id="addItem" onClick={()=>addItem(22)}>Following some strange rules of chemistry that you don't 100% understand, 
+                return (<div><div id="addItem" className="flavourtext" onClick={()=>addItem(22)}>Following some strange rules of chemistry that you don't 100% understand, 
                 the mixture shines bright gold. It matches the picture on the cover of the Modulanium book exactly.</div>
                 <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                 <p className="flavourtext">{displayInventoryItem(5)}</p></div>);
@@ -227,7 +227,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     return (<div><div id="textBeforeAddItem"> The lock pops off, and you swing the door open. 
                         Inside there are lots of spaces for weapons, but it's almost completely empty at the 
                         moment. Viperyon must have taken them out for a while. The only thing he's left behind 
-                        is <div id="addItem" onClick={()=>addItem(37)}>an aerosol can labelled 'Instant Fog'.</div></div>
+                        is <div id="addItem" className="flavourtext" onClick={()=>addItem(37)}>an aerosol can labelled 'Instant Fog'.</div></div>
                         <p></p>
                         <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                         <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
@@ -344,7 +344,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
             case 26:
                 return (<div>
-                    <div>You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" onClick={()=>addItem(26)}> a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div></div>
+                    <div>You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" className="flavourtext" onClick={()=>addItem(26)}> a slim book. You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div></div>
                 </div>)
             case 27:
                 return (<div>
