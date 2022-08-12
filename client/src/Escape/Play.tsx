@@ -270,8 +270,8 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <p className="flavourtext">{displayInventoryItem(3)}</p></div>);
                 } else {
                     return (
-                        <div>
-                    <div id="addItem" onClick={()=>addItem(20)}>You try to reach the rope through the bars. You have to move slowly and carefully, but your arm fits through the bars of the laser cage and you manoeuvre the rope out without so much as a singe.</div>
+                        <div>You try to reach the rope through the bars. You have to move slowly and carefully, but your arm fits through the bars of the laser cage and you manoeuvre 
+                    <div id="addItem" className="flavourtext" onClick={()=>addItem(20)}>the rope</div> out without so much as a singe.
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(9)}</p></div>);
                 };
@@ -385,7 +385,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
     async function addItem(id: number) {
         switch(id){
             case 20: // rope
-                if (gameState?.players?.items[4].inPossession == false) {
+                if (gameState?.players?.items[4].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[4].inPossession = true;
                     setGameState(deepCopy);
@@ -393,7 +393,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 22: // modulanium
-                if (gameState?.players?.items[7].inPossession == false) {
+                if (gameState?.players?.items[7].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[7].inPossession = true;
                     setGameState(deepCopy);
@@ -401,7 +401,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 26: // slim book
-                if (gameState?.players?.items[1].inPossession == false) {
+                if (gameState?.players?.items[1].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[1].inPossession = true;
                     setGameState(deepCopy);
@@ -409,7 +409,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 35: // robot hand
-                if (gameState?.players?.items[2].inPossession == false) {
+                if (gameState?.players?.items[2].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[2].inPossession = true;
                     setGameState(deepCopy);
@@ -417,7 +417,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 37: // fog spray
-                if (gameState?.player?.items[3].inPossession == false) {
+                if (gameState?.player?.items[3].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[3].inPossession = true;
                     setGameState(deepCopy);
@@ -425,7 +425,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 38: // hair strands
-                if (gameState?.players?.items[6].inPossession == false) {
+                if (gameState?.players?.items[6].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[6].inPossession = true;
                     setGameState(deepCopy);
@@ -433,7 +433,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 }
                 break;
             case 39: // book modulanium
-                if (gameState?.players?.items[5].inPossession == false) {
+                if (gameState?.players?.items[5].heldStatus == false) {
                     var deepCopy = {...gameState};
                     deepCopy.players.items[5].inPossession = true;
                     setGameState(deepCopy);
