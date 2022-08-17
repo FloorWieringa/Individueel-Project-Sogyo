@@ -200,6 +200,7 @@ public class Player {
             operativeMask = true;
             workingMask.holding = true;
             havingUsedModulanium = true;
+            System.out.println("setting havingusedmodulanium to true");
                 return "You try on the mask, and it comes alive with power. The sound of your breath comes out deep and intimidating. You speak, and the modulated voice of Viperyon echoes through the room.";
             case 29: // Desk - pressing button 1
             elevatorOpen = true;
