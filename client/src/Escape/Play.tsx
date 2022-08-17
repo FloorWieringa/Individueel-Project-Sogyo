@@ -661,7 +661,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                             <div className="space2" id="pcA17" onClick={()=>changeAllText(4)}> 17 </div>
 
                             <div className="space1" id="glasscaseB1" onClick={()=>changeAllText(6)}> B1 </div>
-                            <div className="space5" id="emptyB2" onClick={()=>changeAllText(40)}> 2 </div>
+                            <div className="space6" id="emptyB2" onClick={()=>changeAllText(40)}> 2 </div>
                             <div className="space5" id="chemtableB8" onClick={()=>changeAllText(2)}> 8 </div>
                             <div className="space3" id="emptyB13" onClick={()=>changeAllText(40)}> 13 </div> 
                             <div className="space1" id="deskB16" onClick={()=>changeAllText(3)}> 16 </div>

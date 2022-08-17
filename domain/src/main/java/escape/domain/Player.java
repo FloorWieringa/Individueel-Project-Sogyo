@@ -189,9 +189,11 @@ public class Player {
             case 27: // Costume stand - trying on mask w/o Modulanium
             lookingForModulanium = true;
                 if (havingModulanium == false){
+                    System.out.println("havingusedmodulanium set to false");
                 return "You notice that you would probably fit in the costume quite well -- why not try it on? As you try on the mask with voice modulator, you're disappointed to find you still sound like yourself. After a moment you hear a small, tinny voice in your ear. “Modulanium empty. Modulanium replenishment required.”";
                 }
                 if (havingUsedModulanium == true) {
+                    System.out.println("havingusedmodulanium set to true");
                     return "You try on the mask, and it comes alive with power. The sound of your breath comes out deep and intimidating. You speak, and the modulated voice of Viperyon echoes through the room.";
                 }
             case 28: // Costume stand - trying on mask with Modulanium
