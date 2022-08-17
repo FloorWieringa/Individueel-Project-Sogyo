@@ -610,7 +610,7 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     var deepCopy = {...gameState};
                     deepCopy.players.items[5].heldStatus = true;
                     setGameState(deepCopy);}
-            await itemToFalse("Book on modulanium");
+            //await itemToFalse("Book on modulanium");
             await changeText(41);
             } else {
                 console.log("Nothing happens.");
@@ -635,9 +635,9 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                 if (gameState?.players.items[7].heldStatus == false){
                     var deepCopy = {...gameState};
                     deepCopy.players.items[7].heldStatus = true;
-                    setGameState(deepCopy);                    }
-            changeAllText(28);
-            await itemToFalse("Modulanium");
+                    setGameState(deepCopy);}
+                    changeAllText(28);
+                await itemToFalse("Modulanium");
             } else {
                 console.log("Nothing happens.");
             }

@@ -83,7 +83,7 @@ public class Player {
     public boolean wireInserted = false;
     public boolean lasersVisible = false;
     public boolean robotHandUsed = false;
-    public boolean havingUsedModulanium = false;
+    public boolean havingUsedModulanium;
     public boolean havingSeenChair = false;
     
 
