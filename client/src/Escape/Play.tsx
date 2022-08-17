@@ -347,9 +347,18 @@ export function Play({ gameState, setGameState }: {gameState : GameState | undef
                     <div id="textBeforeAddItem">You hear a satisfying click, and the chest of the suit swings open. There's a secret compartment inside, and it contains <div id="addItem" className="flavourtext" onClick={()=>addItem(26)}> a slim book.</div> You glance at the cover: Close to your Heart: Bulletproof Books for Protective Purposes.</div>
                 </div>)
             case 27:
+                if (gameState?.players.items[9].inPossession == false) {
                 return (<div>
+                    <div>You notice that you would probably fit in the costume quite well -- why not try it on? As you try on the mask with voice modulator, you're disappointed to find you still sound like yourself. After a moment you hear a small, tinny voice in your ear. “Modulanium empty. Modulanium replenishment required.”</div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
                     <p className="flavourtext">{displayInventoryItem(7)}</p></div>);
+                }
+                else {
+                return (<div>
+                    <div>You try on the mask, and it comes alive with power. The sound of your breath comes out deep and intimidating. You speak, and the modulated voice of Viperyon echoes through the room.</div>
+                    <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
+                    <p className="flavourtext">{displayInventoryItem(7)}</p></div>);
+                }
             case 34:
                 return (<div>
                     <p className="flavourtext" id="useItem" onClick={()=>setHoldItemUseState()}> Use item from inventory </p>
