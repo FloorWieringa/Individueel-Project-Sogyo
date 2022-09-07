@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    // This time we're building a command-line executable application.
     id 'application'
     id 'jacoco'
 }
@@ -11,7 +10,6 @@ repositories {
 
 dependencies {
 
-    // Use the Jersey framework to make writing and testing servlets easier.
     implementation 'org.glassfish.jersey.containers:jersey-container-servlet-core:+'
     implementation 'org.glassfish.jersey.containers:jersey-container-jetty-http:+'
     implementation 'org.glassfish.jersey.core:jersey-server:+'
@@ -20,7 +18,7 @@ dependencies {
     // Use Jakarta (Java EE) for the servlet primitives.
     implementation 'jakarta.servlet:jakarta.servlet-api:5.+'
     // Use the Jetty server.
-    implementation 'org.eclipse.jetty:jetty-server:+'
+    implementation 'org.eclipse.jetty:jetty-server:11.0.11'
     implementation 'org.eclipse.jetty:jetty-servlet:+'
     implementation 'org.eclipse.jetty:jetty-webapp:+'
     // We want to have some logging output if things go wrong, so use the simple console logger from SLF4J.
